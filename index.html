@@ -1,0 +1,2053 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Imperial St Auto Repair & Detailing | Burnaby Auto Repair</title>
+  <meta name="description" content="Professional auto repair, diagnostics, detailing, inspections, brakes, tires, and maintenance in Burnaby, BC.">
+  <style>
+    :root {
+      --blue: #075ec8;
+      --blue-strong: #004eaf;
+      --blue-soft: #e7f1ff;
+      --navy: #07182f;
+      --navy-2: #0d2746;
+      --white: #ffffff;
+      --silver: #c7d0da;
+      --silver-2: #eef2f6;
+      --grey: #667085;
+      --dark: #111827;
+      --line: rgba(15, 35, 62, .13);
+      --shadow: 0 24px 70px rgba(3, 24, 52, .16);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--blue);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      color: var(--navy);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 850px;
+      color: var(--white);
+      font-size: clamp(2.55rem, 7vw, 5.8rem);
+      font-weight: 900;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      font-weight: 900;
+    }
+
+    h3 {
+      font-size: 1.22rem;
+      font-weight: 850;
+    }
+
+    p {
+      margin: 0;
+      color: var(--grey);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      color: var(--white);
+      background: var(--blue);
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--blue-strong);
+      box-shadow: 0 16px 34px rgba(7, 94, 200, .28);
+    }
+
+    .btn.secondary {
+      color: var(--white);
+      background: rgba(255, 255, 255, .1);
+      border-color: rgba(255, 255, 255, .32);
+      backdrop-filter: blur(12px);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, .18);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, .15);
+    }
+
+    .site-header {
+      position: fixed;
+      z-index: 50;
+      top: 0;
+      left: 0;
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, .18);
+      background: rgba(7, 24, 47, .75);
+      backdrop-filter: blur(18px);
+      transition: background .25s ease, box-shadow .25s ease;
+    }
+
+    .site-header.scrolled {
+      background: rgba(7, 24, 47, .96);
+      box-shadow: 0 14px 38px rgba(2, 15, 33, .2);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 48px;
+      height: 42px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .96);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, .12);
+    }
+
+    .imperial-logo {
+      width: 36px;
+      height: 30px;
+      fill: none;
+      color: var(--blue);
+      stroke: currentColor;
+      stroke-width: 2.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .imperial-logo .dot {
+      fill: currentColor;
+      stroke: none;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-tile {
+      display: grid;
+      flex: 0 0 auto;
+      width: 58px;
+      height: 50px;
+      place-items: center;
+      border: 1px solid rgba(7, 94, 200, .18);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 12px 28px rgba(3, 24, 52, .13);
+      color: var(--blue);
+    }
+
+    .logo-tile.dark {
+      border-color: rgba(255, 255, 255, .18);
+      background: rgba(255, 255, 255, .92);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: rgba(255, 255, 255, .84);
+      font-size: .93rem;
+      font-weight: 750;
+    }
+
+    .nav-links a {
+      position: relative;
+      transition: color .25s ease;
+    }
+
+    .nav-links a::after {
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      content: "";
+      background: #6bb6ff;
+      transition: width .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      min-height: 42px;
+      padding: 0 16px;
+      box-shadow: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: var(--radius);
+      color: var(--white);
+      background: rgba(255, 255, 255, .08);
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin: 5px auto;
+      background: currentColor;
+      transition: transform .25s ease, opacity .25s ease;
+    }
+
+    .menu-open .menu-toggle span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-open .menu-toggle span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-open .menu-toggle span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: 100vh;
+      padding: 130px 0 44px;
+      align-items: end;
+      overflow: hidden;
+      background-image:
+        linear-gradient(90deg, rgba(5, 18, 38, .76) 0%, rgba(7, 24, 47, .56) 44%, rgba(7, 24, 47, .18) 78%),
+        linear-gradient(180deg, rgba(7, 24, 47, .04), rgba(7, 24, 47, .3)),
+        url("imperial-shop-clean.png");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background:
+        radial-gradient(circle at 74% 62%, rgba(62, 164, 255, .16), transparent 30%),
+        linear-gradient(180deg, transparent, rgba(7, 24, 47, .38));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero::after {
+      position: absolute;
+      right: -8vw;
+      bottom: -22vw;
+      width: 52vw;
+      height: 52vw;
+      min-width: 480px;
+      min-height: 480px;
+      content: "";
+      border: 1px solid rgba(199, 208, 218, .2);
+      border-radius: 50%;
+      background: repeating-radial-gradient(circle, rgba(255, 255, 255, .06) 0 1px, transparent 1px 24px);
+      opacity: .65;
+      z-index: 1;
+    }
+
+    .hero-car {
+      position: absolute;
+      z-index: 2;
+      right: clamp(18px, 4vw, 70px);
+      bottom: clamp(54px, 8vh, 118px);
+      width: min(900px, 56vw);
+      max-width: none;
+      filter: drop-shadow(-34px 36px 34px rgba(0, 0, 0, .48));
+      pointer-events: none;
+      transform: perspective(900px) rotateY(-7deg) rotateZ(-.8deg) translateZ(24px);
+      transform-origin: 70% 55%;
+      animation: car-arrive 1.1s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    .hero-car-glow {
+      position: absolute;
+      z-index: 1;
+      right: -18vw;
+      bottom: 10vh;
+      width: 62vw;
+      height: 32vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(7, 94, 200, .34), rgba(7, 94, 200, .1) 42%, transparent 72%);
+      filter: blur(18px);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      gap: 26px;
+      padding-bottom: 44px;
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+      color: rgba(255, 255, 255, .86);
+      font-size: clamp(1.02rem, 2vw, 1.25rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .trust-badges {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 930px;
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 58px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: var(--radius);
+      color: var(--white);
+      background: rgba(7, 24, 47, .5);
+      backdrop-filter: blur(14px);
+      font-size: .92rem;
+      font-weight: 800;
+    }
+
+    .trust-badge i,
+    .service-icon {
+      display: grid;
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(73, 166, 255, .18);
+      color: #9ed0ff;
+    }
+
+    .action-bar {
+      position: relative;
+      z-index: 4;
+      margin-top: -46px;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .quick-card,
+    .category-card,
+    .trust-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 18px 42px rgba(3, 24, 52, .1);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .quick-card {
+      display: grid;
+      min-height: 145px;
+      padding: 22px;
+      gap: 12px;
+    }
+
+    .quick-card:hover,
+    .category-card:hover,
+    .trust-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(7, 94, 200, .32);
+      box-shadow: 0 24px 58px rgba(3, 24, 52, .16);
+    }
+
+    .quick-card p {
+      font-size: .94rem;
+    }
+
+    .service-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .services-section {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, var(--white), #f7faff 45%, var(--white));
+    }
+
+    .services-intro {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .services-intro p {
+      max-width: 520px;
+    }
+
+    .sphere-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      align-items: center;
+      gap: 34px;
+    }
+
+    .sphere-stage {
+      position: relative;
+      height: 620px;
+      min-height: 500px;
+      border: 1px solid rgba(7, 94, 200, .16);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at center, rgba(7, 94, 200, .16), transparent 44%),
+        linear-gradient(145deg, #07182f, #0c2445 54%, #061426);
+      box-shadow: var(--shadow);
+      touch-action: none;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .sphere-stage:active {
+      cursor: grabbing;
+    }
+
+    .sphere-grid {
+      position: absolute;
+      inset: 8%;
+      border: 1px solid rgba(142, 204, 255, .24);
+      border-radius: 50%;
+      background:
+        repeating-radial-gradient(circle, rgba(142, 204, 255, .14) 0 1px, transparent 1px 42px),
+        linear-gradient(90deg, transparent calc(50% - 1px), rgba(142, 204, 255, .14) 50%, transparent calc(50% + 1px)),
+        linear-gradient(0deg, transparent calc(50% - 1px), rgba(142, 204, 255, .14) 50%, transparent calc(50% + 1px));
+      box-shadow: 0 0 60px rgba(7, 94, 200, .28), inset 0 0 80px rgba(7, 94, 200, .16);
+      opacity: .75;
+      animation: pulse-ring 5s ease-in-out infinite;
+    }
+
+    .sphere-tag {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 190px;
+      padding: 7px 10px;
+      border: 1px solid rgba(126, 196, 255, .22);
+      border-radius: 999px;
+      color: #d5ecff;
+      background: rgba(7, 24, 47, .48);
+      box-shadow: 0 0 18px rgba(31, 137, 255, .08);
+      font-size: clamp(.68rem, 1.4vw, .86rem);
+      font-weight: 800;
+      text-align: center;
+      white-space: nowrap;
+      will-change: transform, opacity, filter;
+      transition: box-shadow .18s ease, color .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .sphere-tag:hover,
+    .sphere-tag.active {
+      color: var(--white);
+      border-color: rgba(120, 202, 255, .86);
+      background: rgba(7, 94, 200, .48);
+      box-shadow: 0 0 28px rgba(66, 169, 255, .62);
+    }
+
+    .sphere-hint {
+      position: absolute;
+      right: 18px;
+      bottom: 16px;
+      color: rgba(255, 255, 255, .62);
+      font-size: .82rem;
+      font-weight: 700;
+    }
+
+    .service-panel {
+      display: grid;
+      gap: 18px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-eyebrow {
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--blue);
+      background: var(--blue-soft);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .panel-service {
+      min-height: 88px;
+      display: grid;
+      align-content: center;
+      gap: 8px;
+    }
+
+    .panel-service strong {
+      color: var(--navy);
+      font-size: 1.65rem;
+      line-height: 1.1;
+    }
+
+    .panel-service span {
+      color: var(--grey);
+      font-weight: 800;
+    }
+
+    .category-focus {
+      display: grid;
+      gap: 8px;
+      padding: 16px;
+      border: 1px solid rgba(7, 94, 200, .22);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #f3f8ff, #ffffff);
+    }
+
+    .category-focus span {
+      color: var(--blue);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .category-focus strong {
+      color: var(--navy);
+      font-size: 1.22rem;
+      line-height: 1.15;
+    }
+
+    .category-focus p {
+      font-size: .94rem;
+    }
+
+    .panel-line {
+      height: 1px;
+      background: var(--line);
+    }
+
+    .panel-stat {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: center;
+      color: var(--navy);
+      font-weight: 850;
+    }
+
+    .panel-stat i {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: var(--radius);
+      color: var(--blue);
+      background: var(--blue-soft);
+      font-style: normal;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .category-card {
+      padding: 24px;
+    }
+
+    .category-card.category-active {
+      transform: translateY(-6px);
+      border-color: rgba(7, 94, 200, .55);
+      box-shadow: 0 26px 64px rgba(7, 94, 200, .18);
+    }
+
+    .category-card ul {
+      display: grid;
+      gap: 9px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--grey);
+      font-size: .95rem;
+      max-height: 280px;
+      overflow: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(7, 94, 200, .5) rgba(7, 24, 47, .08);
+    }
+
+    .category-card li {
+      position: relative;
+      padding: 4px 8px 4px 18px;
+      border-radius: 6px;
+      transition: color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
+    }
+
+    .category-card li::before {
+      position: absolute;
+      left: 0;
+      top: .66em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      content: "";
+      background: var(--blue);
+      box-shadow: 0 0 0 4px rgba(7, 94, 200, .1);
+    }
+
+    .category-card li.service-highlight {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--blue), #38a6ff);
+      box-shadow: 0 10px 24px rgba(7, 94, 200, .26);
+      transform: translateX(4px);
+    }
+
+    .category-card li.service-highlight::before {
+      background: var(--white);
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, .24);
+    }
+
+    .diagnostics {
+      background: var(--navy);
+    }
+
+    .diagnostics h2,
+    .diagnostics h3,
+    .diagnostics .section-kicker {
+      color: var(--white);
+    }
+
+    .diagnostics p {
+      color: rgba(255, 255, 255, .76);
+    }
+
+    .diagnostic-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, .85fr);
+      align-items: center;
+      gap: 48px;
+    }
+
+    .diagnostic-copy {
+      display: grid;
+      gap: 22px;
+    }
+
+    .scanner-wrap {
+      position: relative;
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+    }
+
+    .scanner {
+      position: relative;
+      width: min(330px, 86vw);
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 18px;
+      background: linear-gradient(145deg, #101a27, #182b42);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, .34), inset 0 0 26px rgba(255, 255, 255, .06);
+    }
+
+    .scanner-screen {
+      height: 150px;
+      padding: 18px;
+      border: 1px solid rgba(103, 215, 255, .28);
+      border-radius: 10px;
+      background: #06101d;
+      box-shadow: inset 0 0 22px rgba(7, 94, 200, .32);
+    }
+
+    .scanner-line {
+      height: 9px;
+      margin-bottom: 13px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(95, 191, 255, .95), rgba(95, 191, 255, .12));
+      animation: scan 1.8s ease-in-out infinite;
+    }
+
+    .scanner-line:nth-child(2) {
+      width: 74%;
+      animation-delay: .2s;
+    }
+
+    .scanner-line:nth-child(3) {
+      width: 58%;
+      animation-delay: .4s;
+    }
+
+    .scanner-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .scanner-buttons span {
+      height: 38px;
+      border-radius: 8px;
+      background: linear-gradient(145deg, #d9e2ec, #8896a6);
+      box-shadow: inset 0 -4px 8px rgba(0, 0, 0, .16);
+    }
+
+    .checklist {
+      position: absolute;
+      right: 0;
+      bottom: 12px;
+      display: grid;
+      gap: 9px;
+      width: 260px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .08);
+      backdrop-filter: blur(14px);
+    }
+
+    .checkitem {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, .82);
+      font-size: .9rem;
+      font-weight: 800;
+      opacity: 0;
+      transform: translateX(14px);
+      animation: check-in .5s ease forwards;
+    }
+
+    .checkitem:nth-child(2) {
+      animation-delay: .18s;
+    }
+
+    .checkitem:nth-child(3) {
+      animation-delay: .36s;
+    }
+
+    .checkitem:nth-child(4) {
+      animation-delay: .54s;
+    }
+
+    .checkitem i {
+      display: grid;
+      width: 22px;
+      height: 22px;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--blue);
+      font-size: .75rem;
+      font-style: normal;
+    }
+
+    .detailing {
+      background: #f7f9fc;
+    }
+
+    .split-section {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 44px;
+      align-items: center;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .feature-pill {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--navy);
+      background: var(--white);
+      font-weight: 850;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .image-box {
+      position: relative;
+      min-height: 360px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background:
+        linear-gradient(145deg, rgba(7, 24, 47, .72), rgba(7, 94, 200, .32)),
+        url("imperial-shop.webp");
+      background-position: center;
+      background-size: cover;
+      box-shadow: var(--shadow);
+    }
+
+    .image-box.after {
+      filter: saturate(1.22) contrast(1.08) brightness(1.04);
+    }
+
+    .image-box.before {
+      filter: saturate(.72) contrast(.9) brightness(.75);
+    }
+
+    .image-box span {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--white);
+      background: rgba(7, 24, 47, .74);
+      font-weight: 900;
+    }
+
+    .inspection {
+      background:
+        linear-gradient(180deg, var(--white), #f7faff);
+    }
+
+    .inspection-card {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+      gap: 34px;
+      align-items: center;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .inspection-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .inspection-list li {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #f8fbff;
+      color: var(--navy);
+      font-weight: 850;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .trust-card {
+      padding: 24px;
+      min-height: 210px;
+    }
+
+    .trust-card .number {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 22px;
+      place-items: center;
+      border-radius: var(--radius);
+      color: var(--white);
+      background: linear-gradient(145deg, var(--blue), #55acff);
+      font-weight: 900;
+    }
+
+    .trust-card p {
+      margin-top: 12px;
+      font-size: .95rem;
+    }
+
+    .contact {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .contact h2,
+    .contact h3,
+    .contact .section-kicker {
+      color: var(--white);
+    }
+
+    .contact p {
+      color: rgba(255, 255, 255, .75);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 34px;
+    }
+
+    .contact-info,
+    .contact-form {
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .07);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, .2);
+      backdrop-filter: blur(14px);
+    }
+
+    .contact-info {
+      padding: 28px;
+    }
+
+    .info-row {
+      display: grid;
+      gap: 4px;
+      padding: 17px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    .info-row:last-child {
+      border-bottom: 0;
+    }
+
+    .info-row span {
+      color: rgba(255, 255, 255, .62);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .info-row strong {
+      color: var(--white);
+      font-size: 1.08rem;
+    }
+
+    .map-link {
+      position: relative;
+      display: grid;
+      min-height: 190px;
+      margin-top: 18px;
+      place-items: center;
+      padding: 22px;
+      border: 1px solid rgba(116, 196, 255, .42);
+      border-radius: var(--radius);
+      color: var(--white);
+      background:
+        linear-gradient(145deg, rgba(7, 94, 200, .42), rgba(7, 24, 47, .72)),
+        linear-gradient(90deg, transparent 24px, rgba(255, 255, 255, .1) 25px, transparent 26px),
+        linear-gradient(0deg, transparent 24px, rgba(255, 255, 255, .1) 25px, transparent 26px);
+      background-size: 50px 50px;
+      box-shadow: inset 0 0 42px rgba(7, 94, 200, .22);
+      font-weight: 850;
+      text-align: center;
+      overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .map-link:hover {
+      transform: translateY(-3px);
+      border-color: rgba(116, 196, 255, .8);
+      box-shadow: inset 0 0 42px rgba(7, 94, 200, .28), 0 20px 40px rgba(0, 0, 0, .18);
+    }
+
+    .map-link strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--white);
+      font-size: 1.1rem;
+    }
+
+    .map-link span {
+      color: rgba(255, 255, 255, .75);
+      font-size: .92rem;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 16px;
+      padding: 28px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: rgba(255, 255, 255, .78);
+      font-size: .86rem;
+      font-weight: 800;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: var(--radius);
+      color: var(--white);
+      background: rgba(255, 255, 255, .08);
+      outline: 0;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    input {
+      height: 48px;
+      padding: 0 14px;
+    }
+
+    textarea {
+      min-height: 126px;
+      resize: vertical;
+      padding: 12px 14px;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(116, 196, 255, .84);
+      background: rgba(255, 255, 255, .12);
+      box-shadow: 0 0 0 4px rgba(7, 94, 200, .18);
+    }
+
+    .site-footer {
+      padding: 44px 0;
+      background: #041022;
+      color: rgba(255, 255, 255, .72);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(200px, .6fr) minmax(200px, .6fr);
+      gap: 34px;
+    }
+
+    .site-footer h3 {
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, .72);
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    .copyright {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      color: rgba(255, 255, 255, .54);
+      font-size: .9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes pulse-ring {
+      0%, 100% {
+        transform: scale(.98);
+        opacity: .6;
+      }
+      50% {
+        transform: scale(1.02);
+        opacity: .9;
+      }
+    }
+
+    @keyframes scan {
+      0%, 100% {
+        transform: scaleX(.55);
+        opacity: .52;
+      }
+      50% {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes check-in {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes car-arrive {
+      from {
+        opacity: 0;
+        transform: perspective(900px) rotateY(-10deg) rotateZ(-.8deg) translateX(90px) translateZ(0) scale(.97);
+      }
+      to {
+        opacity: 1;
+        transform: perspective(900px) rotateY(-7deg) rotateZ(-.8deg) translateX(0) translateZ(24px) scale(1);
+      }
+    }
+
+    @media (max-width: 1020px) {
+      .nav-links {
+        position: absolute;
+        top: 78px;
+        left: 20px;
+        right: 20px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 14px;
+        border: 1px solid rgba(255, 255, 255, .14);
+        border-radius: var(--radius);
+        background: rgba(7, 24, 47, .98);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, .22);
+      }
+
+      .menu-open .nav-links {
+        display: flex;
+      }
+
+      .nav-links a,
+      .nav-links .btn {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 13px 12px;
+      }
+
+      .nav-links a::after {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .trust-badges,
+      .quick-grid,
+      .why-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .sphere-layout,
+      .diagnostic-layout,
+      .split-section,
+      .inspection-card,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .sphere-stage {
+        height: 560px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 28px, 1160px);
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .hero {
+        min-height: 920px;
+        padding-top: 116px;
+        background-position: center top;
+      }
+
+      .hero-content {
+        padding-bottom: 20px;
+      }
+
+      .hero-car {
+        right: -34px;
+        bottom: 46px;
+        width: min(760px, 112vw);
+        opacity: .42;
+      }
+
+      .hero-car-glow {
+        right: -38vw;
+        bottom: 10vh;
+        width: 100vw;
+        height: 52vw;
+      }
+
+      .trust-badges,
+      .quick-grid,
+      .category-grid,
+      .feature-list,
+      .before-after,
+      .inspection-list,
+      .why-grid,
+      .form-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-intro {
+        display: grid;
+      }
+
+      .sphere-stage {
+        height: 520px;
+        min-height: 520px;
+      }
+
+      .sphere-tag {
+        max-width: 138px;
+        padding: 6px 8px;
+        font-size: .68rem;
+      }
+
+      .scanner-wrap {
+        min-height: 470px;
+      }
+
+      .checklist {
+        left: 50%;
+        right: auto;
+        width: min(290px, 92%);
+        transform: translateX(-50%);
+      }
+
+      .inspection-card {
+        padding: 22px;
+      }
+
+      .brand {
+        max-width: 245px;
+        font-size: .92rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="imperial-crown-logo" viewBox="0 0 64 48">
+      <path d="M11 33c9 7 33 7 42 0" />
+      <path d="M16 29c8 4 24 4 32 0" />
+      <path d="M20 27 13 10" />
+      <path d="M28 25 27 7" />
+      <path d="M36 25 37 7" />
+      <path d="M44 27 51 10" />
+      <circle class="dot" cx="12" cy="8" r="4" />
+      <circle class="dot" cx="27" cy="6" r="4" />
+      <circle class="dot" cx="37" cy="6" r="4" />
+      <circle class="dot" cx="52" cy="8" r="4" />
+    </symbol>
+  </svg>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Imperial St Auto Repair & Detailing home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="imperial-logo"><use href="#imperial-crown-logo"></use></svg>
+        </span>
+        <span>Imperial St Auto Repair & Detailing</span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#why">Why Choose Us</a>
+        <a href="#contact">Contact</a>
+        <a href="tel:+16044341120">+1 604 434 1120</a>
+        <a class="btn nav-cta" href="#contact">Book Service</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-car-glow" aria-hidden="true"></div>
+      <img class="hero-car" src="hero-car-cutout.png" alt="" aria-hidden="true">
+      <div class="container hero-content">
+        <h1 class="reveal">Reliable Auto Repair & Detailing in Burnaby</h1>
+        <p class="hero-subtitle reveal">From diagnostics and oil changes to brakes, tires, detailing, inspections, and major repairs - Imperial St Auto Repair & Detailing keeps your vehicle road-ready.</p>
+        <div class="hero-actions reveal">
+          <a class="btn" href="#contact">Book an Appointment</a>
+          <a class="btn secondary" href="#services">View Services</a>
+        </div>
+        <div class="trust-badges reveal" aria-label="Trust badges">
+          <div class="trust-badge"><i>01</i> Full Mechanical Services</div>
+          <div class="trust-badge"><i>02</i> Auto Detailing</div>
+          <div class="trust-badge"><i>03</i> Diagnostics</div>
+          <div class="trust-badge"><i>04</i> Vehicle Safety Inspections</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="action-bar" aria-label="Quick service actions">
+      <div class="container">
+        <div class="quick-grid">
+          <a class="quick-card reveal" href="#services">
+            <span class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></span>
+            <h3>Check Engine Light</h3>
+            <p>Fast scan and clear next steps before a small issue becomes expensive.</p>
+          </a>
+          <a class="quick-card reveal" href="#services">
+            <span class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></span>
+            <h3>Brake Problems</h3>
+            <p>Inspection and repair for pads, rotors, master cylinders, and brake feel.</p>
+          </a>
+          <a class="quick-card reveal" href="#services">
+            <span class="service-icon"><svg viewBox="0 0 24 24"><path d="M7 3h10l1 5H6zM6 8h12v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/><path d="M10 12h4"/></svg></span>
+            <h3>Oil Change</h3>
+            <p>Regular maintenance, filters, fluid checks, and factory schedule support.</p>
+          </a>
+          <a class="quick-card reveal" href="#services">
+            <span class="service-icon"><svg viewBox="0 0 24 24"><circle cx="7" cy="17" r="3"/><circle cx="17" cy="17" r="3"/><path d="M5 17H3V9l3-4h9l4 5h2v7h-1M10 17h4M6 5l2 5h10"/></svg></span>
+            <h3>Tire & Alignment</h3>
+            <p>Tires, rotations, alignments, pulls, patch jobs, and suspension checks.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services-section" id="services">
+      <div class="container">
+        <div class="services-intro">
+          <div>
+            <p class="section-kicker reveal">Interactive service explorer</p>
+            <h2 class="reveal">Explore Our Services</h2>
+          </div>
+          <p class="reveal">Drag the rotating service sphere to browse services, then hover any label to highlight where it belongs in the category lists below.</p>
+        </div>
+
+        <div class="sphere-layout">
+          <div class="sphere-stage reveal" id="sphereStage" aria-label="Interactive rotating service sphere">
+            <div class="sphere-grid" aria-hidden="true"></div>
+            <div id="sphereTags"></div>
+            <div class="sphere-hint">Drag to rotate</div>
+          </div>
+          <aside class="service-panel reveal" aria-live="polite">
+            <span class="panel-eyebrow">Selected service</span>
+            <div class="panel-service">
+              <strong id="selectedService">Complete Diagnostic</strong>
+              <span id="selectedCategory">Diagnostics & Electrical</span>
+            </div>
+            <div class="category-focus">
+              <span>Recommended work category</span>
+              <strong id="selectedCategoryBig">Diagnostics & Electrical</strong>
+              <p id="categoryAdvice">Mention this category when you book so the shop can prepare the right diagnostic equipment and technician time.</p>
+            </div>
+            <div class="panel-line"></div>
+            <div class="panel-stat"><i>CAT</i><span>Hover a floating service label to highlight the matching service under its category below.</span></div>
+            <div class="panel-stat"><i>BC</i><span>Local service for drivers in Burnaby and nearby communities.</span></div>
+            <a class="btn" href="#contact">Book This Category</a>
+          </aside>
+        </div>
+
+        <div class="category-grid">
+          <article class="category-card reveal">
+            <h3>Mechanical Repair</h3>
+            <ul>
+              <li>Engine repair</li>
+              <li>Transmission repair</li>
+              <li>Exhaust and muffler repair</li>
+              <li>Belt and hose replacement</li>
+              <li>Head gasket and water pump replacement</li>
+              <li>General repairs and maintenance</li>
+            </ul>
+          </article>
+          <article class="category-card reveal">
+            <h3>Diagnostics & Electrical</h3>
+            <ul>
+              <li>Auto engine diagnostic</li>
+              <li>Complete diagnostic</li>
+              <li>Electrical repair</li>
+              <li>Battery service</li>
+              <li>Charging and starting systems</li>
+              <li>Emission control</li>
+            </ul>
+          </article>
+          <article class="category-card reveal">
+            <h3>Brake, Tire & Alignment</h3>
+            <ul>
+              <li>Brake service and repair</li>
+              <li>Wheel alignment</li>
+              <li>Tire rotations</li>
+              <li>Tires</li>
+              <li>Car pulls</li>
+              <li>Patch job</li>
+            </ul>
+          </article>
+          <article class="category-card reveal">
+            <h3>Cooling, Heating & A/C</h3>
+            <ul>
+              <li>A/C installation and repair</li>
+              <li>Air conditioning</li>
+              <li>Climate control systems</li>
+              <li>Coolant flush</li>
+              <li>Radiator replacement</li>
+              <li>Thermostat replacement</li>
+            </ul>
+          </article>
+          <article class="category-card reveal">
+            <h3>Maintenance & Inspections</h3>
+            <ul>
+              <li>Oil change</li>
+              <li>Factory scheduled maintenance</li>
+              <li>Pre-purchase inspection</li>
+              <li>Vehicle safety</li>
+              <li>Visual inspection</li>
+              <li>Windshield wiper maintenance</li>
+            </ul>
+          </article>
+          <article class="category-card reveal">
+            <h3>Auto Detailing & Body Care</h3>
+            <ul>
+              <li>Auto detailing</li>
+              <li>Exterior wash</li>
+              <li>Full interior cleaning</li>
+              <li>Scratch removal</li>
+              <li>Steam clean</li>
+              <li>Rust check</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="container">
+        <p class="section-kicker reveal">Why choose us</p>
+        <h2 class="reveal">Trusted local service with everything under one roof.</h2>
+        <div class="why-grid">
+          <article class="trust-card reveal">
+            <div class="number">01</div>
+            <h3>Local Burnaby Auto Repair Shop</h3>
+            <p>Conveniently located on Imperial Street for dependable local service.</p>
+          </article>
+          <article class="trust-card reveal">
+            <div class="number">02</div>
+            <h3>Full-Service Mechanical Repairs</h3>
+            <p>From small maintenance jobs to larger repairs, your vehicle stays in capable hands.</p>
+          </article>
+          <article class="trust-card reveal">
+            <div class="number">03</div>
+            <h3>Honest Diagnostics</h3>
+            <p>Clear inspection, clear findings, and repairs matched to what your vehicle needs.</p>
+          </article>
+          <article class="trust-card reveal">
+            <div class="number">04</div>
+            <h3>Repair, Maintenance & Detailing in One Place</h3>
+            <p>Mechanical work, detailing, inspections, and body care handled from one shop.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+        <p class="section-kicker reveal">Contact</p>
+        <h2 class="reveal">Book service at Imperial St Auto Repair & Detailing.</h2>
+        <div class="contact-layout" style="margin-top:34px;">
+          <div class="contact-info reveal">
+            <div class="brand-lockup">
+              <span class="logo-tile" aria-hidden="true"><svg class="imperial-logo"><use href="#imperial-crown-logo"></use></svg></span>
+              <h3>Imperial St Auto Repair & Detailing</h3>
+            </div>
+            <div class="info-row"><span>Location</span><strong>5186 Imperial St, Burnaby, BC V5J 1E3</strong></div>
+            <div class="info-row"><span>City</span><strong>Burnaby, BC</strong></div>
+            <div class="info-row"><span>Phone</span><strong><a href="tel:+16044341120">+1 604 434 1120</a></strong></div>
+            <div class="info-row"><span>Hours</span><strong>Mon-Fri 8:00 AM-6:00 PM, Sat by appointment</strong></div>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Imperial%20St%20Auto%20Repair%20%26%20Detailing%205186%20Imperial%20St%20Burnaby%20BC%20V5J%201E3" target="_blank" rel="noopener">
+              <span><strong>Open Imperial St Auto Repair & Detailing in Google Maps</strong>5186 Imperial St, Burnaby, BC V5J 1E3</span>
+            </a>
+          </div>
+          <form class="contact-form reveal">
+            <p>When booking, please specify the repair category shown in the service sphere, such as Mechanical Repair, Diagnostics & Electrical, Brake/Tire/Alignment, Cooling/Heating/A/C, Maintenance/Inspections, or Auto Detailing & Body Care.</p>
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" autocomplete="tel" required>
+              </div>
+              <div class="field full">
+                <label for="issue">Vehicle issue</label>
+                <textarea id="issue" name="issue" placeholder="Tell us what you need help with"></textarea>
+              </div>
+              <div class="field">
+                <label for="date">Preferred appointment date</label>
+                <input id="date" name="date" type="date">
+              </div>
+            </div>
+            <button class="btn" type="submit">Send Request</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-lockup">
+            <span class="logo-tile dark" aria-hidden="true"><svg class="imperial-logo"><use href="#imperial-crown-logo"></use></svg></span>
+            <h3>Imperial St Auto Repair & Detailing</h3>
+          </div>
+          <p>Modern mechanical repair, diagnostics, maintenance, inspections, and detailing for Burnaby drivers.</p>
+        </div>
+        <div>
+          <h3>Quick links</h3>
+          <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#why">Why Choose Us</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h3>Services</h3>
+          <div class="footer-links">
+            <a href="#services">Mechanical repair</a>
+            <a href="#services">Brakes and tires</a>
+            <a href="#services">Vehicle inspections</a>
+            <a href="#services">Maintenance</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">Copyright <span id="year"></span> Imperial St Auto Repair & Detailing. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const body = document.body;
+    const header = document.getElementById("siteHeader");
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    function setHeaderState() {
+      header.classList.toggle("scrolled", window.scrollY > 20);
+    }
+
+    window.addEventListener("scroll", setHeaderState, { passive: true });
+    setHeaderState();
+
+    menuToggle.addEventListener("click", () => {
+      const open = body.classList.toggle("menu-open");
+      menuToggle.setAttribute("aria-expanded", String(open));
+    });
+
+    navLinks.addEventListener("click", (event) => {
+      if (event.target.tagName === "A") {
+        body.classList.remove("menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    document.querySelector(".contact-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const button = event.currentTarget.querySelector("button");
+      const original = button.textContent;
+      button.textContent = "Request Ready";
+      setTimeout(() => {
+        button.textContent = original;
+      }, 1800);
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
+
+    const services = [
+      ["A/C installation & repair", "Cooling, Heating & A/C"],
+      ["Air & cabin filter replacement", "Maintenance & Inspections"],
+      ["Air conditioning", "Cooling, Heating & A/C"],
+      ["Auto detailing", "Auto Detailing & Body Care"],
+      ["Auto engine diagnostic", "Diagnostics & Electrical"],
+      ["Auto engine tuning", "Mechanical Repair"],
+      ["Auto glass repair", "Auto Detailing & Body Care"],
+      ["Battery", "Diagnostics & Electrical"],
+      ["Brake service & repair", "Brake, Tire & Alignment"],
+      ["Brakes", "Brake, Tire & Alignment"],
+      ["Electrical", "Diagnostics & Electrical"],
+      ["Electrical repair", "Diagnostics & Electrical"],
+      ["Engine repair", "Mechanical Repair"],
+      ["Exhaust", "Mechanical Repair"],
+      ["General repairs & maintenance", "Mechanical Repair"],
+      ["Oil change", "Maintenance & Inspections"],
+      ["Steering & suspension repair", "Brake, Tire & Alignment"],
+      ["Tire rotations", "Brake, Tire & Alignment"],
+      ["Tires", "Brake, Tire & Alignment"],
+      ["Transmission", "Mechanical Repair"],
+      ["Transmission repair", "Mechanical Repair"],
+      ["Wheel alignment", "Brake, Tire & Alignment"],
+      ["All Mechanical Services", "Mechanical Repair"],
+      ["Auto Body", "Auto Detailing & Body Care"],
+      ["Automotive Maintenance", "Maintenance & Inspections"],
+      ["Belt And Hose Replacement", "Mechanical Repair"],
+      ["Burnaby Auto Repair", "Mechanical Repair"],
+      ["Car Pulls", "Brake, Tire & Alignment"],
+      ["Car Wash", "Auto Detailing & Body Care"],
+      ["Charging And Starting Systems", "Diagnostics & Electrical"],
+      ["Climate Control Systems", "Cooling, Heating & A/C"],
+      ["Complete Diagnostic", "Diagnostics & Electrical"],
+      ["Coolant Flush", "Cooling, Heating & A/C"],
+      ["Cooling Fan", "Cooling, Heating & A/C"],
+      ["Cooling System Flush And Fill", "Cooling, Heating & A/C"],
+      ["Cooling System Maintenance And Repair", "Cooling, Heating & A/C"],
+      ["Emission Control", "Diagnostics & Electrical"],
+      ["Exterior Wash", "Auto Detailing & Body Care"],
+      ["Factory Scheduled Maintenance", "Maintenance & Inspections"],
+      ["Fuel Delivery", "Mechanical Repair"],
+      ["Fuel Filter", "Maintenance & Inspections"],
+      ["Full Interior Cleaning", "Auto Detailing & Body Care"],
+      ["Head Gasket", "Mechanical Repair"],
+      ["Heater Core", "Cooling, Heating & A/C"],
+      ["Hose Inspection", "Maintenance & Inspections"],
+      ["Larger Repair", "Mechanical Repair"],
+      ["Leak Repairs", "Maintenance & Inspections"],
+      ["Master Cylinder", "Brake, Tire & Alignment"],
+      ["Muffler Repair", "Mechanical Repair"],
+      ["New Car", "Maintenance & Inspections"],
+      ["Patch Job", "Brake, Tire & Alignment"],
+      ["Pre-Purchase Inspection", "Maintenance & Inspections"],
+      ["Pressure Tests", "Maintenance & Inspections"],
+      ["Radiator Repair", "Cooling, Heating & A/C"],
+      ["Radiator Replacement", "Cooling, Heating & A/C"],
+      ["Rear Shocks", "Brake, Tire & Alignment"],
+      ["Regular Maintenance", "Maintenance & Inspections"],
+      ["Rust Check", "Auto Detailing & Body Care"],
+      ["Scheduled Car Maintenance", "Maintenance & Inspections"],
+      ["Scratch Removal", "Auto Detailing & Body Care"],
+      ["Shocks Replaced", "Brake, Tire & Alignment"],
+      ["Spark Plugs", "Maintenance & Inspections"],
+      ["Steam Clean", "Auto Detailing & Body Care"],
+      ["Thermostat Replacement", "Cooling, Heating & A/C"],
+      ["Timing Belt Replacement", "Mechanical Repair"],
+      ["Used Car Inspections", "Maintenance & Inspections"],
+      ["Used Vehicle", "Maintenance & Inspections"],
+      ["Vehicle Safety", "Maintenance & Inspections"],
+      ["Visual Inspection", "Maintenance & Inspections"],
+      ["Water Pump Replacement", "Cooling, Heating & A/C"],
+      ["Windshield Wiper Maintenance", "Maintenance & Inspections"]
+    ];
+
+    const stage = document.getElementById("sphereStage");
+    const tagRoot = document.getElementById("sphereTags");
+    const selectedService = document.getElementById("selectedService");
+    const selectedCategory = document.getElementById("selectedCategory");
+    const selectedCategoryBig = document.getElementById("selectedCategoryBig");
+    const categoryAdvice = document.getElementById("categoryAdvice");
+
+    const categoryGuidance = {
+      "Mechanical Repair": "Use this category for engine, exhaust, transmission, belt, hose, head gasket, and larger mechanical repair needs.",
+      "Diagnostics & Electrical": "Use this category for check-engine lights, electrical faults, battery, charging, starting, emission, and complete diagnostic concerns.",
+      "Brake, Tire & Alignment": "Use this category for brake noise, tire service, steering pull, suspension concerns, rotations, patch jobs, and wheel alignment.",
+      "Cooling, Heating & A/C": "Use this category for A/C, heater, climate control, radiator, coolant flush, water pump, thermostat, and cooling-system concerns.",
+      "Maintenance & Inspections": "Use this category for oil changes, scheduled maintenance, pre-purchase inspections, safety checks, pressure tests, and visual inspections.",
+      "Auto Detailing & Body Care": "Use this category for exterior wash, interior cleaning, scratch removal, steam cleaning, rust check, auto glass, and body-care requests."
+    };
+
+    const sphereItems = services.map(([name, category], index) => {
+      const point = fibonacciPoint(index, services.length);
+      const tag = document.createElement("button");
+      tag.type = "button";
+      tag.className = "sphere-tag";
+      tag.textContent = name;
+      tag.dataset.category = category;
+      tag.dataset.name = name;
+      tag.addEventListener("mouseenter", () => highlightListedService(name, category, true));
+      tag.addEventListener("mouseleave", () => clearListedServiceHighlight());
+      tag.addEventListener("focus", () => highlightListedService(name, category, true));
+      tag.addEventListener("blur", () => clearListedServiceHighlight());
+      tag.addEventListener("click", (event) => {
+        if (didDrag) {
+          event.preventDefault();
+          return;
+        }
+        selectService(tag);
+      });
+      tagRoot.appendChild(tag);
+      return { tag, name, category, ...point };
+    });
+
+    let rotationX = -0.18;
+    let rotationY = 0.2;
+    let velocityX = 0.0012;
+    let velocityY = 0.0035;
+    let isDragging = false;
+    let lastX = 0;
+    let lastY = 0;
+    let lastTime = performance.now();
+    let autoResumeAt = 0;
+    let dragDistance = 0;
+    let didDrag = false;
+
+    function fibonacciPoint(index, total) {
+      const offset = 2 / total;
+      const increment = Math.PI * (3 - Math.sqrt(5));
+      const y = index * offset - 1 + offset / 2;
+      const radius = Math.sqrt(1 - y * y);
+      const phi = index * increment;
+      return {
+        x: Math.cos(phi) * radius,
+        y,
+        z: Math.sin(phi) * radius
+      };
+    }
+
+    function normalizeServiceName(value) {
+      return value
+        .toLowerCase()
+        .replace(/&/g, "and")
+        .replace(/[^a-z0-9]+/g, " ")
+        .trim();
+    }
+
+    function prepareCategoryLists() {
+      const cards = Array.from(document.querySelectorAll(".category-card"));
+      const cardByCategory = new Map(cards.map((card) => [card.querySelector("h3").textContent.trim(), card]));
+
+      cards.forEach((card) => {
+        const category = card.querySelector("h3").textContent.trim();
+        const ul = card.querySelector("ul");
+        Array.from(ul.children).forEach((li) => {
+          li.dataset.serviceKey = normalizeServiceName(li.textContent);
+          li.dataset.category = category;
+        });
+      });
+
+      services.forEach(([name, category]) => {
+        const card = cardByCategory.get(category);
+        if (!card) return;
+        const ul = card.querySelector("ul");
+        const key = normalizeServiceName(name);
+        const exists = Array.from(ul.children).some((li) => li.dataset.serviceKey === key);
+
+        if (!exists) {
+          const li = document.createElement("li");
+          li.textContent = name;
+          li.dataset.serviceKey = key;
+          li.dataset.category = category;
+          ul.appendChild(li);
+        }
+      });
+    }
+
+    function clearListedServiceHighlight() {
+      document.querySelectorAll(".service-highlight").forEach((item) => item.classList.remove("service-highlight"));
+      document.querySelectorAll(".category-active").forEach((item) => item.classList.remove("category-active"));
+    }
+
+    function highlightListedService(name, category, scrollIntoView) {
+      clearListedServiceHighlight();
+      const key = normalizeServiceName(name);
+      const target = Array.from(document.querySelectorAll(".category-card li")).find((li) => {
+        return li.dataset.serviceKey === key && li.dataset.category === category;
+      });
+
+      if (!target) return;
+
+      const card = target.closest(".category-card");
+      target.classList.add("service-highlight");
+      card.classList.add("category-active");
+
+      if (scrollIntoView) {
+        const list = target.parentElement;
+        const targetTop = target.offsetTop - list.offsetTop - 42;
+        list.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+      }
+    }
+
+    function selectService(tag) {
+      document.querySelectorAll(".sphere-tag.active").forEach((node) => node.classList.remove("active"));
+      tag.classList.add("active");
+      selectedService.textContent = tag.dataset.name;
+      selectedCategory.textContent = tag.dataset.category;
+      selectedCategoryBig.textContent = tag.dataset.category;
+      categoryAdvice.textContent = categoryGuidance[tag.dataset.category] || "Mention this category when you book so the shop can prepare the right technician time.";
+      highlightListedService(tag.dataset.name, tag.dataset.category, true);
+    }
+
+    function rotatePoint(item) {
+      const cosY = Math.cos(rotationY);
+      const sinY = Math.sin(rotationY);
+      const cosX = Math.cos(rotationX);
+      const sinX = Math.sin(rotationX);
+
+      const x1 = item.x * cosY - item.z * sinY;
+      const z1 = item.x * sinY + item.z * cosY;
+      const y1 = item.y * cosX - z1 * sinX;
+      const z2 = item.y * sinX + z1 * cosX;
+      return { x: x1, y: y1, z: z2 };
+    }
+
+    function renderSphere(now) {
+      const rect = stage.getBoundingClientRect();
+      const size = Math.min(rect.width, rect.height);
+      const radius = size * (rect.width < 720 ? 0.36 : 0.39);
+      const autoActive = !isDragging && now > autoResumeAt;
+
+      if (autoActive) {
+        rotationX += velocityX;
+        rotationY += velocityY;
+      }
+
+      sphereItems.forEach((item) => {
+        const p = rotatePoint(item);
+        const depth = (p.z + 1) / 2;
+        const scale = 0.58 + depth * 0.72;
+        const x = p.x * radius;
+        const y = p.y * radius;
+        const opacity = 0.22 + depth * 0.78;
+        const blur = (1 - depth) * 1.8;
+        const glow = depth > .55 ? 0.25 + depth * .75 : 0;
+
+        item.tag.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), 0) scale(${scale})`;
+        item.tag.style.opacity = opacity.toFixed(3);
+        item.tag.style.filter = `blur(${blur.toFixed(2)}px)`;
+        item.tag.style.zIndex = Math.round(depth * 1000);
+        item.tag.style.boxShadow = `0 0 ${Math.round(glow * 28)}px rgba(73, 166, 255, ${glow})`;
+      });
+
+      requestAnimationFrame(renderSphere);
+    }
+
+    function beginDrag(clientX, clientY) {
+      isDragging = true;
+      didDrag = false;
+      dragDistance = 0;
+      lastX = clientX;
+      lastY = clientY;
+      lastTime = performance.now();
+    }
+
+    function updateDrag(clientX, clientY) {
+      if (!isDragging) return;
+      const now = performance.now();
+      const dx = clientX - lastX;
+      const dy = clientY - lastY;
+      const dt = Math.max(16, now - lastTime);
+      dragDistance += Math.abs(dx) + Math.abs(dy);
+      didDrag = dragDistance > 8;
+      rotationY += dx * 0.006;
+      rotationX -= dy * 0.006;
+      velocityY = (dx / dt) * 0.018;
+      velocityX = (-dy / dt) * 0.018;
+      lastX = event.clientX;
+      lastY = event.clientY;
+      lastTime = now;
+    }
+
+    function endDrag() {
+      isDragging = false;
+      autoResumeAt = performance.now() + 1200;
+      setTimeout(() => {
+        didDrag = false;
+      }, 0);
+    }
+
+    function pointerStart(event) {
+      beginDrag(event.clientX, event.clientY);
+      try {
+        stage.setPointerCapture(event.pointerId);
+      } catch (error) {
+        return;
+      }
+    }
+
+    function pointerMove(event) {
+      if (!isDragging) return;
+      event.preventDefault();
+      updateDrag(event.clientX, event.clientY);
+    }
+
+    function pointerEnd(event) {
+      endDrag();
+      try {
+        stage.releasePointerCapture(event.pointerId);
+      } catch (error) {
+        return;
+      }
+    }
+
+    function touchStart(event) {
+      if (!event.touches.length) return;
+      const touch = event.touches[0];
+      beginDrag(touch.clientX, touch.clientY);
+    }
+
+    function touchMove(event) {
+      if (!isDragging || !event.touches.length) return;
+      event.preventDefault();
+      const touch = event.touches[0];
+      updateDrag(touch.clientX, touch.clientY);
+    }
+
+    stage.addEventListener("pointerdown", pointerStart, { capture: true });
+    stage.addEventListener("pointermove", pointerMove, { capture: true });
+    stage.addEventListener("pointerup", pointerEnd, { capture: true });
+    stage.addEventListener("pointercancel", pointerEnd, { capture: true });
+    stage.addEventListener("touchstart", touchStart, { passive: true, capture: true });
+    stage.addEventListener("touchmove", touchMove, { passive: false, capture: true });
+    stage.addEventListener("touchend", endDrag, { capture: true });
+    stage.addEventListener("touchcancel", endDrag, { capture: true });
+    prepareCategoryLists();
+    selectService(document.querySelector(".sphere-tag[data-name='Complete Diagnostic']"));
+    requestAnimationFrame(renderSphere);
+  </script>
+</body>
+</html>
