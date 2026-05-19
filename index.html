@@ -1448,17 +1448,20 @@
     }
 
     /* ── Hero glass card ── */
-    .hero-glass-card {
+    .hero-simple {
       display: grid;
       gap: 18px;
-      max-width: 680px;
-      padding: 36px 40px;
-      border-radius: 14px;
-      background: rgba(7, 24, 47, .56);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 32px 80px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.12);
+      max-width: 620px;
+    }
+
+    .hero-simple h1 {
+      color: #fff;
+      text-shadow: 0 2px 24px rgba(0,0,0,.6);
+    }
+
+    .hero-simple .hero-subtitle {
+      color: rgba(255,255,255,.88);
+      text-shadow: 0 1px 8px rgba(0,0,0,.5);
     }
 
     /* ── Cred bar ── */
@@ -2044,11 +2047,9 @@
       <div class="hero-car-glow" aria-hidden="true"></div>
       <img class="hero-car" src="hero-car-cutout.png" alt="" aria-hidden="true">
       <div class="container hero-content">
-        <div class="hero-glass-card reveal">
-          <div>
-            <p class="section-kicker" style="margin-bottom:14px;">5186 Imperial St, Burnaby · Est. 1997</p>
-            <h1>Reliable Auto Repair in Burnaby</h1>
-          </div>
+        <div class="hero-simple reveal">
+          <p class="section-kicker" style="margin-bottom:12px;color:var(--copper);">5186 Imperial St, Burnaby · Est. 1997</p>
+          <h1>Reliable Auto Repair in Burnaby</h1>
           <p class="hero-subtitle">From diagnostics and oil changes to brakes, tires, inspections, and major repairs — we keep your vehicle road-ready.</p>
           <div class="hero-actions">
             <a class="btn" href="tel:+16044341120">
@@ -2056,12 +2057,6 @@
               Call (604) 434-1120
             </a>
             <a class="btn secondary" href="#services">View Services</a>
-          </div>
-          <div class="trust-badges" aria-label="Trust badges">
-            <div class="trust-badge"><i>✓</i> Full Mechanical</div>
-            <div class="trust-badge"><i>✓</i> Diagnostics</div>
-            <div class="trust-badge"><i>✓</i> Brakes & Tires</div>
-            <div class="trust-badge"><i>✓</i> Inspections</div>
           </div>
         </div>
       </div>
