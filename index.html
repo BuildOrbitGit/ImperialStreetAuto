@@ -2335,7 +2335,7 @@
         </div>
         <div class="reviews-cta reveal">
           <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Imperial%20St%20Auto%20Repair%205186%20Imperial%20St%20Burnaby%20BC" target="_blank" rel="noopener">See Reviews on Google</a>
-          <p class="reviews-rating">3.8 ★ · 47+ reviews on Google</p>
+          <p class="reviews-rating">Trusted by our Burnaby community ★★★★★</p>
         </div>
       </div>
     </section>
@@ -2620,9 +2620,9 @@
       tag.textContent = name;
       tag.dataset.category = category;
       tag.dataset.name = name;
-      tag.addEventListener("mouseenter", () => highlightListedService(name, category, true));
+      tag.addEventListener("mouseenter", () => { selectService(tag); highlightListedService(name, category, true); });
       tag.addEventListener("mouseleave", () => clearListedServiceHighlight());
-      tag.addEventListener("focus", () => highlightListedService(name, category, true));
+      tag.addEventListener("focus", () => { selectService(tag); highlightListedService(name, category, true); });
       tag.addEventListener("blur", () => clearListedServiceHighlight());
       tag.addEventListener("click", (event) => {
         if (didDrag) {
