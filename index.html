@@ -10,7 +10,7 @@
   <meta property="og:title" content="Imperial St Auto Repair | Burnaby BC">
   <meta property="og:description" content="Professional auto repair, diagnostics, inspections, brakes, tires, and maintenance in Burnaby, BC.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="imperial-shop-clean.png">
+  <meta property="og:image" content="https://imperial-street-auto.vercel.app/imperial-shop-clean.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Imperial St Auto Repair | Burnaby BC">
   <meta name="twitter:description" content="Full-service auto repair in Burnaby, BC.">
@@ -18,7 +18,15 @@
   <!-- Fonts: Lora (distinctive serif) + Outfit (modern sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Non-blocking font load: media="print" loads async, onload swaps to all -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Outfit:wght@400;600;700;800;900&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+  <!-- Preload LCP background image so browser discovers it before CSS parse -->
+  <link rel="preload" as="image" href="imperial-shop-clean.png">
+  <!-- Preconnect to Google Maps origin used by the contact iframe -->
+  <link rel="preconnect" href="https://maps.googleapis.com">
+  <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -913,39 +921,7 @@
       gap: 16px;
     }
 
-    .image-box {
-      position: relative;
-      min-height: 360px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      background:
-        linear-gradient(145deg, rgba(7, 24, 47, .72), rgba(7, 94, 200, .32)),
-        url("imperial-shop.webp");
-      background-position: center;
-      background-size: cover;
-      box-shadow: var(--shadow);
-    }
-
-    .image-box.after {
-      filter: saturate(1.22) contrast(1.08) brightness(1.04);
-    }
-
-    .image-box.before {
-      filter: saturate(.72) contrast(.9) brightness(.75);
-    }
-
-    .image-box span {
-      position: absolute;
-      left: 16px;
-      bottom: 16px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      color: var(--white);
-      background: rgba(7, 24, 47, .74);
-      font-weight: 900;
-    }
-
-    .inspection {
+.inspection {
       background:
         linear-gradient(180deg, var(--white), #f7faff);
     }
@@ -1416,6 +1392,7 @@
     .hours-bar {
       position: relative;
       z-index: 40;
+      margin-top: 78px;
       background: rgba(10, 25, 41, .96);
       border-bottom: 1px solid rgba(183, 105, 53, .32);
     }
@@ -1641,15 +1618,18 @@
     }
 
     .faq-a {
-      display: none;
-      padding: 0 22px 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 22px;
       color: var(--grey);
       font-size: .95rem;
       line-height: 1.7;
     }
 
     .faq-item.open .faq-a {
-      display: block;
+      max-height: 300px;
+      padding: 0 22px 20px;
     }
 
     /* ── Responsive adjustments ── */
@@ -2023,6 +2003,7 @@
   </style>
 </head>
 <body>
+<a href="#contact" class="skip-link" style="position:absolute;left:-9999px;top:4px;z-index:9999;background:var(--copper);color:#fff;padding:8px 16px;border-radius:4px;font-size:.9rem;text-decoration:none;font-family:Outfit,sans-serif" onfocus="this.style.left='4px'" onblur="this.style.left='-9999px'">Skip to contact</a>
 
 <header class="site-header" id="siteHeader">
     <div class="container nav">
@@ -2617,6 +2598,7 @@
       const tag = document.createElement("button");
       tag.type = "button";
       tag.className = "sphere-tag";
+      tag.tabIndex = -1;
       tag.textContent = name;
       tag.dataset.category = category;
       tag.dataset.name = name;
@@ -2798,8 +2780,8 @@
       rotationX -= dy * 0.006;
       velocityY = (dx / dt) * 0.018;
       velocityX = (-dy / dt) * 0.018;
-      lastX = event.clientX;
-      lastY = event.clientY;
+      lastX = clientX;
+      lastY = clientY;
       lastTime = now;
     }
 
@@ -2858,16 +2840,27 @@
     stage.addEventListener("touchcancel", endDrag, { capture: true });
     prepareCategoryLists();
     selectService(document.querySelector(".sphere-tag[data-name='Complete Diagnostic']"));
-    requestAnimationFrame(renderSphere);
+
+    // Start the rAF loop only when the sphere stage enters the viewport,
+    // avoiding wasted GPU/CPU work during initial page load.
+    let sphereStarted = false;
+    const sphereObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !sphereStarted) {
+        sphereStarted = true;
+        requestAnimationFrame(renderSphere);
+        sphereObserver.disconnect();
+      }
+    }, { threshold: 0.1 });
+    sphereObserver.observe(stage);
 
     // Hours indicator
     (function() {
       const dot = document.getElementById("openDot");
       const label = document.getElementById("openLabel");
       if (!dot || !label) return;
-      const now = new Date();
-      const day = now.getDay(); // 0 = Sun, 6 = Sat
-      const hour = now.getHours();
+      const nowPT = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Vancouver' }));
+      const day = nowPT.getDay(); // 0 = Sun, 6 = Sat
+      const hour = nowPT.getHours();
       const isWeekday = day >= 1 && day <= 5;
       const isOpen = isWeekday && hour >= 8 && hour < 18;
       if (isOpen) {
