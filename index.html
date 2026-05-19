@@ -1414,12 +1414,17 @@
       align-items: center;
       gap: 16px;
       flex-wrap: wrap;
+      min-width: 0;
+      flex: 1 1 auto;
     }
 
     .hours-chip {
       display: flex;
       align-items: center;
       gap: 7px;
+      min-width: 0;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     .open-dot {
@@ -1645,6 +1650,25 @@
       .expect-grid { grid-template-columns: 1fr; }
       .hours-bar-inner { font-size: .78rem; }
       .hero-glass-card { padding: 26px 22px; }
+
+      /* Hours bar: prevent mid-word breaks on narrow screens */
+      .hours-chip {
+        white-space: normal;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+        flex-shrink: 1;
+        min-width: 0;
+      }
+
+      /* Hero: ensure content is always visible on mobile regardless of
+         IntersectionObserver timing. The hero is align-items:end inside a
+         920px min-height container, so the text sits below the fold and
+         the threshold:0.14 observer may never fire. */
+      .hero-simple.reveal,
+      .hero-content .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     /* ── Stats strip ── */
