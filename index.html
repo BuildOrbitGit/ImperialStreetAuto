@@ -51,6 +51,12 @@
         "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
         "opens": "08:00",
         "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday"],
+        "opens": "09:00",
+        "closes": "16:00"
       }
     ],
     "sameAs": [
@@ -94,6 +100,7 @@
       color: var(--dark);
       background: var(--warm-grey);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
@@ -451,6 +458,7 @@
       position: relative;
       z-index: 4;
       margin-top: -46px;
+      background: var(--warm-grey);
     }
 
     .quick-grid {
@@ -2102,7 +2110,7 @@
         </div>
         <div class="stat-item">
           <strong>Mon–Fri 8–6</strong>
-          <span>Sat by appointment</span>
+          <span>Sat 9am–4pm</span>
         </div>
       </div>
     </section>
@@ -2258,7 +2266,7 @@
           </div>
         </div>
         <div class="gallery-cta-strip reveal">
-          <p>Walk-ins welcome · Mon–Fri 8am–6pm · Saturday walk-in</p>
+          <p>Walk-ins welcome · Mon–Fri 8am–6pm · Sat 9am–4pm</p>
           <a class="btn" href="tel:+16044341120">Call (604) 434-1120</a>
           <a href="#contact" style="color:var(--copper);font-weight:700;font-size:.93rem;">Get directions →</a>
         </div>
@@ -2407,7 +2415,7 @@
               Where are you located and how do I get there?
               <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </button>
-            <div class="faq-a">We're at 5186 Imperial St, Burnaby, BC V5J 1E3 — a short drive from Royal Oak SkyTrain station. Plenty of street parking. Open Monday to Friday 8am–6pm. Saturdays walk-in welcome.</div>
+            <div class="faq-a">We're at 5186 Imperial St, Burnaby, BC V5J 1E3 — a short drive from Royal Oak SkyTrain station. Plenty of street parking. Open Monday to Friday 8am–6pm, Saturday 9am–4pm.</div>
           </div>
         </div>
       </div>
@@ -2427,7 +2435,7 @@
             <div class="info-row"><span>Phone</span><strong><a href="tel:+16044341120" style="color:var(--copper)">+1 604 434 1120</a></strong></div>
             <div class="info-row"><span>Email</span><strong><a href="mailto:info@imperialst.ca" style="color:var(--copper)">info@imperialst.ca</a></strong></div>
             <div class="info-row"><span>Hours</span><strong>Mon–Fri 8:00 AM – 6:00 PM</strong></div>
-            <div class="info-row" style="border-bottom:0"><span>Saturday</span><strong>Walk-in welcome</strong></div>
+            <div class="info-row" style="border-bottom:0"><span>Saturday</span><strong>9am–4pm · Walk-ins welcome</strong></div>
             <a class="btn" href="tel:+16044341120" style="margin-top:22px;width:100%;justify-content:center;">Call (604) 434-1120</a>
             <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Imperial%20St%20Auto%20Repair%20%26%20Detailing%205186%20Imperial%20St%20Burnaby%20BC%20V5J%201E3" target="_blank" rel="noopener" style="margin-top:14px;">
               <span><strong>Get Directions in Google Maps</strong>5186 Imperial St, Burnaby BC V5J 1E3</span>
@@ -2881,13 +2889,14 @@
       const day = nowPT.getDay(); // 0 = Sun, 6 = Sat
       const hour = nowPT.getHours();
       const isWeekday = day >= 1 && day <= 5;
-      const isOpen = isWeekday && hour >= 8 && hour < 18;
+      const isSaturday = day === 6;
+      const isOpen = (isWeekday && hour >= 8 && hour < 18) || (isSaturday && hour >= 9 && hour < 16);
       if (isOpen) {
         dot.classList.remove("closed");
-        label.textContent = "Open now · Mon–Fri 8am–6pm";
+        label.textContent = isSaturday ? "Open now · Sat 9am–4pm" : "Open now · Mon–Fri 8am–6pm";
       } else {
         dot.classList.add("closed");
-        label.textContent = day === 6 ? "Saturday · Walk-in welcome" : "Closed · Opens Mon 8am";
+        label.textContent = day === 6 ? "Saturday · Open 9am–4pm" : "Closed · Opens Mon 8am";
       }
     })();
 
