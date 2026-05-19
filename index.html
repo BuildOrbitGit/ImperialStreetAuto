@@ -1506,75 +1506,6 @@
       font-size: 1.3rem;
     }
 
-    /* ── What to expect section ── */
-    .expect-section {
-      background: linear-gradient(180deg, var(--navy) 0%, #132f4c 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .expect-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 20% 50%, rgba(183,105,53,.18) 0%, transparent 60%),
-                  radial-gradient(ellipse at 80% 30%, rgba(7,94,200,.14) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .expect-section h2,
-    .expect-section .section-kicker {
-      color: var(--white);
-    }
-
-    .expect-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: 16px;
-      margin-top: 36px;
-    }
-
-    .expect-card {
-      padding: 28px 22px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.07);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 8px 32px rgba(0,0,0,.22);
-      transition: transform .25s ease, border-color .25s ease;
-    }
-
-    .expect-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(183,105,53,.5);
-    }
-
-    .expect-step {
-      display: inline-grid;
-      width: 38px;
-      height: 38px;
-      place-items: center;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--copper), #c97d47);
-      color: var(--white);
-      font-weight: 900;
-      font-size: .85rem;
-      margin-bottom: 16px;
-      font-family: 'Lora', serif;
-    }
-
-    .expect-card h3 {
-      color: var(--white);
-      font-size: 1.08rem;
-      margin-bottom: 10px;
-    }
-
-    .expect-card p {
-      color: rgba(255,255,255,.68);
-      font-size: .9rem;
-      line-height: 1.6;
-    }
 
     /* ── FAQ section ── */
     .faq-section {
@@ -1650,12 +1581,10 @@
 
     /* ── Responsive adjustments ── */
     @media (max-width: 1020px) {
-      .expect-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .cred-inner { gap: 22px; }
     }
 
     @media (max-width: 720px) {
-      .expect-grid { grid-template-columns: 1fr; }
       .hours-bar-inner { font-size: .78rem; }
       .hero-glass-card { padding: 26px 22px; }
 
@@ -2273,34 +2202,6 @@
       </div>
     </section>
 
-    <section class="section expect-section">
-      <div class="container">
-        <p class="section-kicker reveal">Simple process</p>
-        <h2 class="reveal" style="color:var(--white)">What to expect when you come in.</h2>
-        <div class="expect-grid">
-          <div class="expect-card reveal">
-            <div class="expect-step">1</div>
-            <h3>Call or Drop In</h3>
-            <p>No appointment needed for most services. Call (604) 434-1120 or come to 5186 Imperial St any weekday.</p>
-          </div>
-          <div class="expect-card reveal">
-            <div class="expect-step">2</div>
-            <h3>Free Diagnosis</h3>
-            <p>We inspect your vehicle and tell you exactly what's wrong before any work starts. Clear explanation, no jargon.</p>
-          </div>
-          <div class="expect-card reveal">
-            <div class="expect-step">3</div>
-            <h3>Honest Quote</h3>
-            <p>You approve the work and price before we touch anything. No surprise fees. What we quote is what you pay.</p>
-          </div>
-          <div class="expect-card reveal">
-            <div class="expect-step">4</div>
-            <h3>Drive Away Confident</h3>
-            <p>Most repairs done same day. We explain everything we did so you leave knowing your vehicle is road-ready.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="section reviews-section" id="reviews">
       <div class="container">
