@@ -311,23 +311,24 @@
       grid-template-columns: auto 1fr auto;
       align-items: center;
       gap: 28px;
-      min-height: 80px;
+      min-height: 88px;
     }
     .brand {
-      display: flex; align-items: center; gap: 12px;
+      display: flex; align-items: center;
+      padding: 4px 0;
     }
-    /* Brand logo — transparent PNG, glow makes dark text visible on dark nav */
+    /* Brand logo — lightened PNG for dark nav; no glow (keeps text sharp) */
     .brand-logo {
-      height: 58px;
+      height: 76px;
       width: auto;
+      max-width: min(340px, 52vw);
       display: block;
-      filter:
-        brightness(1.6) contrast(1.1)
-        drop-shadow(0 0 6px rgba(255,255,255,.45))
-        drop-shadow(0 0 14px rgba(255,255,255,.2));
+      object-fit: contain;
+      object-position: left center;
     }
     @media (max-width: 680px) {
-      .brand-logo { height: 42px; }
+      .nav-inner { min-height: 72px; }
+      .brand-logo { height: 54px; max-width: min(260px, 58vw); }
     }
     .nav-links {
       display: flex; justify-content: center; gap: 30px;
@@ -757,16 +758,27 @@
     }
     .service-row:last-child { border-bottom: 0; }
     .service-row:hover { background: var(--paper); }
-    .service-row.is-hover { background: rgba(31, 83, 214, .06); }
+    .service-row.is-hover { background: rgba(31, 83, 214, .08); }
+    .service-col.is-active {
+      box-shadow: inset 0 0 0 2px var(--red);
+      background: rgba(31, 83, 214, .03);
+    }
+    .service-col.is-active .service-col-head {
+      background: linear-gradient(180deg, #1a3a8f 0%, var(--ink-2) 100%);
+      box-shadow: inset 0 -2px 0 var(--red);
+    }
     .service-row.is-pulse {
       background: var(--red);
       color: #fff;
       padding-left: 22px;
-      animation: cell-pulse 1.8s ease;
+      font-weight: 700;
+      animation: cell-pulse 2.4s ease;
+      position: relative;
+      z-index: 1;
     }
     @keyframes cell-pulse {
-      0%   { background: var(--red); box-shadow: 0 0 0 0 rgba(31, 83, 214, .45); }
-      40%  { background: var(--red); box-shadow: 0 0 0 12px rgba(31, 83, 214, 0); }
+      0%   { background: var(--red); box-shadow: 0 0 0 0 rgba(31, 83, 214, .5); }
+      35%  { background: var(--red); box-shadow: 0 0 0 14px rgba(31, 83, 214, 0); }
       100% { background: var(--red); box-shadow: 0 0 0 0 rgba(31, 83, 214, 0); }
     }
     .services-foot {
@@ -1195,7 +1207,7 @@
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a class="brand" href="#top" aria-label="Imperial Street Auto Repair home">
-        <img class="brand-logo" src="IST_logo.png?v=5" alt="Imperial Street Auto Repair, Burnaby BC, established 1997" width="160" height="58">
+        <img class="brand-logo" src="IST_logo.png?v=8" alt="Imperial Street Auto Repair, Burnaby BC, established 1997" width="214" height="76">
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Primary">
         <a href="#services">Services</a>
@@ -1858,8 +1870,9 @@
         return s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
       }
 
-      // ── Highlight ALL rows whose text matches the service name ────
+      // ── Highlight rows + column, scroll table into view ───────────
       let pulseTimer = null;
+      let colTimer = null;
       function highlightByName(name) {
         const key = normName(name);
         const allRows = Array.from(document.querySelectorAll(".service-row")).filter(
@@ -1867,18 +1880,29 @@
         );
         if (!allRows.length) return;
 
-        // Scroll to whichever matching row is highest on the page
         const firstRow = allRows[0];
-        const tableTop = tableWrap.getBoundingClientRect().top + window.scrollY;
-        const rowTop   = firstRow.getBoundingClientRect().top + window.scrollY;
-        const scrollTarget = Math.min(tableTop - 32, rowTop - 130);
-        window.scrollTo({ top: Math.max(0, scrollTarget), behavior: "smooth" });
+        const col = firstRow.closest(".service-col");
 
-        // Pulse all matching rows
+        // Scroll the services table into view, then center the row
+        tableWrap.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.setTimeout(() => {
+          firstRow.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 320);
+
+        document.querySelectorAll(".service-col.is-active").forEach((c) => c.classList.remove("is-active"));
         document.querySelectorAll(".service-row.is-pulse").forEach((r) => r.classList.remove("is-pulse"));
         clearTimeout(pulseTimer);
-        allRows.forEach((r) => { r.classList.remove("is-pulse"); void r.offsetWidth; r.classList.add("is-pulse"); });
-        pulseTimer = setTimeout(() => allRows.forEach((r) => r.classList.remove("is-pulse")), 2000);
+        clearTimeout(colTimer);
+
+        if (col) col.classList.add("is-active");
+        allRows.forEach((r) => {
+          r.classList.remove("is-pulse");
+          void r.offsetWidth;
+          r.classList.add("is-pulse");
+        });
+
+        pulseTimer = setTimeout(() => allRows.forEach((r) => r.classList.remove("is-pulse")), 2400);
+        colTimer = setTimeout(() => { if (col) col.classList.remove("is-active"); }, 3200);
       }
 
       function previewByName(name) {
@@ -1902,7 +1926,7 @@
 
       let rotX = -0.18, rotY = 0.2, velX = 0.0012, velY = 0.0035;
       let isDragging = false, lastX = 0, lastY = 0, lastMs = performance.now();
-      let autoAt = 0, dragDist = 0, didDrag = false;
+      let autoAt = 0, dragDist = 0, suppressClick = false;
 
       const sphereItems = flat.map((it, idx) => {
         const pt  = fibPt(idx, flat.length);
@@ -1916,7 +1940,7 @@
           document.querySelectorAll(".service-row.is-hover").forEach((r) => r.classList.remove("is-hover"));
         });
         tag.addEventListener("click", (e) => {
-          if (didDrag) { e.preventDefault(); return; }
+          if (suppressClick) { e.preventDefault(); return; }
           document.querySelectorAll(".sphere-tag.active").forEach((n) => n.classList.remove("active"));
           tag.classList.add("active");
           highlightByName(it.name);
@@ -1949,12 +1973,13 @@
           item.tag.style.opacity   = (0.18 + depth * 0.82).toFixed(3);
           item.tag.style.filter    = `blur(${((1 - depth) * 1.6).toFixed(2)}px)`;
           item.tag.style.zIndex    = Math.round(depth * 1000);
+          item.tag.style.pointerEvents = depth > 0.62 ? "auto" : "none";
         });
         requestAnimationFrame(renderSphere);
       }
 
       function beginDrag(cx, cy) {
-        isDragging = true; didDrag = false; dragDist = 0;
+        isDragging = true; suppressClick = false; dragDist = 0;
         lastX = cx; lastY = cy; lastMs = performance.now();
       }
       function moveDrag(cx, cy) {
@@ -1962,14 +1987,14 @@
         const now = performance.now();
         const dx = cx - lastX, dy = cy - lastY, dt = Math.max(16, now - lastMs);
         dragDist += Math.abs(dx) + Math.abs(dy);
-        didDrag   = dragDist > 8;
+        if (dragDist > 14) suppressClick = true;
         rotY += dx * 0.006; rotX -= dy * 0.006;
         velY = (dx / dt) * 0.018; velX = (-dy / dt) * 0.018;
         lastX = cx; lastY = cy; lastMs = now;
       }
       function endDrag() {
         isDragging = false; autoAt = performance.now() + 1200;
-        setTimeout(() => { didDrag = false; }, 0);
+        setTimeout(() => { suppressClick = false; }, 80);
       }
 
       stage.addEventListener("pointerdown", (e) => {
