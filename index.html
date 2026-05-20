@@ -524,241 +524,183 @@
       max-width: 520px;
     }
 
-    .sphere-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
-      align-items: center;
-      gap: 34px;
+    /* ── Word chart + master service table ──────── */
+    .word-chart {
+      position: relative;
+      margin: 8px 0 48px;
+      padding: clamp(24px, 4vw, 48px) clamp(18px, 3vw, 40px) clamp(18px, 3vw, 32px);
+      background: rgba(255, 255, 255, .55);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, .62);
+      border-radius: 16px;
+      box-shadow: 0 24px 64px -36px rgba(10, 25, 41, .22), inset 0 1px 0 rgba(255, 255, 255, .88);
     }
 
-    .sphere-stage {
-      position: relative;
-      height: 620px;
-      min-height: 500px;
-      border: 1px solid rgba(7, 94, 200, .16);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background:
-        radial-gradient(circle at center, rgba(7, 94, 200, .16), transparent 44%),
-        linear-gradient(145deg, #07182f, #0c2445 54%, #061426);
-      box-shadow: var(--shadow);
-      touch-action: none;
-      cursor: grab;
+    .word-chart-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px 11px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 17px;
+      background: rgba(255, 255, 255, .75);
+      border: 1px solid rgba(0, 102, 204, .18);
+      border-radius: 999px;
+      color: var(--dark);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 14.5px;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform .22s cubic-bezier(.2, .8, .2, 1), background .18s ease, border-color .18s ease, color .18s ease, box-shadow .22s ease;
+      white-space: nowrap;
       user-select: none;
     }
 
-    .sphere-stage:active {
-      cursor: grabbing;
+    .chip:hover,
+    .chip:focus-visible {
+      transform: translateY(-2px) scale(1.04);
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
+      box-shadow: 0 10px 22px -8px rgba(10, 25, 41, .4);
+      outline: none;
     }
 
-    .sphere-grid {
-      position: absolute;
-      inset: 8%;
-      border: 1px solid rgba(142, 204, 255, .24);
-      border-radius: 50%;
-      background:
-        repeating-radial-gradient(circle, rgba(142, 204, 255, .14) 0 1px, transparent 1px 42px),
-        linear-gradient(90deg, transparent calc(50% - 1px), rgba(142, 204, 255, .14) 50%, transparent calc(50% + 1px)),
-        linear-gradient(0deg, transparent calc(50% - 1px), rgba(142, 204, 255, .14) 50%, transparent calc(50% + 1px));
-      box-shadow: 0 0 60px rgba(7, 94, 200, .28), inset 0 0 80px rgba(7, 94, 200, .16);
-      opacity: .75;
-      animation: pulse-ring 5s ease-in-out infinite;
+    .chip[data-tier="xl"] { font-size: 19px; padding: 11px 22px; font-weight: 700; background: rgba(0, 102, 204, .10); border-color: rgba(0, 102, 204, .28); color: var(--blue-strong); }
+    .chip[data-tier="xl"]:hover { background: var(--navy); border-color: var(--navy); color: var(--white); }
+    .chip[data-tier="lg"] { font-size: 17px; padding: 10px 20px; font-weight: 700; }
+    .chip[data-tier="md"] { font-size: 15px; padding: 9px 17px; }
+    .chip[data-tier="sm"] { font-size: 13px; padding: 7px 14px; color: var(--grey); }
+
+    .chip.is-active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+      transform: translateY(-2px) scale(1.06);
+      box-shadow: 0 10px 26px -8px rgba(0, 102, 204, .42);
     }
 
-    .sphere-tag {
-      position: absolute;
-      left: 50%;
-      top: 50%;
+    .word-chart-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: clamp(18px, 2.5vw, 28px);
+      padding-top: 16px;
+      border-top: 1px dashed rgba(10, 25, 41, .14);
+    }
+
+    .word-chart-hint {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .word-chart-jump {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      max-width: 190px;
-      padding: 7px 10px;
-      border: 1px solid rgba(126, 196, 255, .22);
+      gap: 8px;
+      padding: 8px 16px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--white);
+      border: 1px solid var(--line);
       border-radius: 999px;
-      color: #d5ecff;
-      background: rgba(7, 24, 47, .48);
-      box-shadow: 0 0 18px rgba(31, 137, 255, .08);
-      font-size: clamp(.68rem, 1.4vw, .86rem);
-      font-weight: 800;
-      text-align: center;
-      white-space: nowrap;
-      will-change: transform, opacity, filter;
-      transition: box-shadow .18s ease, color .18s ease, border-color .18s ease, background .18s ease;
+      text-decoration: none;
+      transition: background .2s ease, color .2s ease, border-color .2s ease;
     }
 
-    .sphere-tag:hover,
-    .sphere-tag.active {
-      color: var(--white);
-      border-color: rgba(120, 202, 255, .86);
-      background: rgba(7, 94, 200, .48);
-      box-shadow: 0 0 28px rgba(66, 169, 255, .62);
-    }
+    .word-chart-jump:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+    .word-chart-jump svg { width: 13px; height: 13px; }
 
-    .sphere-hint {
-      position: absolute;
-      right: 18px;
-      bottom: 16px;
-      color: rgba(255, 255, 255, .62);
-      font-size: .82rem;
-      font-weight: 700;
-    }
+    /* Master service table */
+    .services-table { scroll-margin-top: 100px; }
 
-    .service-panel {
+    .services-table-grid {
       display: grid;
-      gap: 18px;
-      padding: 28px;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 0;
+      background: var(--white);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: var(--white);
+      overflow: hidden;
       box-shadow: var(--shadow);
     }
 
-    .panel-eyebrow {
-      width: fit-content;
-      padding: 7px 12px;
-      border-radius: 999px;
-      color: var(--copper);
-      background: rgba(183, 105, 53, .14);
-      font-size: .76rem;
-      font-weight: 900;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      border: 1px solid rgba(183, 105, 53, .28);
+    .service-col {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid rgba(10, 25, 41, .08);
     }
 
-    .panel-service {
-      min-height: 88px;
-      display: grid;
-      align-content: center;
-      gap: 8px;
-    }
+    .service-col:last-child { border-right: 0; }
 
-    .panel-service strong {
-      color: var(--navy);
-      font-size: 1.65rem;
-      line-height: 1.1;
-    }
-
-    .panel-service span {
-      color: var(--grey);
-      font-weight: 800;
-    }
-
-    .category-focus {
-      display: grid;
-      gap: 8px;
-      padding: 16px;
-      border: 1px solid rgba(183, 105, 53, .24);
-      border-radius: var(--radius);
-      background: linear-gradient(145deg, rgba(232, 213, 196, .12), rgba(255, 255, 255, .6));
-    }
-
-    .category-focus span {
-      color: var(--copper);
-      font-size: .76rem;
-      font-weight: 900;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .category-focus strong {
-      color: var(--navy);
-      font-size: 1.22rem;
-      line-height: 1.15;
-    }
-
-    .category-focus p {
-      font-size: .94rem;
-    }
-
-    .panel-line {
-      height: 1px;
-      background: var(--line);
-    }
-
-    .panel-stat {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 12px;
-      align-items: center;
-      color: var(--navy);
-      font-weight: 850;
-    }
-
-    .panel-stat i {
-      display: grid;
-      width: 42px;
-      height: 42px;
-      place-items: center;
-      border-radius: var(--radius);
-      color: var(--copper);
-      background: rgba(183, 105, 53, .14);
-      font-style: normal;
-      font-weight: 900;
-      font-size: .75rem;
-    }
-
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 34px;
-    }
-
-    .category-card {
-      padding: 24px;
-    }
-
-    .category-card.category-active {
-      transform: translateY(-6px);
-      border-color: rgba(7, 94, 200, .55);
-      box-shadow: 0 26px 64px rgba(7, 94, 200, .18);
-    }
-
-    .category-card ul {
-      display: grid;
-      gap: 9px;
-      margin: 16px 0 0;
-      padding: 0;
-      list-style: none;
-      color: var(--grey);
-      font-size: .95rem;
-      max-height: 280px;
-      overflow: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(7, 94, 200, .5) rgba(7, 24, 47, .08);
-    }
-
-    .category-card li {
-      position: relative;
-      padding: 4px 8px 4px 18px;
-      border-radius: 6px;
-      transition: color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
-    }
-
-    .category-card li::before {
-      position: absolute;
-      left: 0;
-      top: .66em;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      content: "";
-      background: var(--blue);
-      box-shadow: 0 0 0 4px rgba(7, 94, 200, .1);
-    }
-
-    .category-card li.service-highlight {
+    .service-col-head {
+      padding: 14px 16px;
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
       color: var(--white);
-      background: linear-gradient(135deg, var(--blue), #38a6ff);
-      box-shadow: 0 10px 24px rgba(7, 94, 200, .26);
-      transform: translateX(4px);
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      line-height: 1.25;
+      border-bottom: 2px solid var(--blue);
+      min-height: 60px;
+      display: flex;
+      align-items: center;
     }
 
-    .category-card li.service-highlight::before {
-      background: var(--white);
-      box-shadow: 0 0 0 4px rgba(255, 255, 255, .24);
+    .service-row {
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--dark);
+      border-bottom: 1px solid rgba(10, 25, 41, .07);
+      transition: background .18s ease, color .18s ease, padding-left .18s ease;
+      line-height: 1.4;
+      scroll-margin-top: 100px;
+    }
+
+    .service-row:last-child { border-bottom: 0; }
+    .service-row:hover { background: var(--warm-grey); }
+
+    .service-row.is-pulse {
+      background: var(--blue);
+      color: var(--white);
+      padding-left: 20px;
+      animation: cell-pulse 1.8s ease;
+    }
+
+    @keyframes cell-pulse {
+      0%   { background: var(--blue); box-shadow: 0 0 0 0 rgba(0, 102, 204, .42); }
+      40%  { background: var(--blue); box-shadow: 0 0 0 10px rgba(0, 102, 204, 0); }
+      100% { background: var(--blue); box-shadow: 0 0 0 0 rgba(0, 102, 204, 0); }
+    }
+
+    @media (max-width: 1100px) {
+      .services-table-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .service-col:nth-child(3) { border-right: 0; }
+      .service-col:nth-child(n+4) { border-top: 1px solid rgba(10, 25, 41, .08); }
+    }
+
+    @media (max-width: 640px) {
+      .services-table-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .service-col:nth-child(2n) { border-right: 0; }
+      .service-col:nth-child(n+3) { border-top: 1px solid rgba(10, 25, 41, .08); }
     }
 
     .diagnostics {
@@ -1840,20 +1782,11 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .sphere-layout,
       .diagnostic-layout,
       .split-section,
       .inspection-card,
       .contact-layout {
         grid-template-columns: 1fr;
-      }
-
-      .category-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .sphere-stage {
-        height: 560px;
       }
     }
 
@@ -1918,7 +1851,6 @@
 
       .trust-badges,
       .quick-grid,
-      .category-grid,
       .feature-list,
       .before-after,
       .inspection-list,
@@ -1930,17 +1862,6 @@
 
       .services-intro {
         display: grid;
-      }
-
-      .sphere-stage {
-        height: 520px;
-        min-height: 520px;
-      }
-
-      .sphere-tag {
-        max-width: 138px;
-        padding: 6px 8px;
-        font-size: .68rem;
       }
 
       .scanner-wrap {
@@ -1971,7 +1892,7 @@
 <header class="site-header" id="siteHeader">
     <div class="container nav">
       <a class="brand" href="#home" aria-label="Imperial St Auto Repair home">
-        <img src="IST_logo.png?v=2" alt="Imperial St Auto Repair logo" style="height:38px;width:auto;display:block;filter:brightness(0) invert(1);">
+        <img src="IST_logo.png?v=2" alt="Imperial St Auto Repair logo" style="height:38px;width:auto;display:block;filter:invert(1);mix-blend-mode:screen;">
         <span>Imperial St Auto Repair</span>
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
@@ -2087,90 +2008,24 @@
             <p class="section-kicker reveal">Interactive service explorer</p>
             <h2 class="reveal">Explore Our Services</h2>
           </div>
-          <p class="reveal">Drag the rotating service sphere to browse services, then hover any label to highlight where it belongs in the category lists below.</p>
+          <p class="reveal">Click any service in the chart below to jump straight to it in the full list — all services at a glance.</p>
         </div>
 
-        <div class="sphere-layout">
-          <div class="sphere-stage reveal" id="sphereStage" aria-label="Interactive rotating service sphere">
-            <div class="sphere-grid" aria-hidden="true"></div>
-            <div id="sphereTags"></div>
-            <div class="sphere-hint">Drag to rotate</div>
+        <!-- Floating word chart -->
+        <div class="word-chart reveal" id="wordChart" role="navigation" aria-label="Service quick-find">
+          <div class="word-chart-inner" id="wordChartInner"></div>
+          <div class="word-chart-foot">
+            <span class="word-chart-hint">Click any service to jump to the list</span>
+            <a href="#services-table" class="word-chart-jump">
+              View full list
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </a>
           </div>
-          <aside class="service-panel reveal" aria-live="polite">
-            <span class="panel-eyebrow">Selected service</span>
-            <div class="panel-service">
-              <strong id="selectedService">Complete Diagnostic</strong>
-              <span id="selectedCategory">Diagnostics & Electrical</span>
-            </div>
-            <div class="category-focus">
-              <span>Recommended work category</span>
-              <strong id="selectedCategoryBig">Diagnostics & Electrical</strong>
-              <p id="categoryAdvice">Mention this category when you book so the shop can prepare the right diagnostic equipment and technician time.</p>
-            </div>
-            <div class="panel-line"></div>
-            <div class="panel-stat"><i>CAT</i><span>Hover a floating service label to highlight the matching service under its category below.</span></div>
-            <div class="panel-stat"><i>BC</i><span>Local service for drivers in Burnaby and nearby communities.</span></div>
-            <a class="btn" href="tel:+16044341120">Call to Discuss</a>
-          </aside>
         </div>
 
-        <div class="category-grid">
-          <article class="category-card reveal">
-            <h3>Mechanical Repair</h3>
-            <ul>
-              <li>Engine repair</li>
-              <li>Transmission repair</li>
-              <li>Exhaust and muffler repair</li>
-              <li>Belt and hose replacement</li>
-              <li>Head gasket and water pump replacement</li>
-              <li>General repairs and maintenance</li>
-            </ul>
-          </article>
-          <article class="category-card reveal">
-            <h3>Diagnostics & Electrical</h3>
-            <ul>
-              <li>Auto engine diagnostic</li>
-              <li>Complete diagnostic</li>
-              <li>Electrical repair</li>
-              <li>Battery service</li>
-              <li>Charging and starting systems</li>
-              <li>Emission control</li>
-            </ul>
-          </article>
-          <article class="category-card reveal">
-            <h3>Brake, Tire & Alignment</h3>
-            <ul>
-              <li>Brake service and repair</li>
-              <li>Wheel alignment</li>
-              <li>Tire rotations</li>
-              <li>Tires</li>
-              <li>Car pulls</li>
-              <li>Patch job</li>
-            </ul>
-          </article>
-          <article class="category-card reveal">
-            <h3>Cooling, Heating & A/C</h3>
-            <ul>
-              <li>A/C installation and repair</li>
-              <li>Air conditioning</li>
-              <li>Climate control systems</li>
-              <li>Coolant flush</li>
-              <li>Radiator replacement</li>
-              <li>Thermostat replacement</li>
-            </ul>
-          </article>
-          <article class="category-card reveal">
-            <h3>Maintenance & Inspections</h3>
-            <ul>
-              <li>Oil change</li>
-              <li>Factory scheduled maintenance</li>
-              <li>Pre-purchase inspection</li>
-              <li>Vehicle safety</li>
-              <li>Visual inspection</li>
-              <li>Windshield wiper maintenance</li>
-            </ul>
-          </article>
-
+        <!-- Master service table -->
+        <div class="services-table reveal" id="services-table" aria-label="Complete services list">
+          <div class="services-table-grid" id="servicesTableGrid"></div>
         </div>
       </div>
     </section>
@@ -2365,7 +2220,7 @@
         <div>
           <div>
             <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
-              <img src="IST_logo.png?v=2" alt="Imperial St Auto Repair logo" style="height:44px;width:auto;display:block;filter:brightness(0) invert(1);">
+              <img src="IST_logo.png?v=2" alt="Imperial St Auto Repair logo" style="height:44px;width:auto;display:block;filter:invert(1);mix-blend-mode:screen;">
               <h3 style="font-family:'Lora',serif;color:var(--white);font-size:1.2rem;">Imperial St Auto Repair</h3>
             </div>
           </div>
@@ -2435,351 +2290,106 @@
 
     document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
 
-    const services = [
-      ["A/C installation & repair", "Cooling, Heating & A/C"],
-      ["Air & cabin filter replacement", "Maintenance & Inspections"],
-      ["Air conditioning", "Cooling, Heating & A/C"],
-      ["Auto engine diagnostic", "Diagnostics & Electrical"],
-      ["Auto engine tuning", "Mechanical Repair"],
-      ["Battery", "Diagnostics & Electrical"],
-      ["Brake service & repair", "Brake, Tire & Alignment"],
-      ["Brakes", "Brake, Tire & Alignment"],
-      ["Electrical", "Diagnostics & Electrical"],
-      ["Electrical repair", "Diagnostics & Electrical"],
-      ["Engine repair", "Mechanical Repair"],
-      ["Exhaust", "Mechanical Repair"],
-      ["General repairs & maintenance", "Mechanical Repair"],
-      ["Oil change", "Maintenance & Inspections"],
-      ["Steering & suspension repair", "Brake, Tire & Alignment"],
-      ["Tire rotations", "Brake, Tire & Alignment"],
-      ["Tires", "Brake, Tire & Alignment"],
-      ["Transmission", "Mechanical Repair"],
-      ["Transmission repair", "Mechanical Repair"],
-      ["Wheel alignment", "Brake, Tire & Alignment"],
-      ["All Mechanical Services", "Mechanical Repair"],
-      ["Automotive Maintenance", "Maintenance & Inspections"],
-      ["Belt And Hose Replacement", "Mechanical Repair"],
-      ["Burnaby Auto Repair", "Mechanical Repair"],
-      ["Car Pulls", "Brake, Tire & Alignment"],
-      ["Charging And Starting Systems", "Diagnostics & Electrical"],
-      ["Climate Control Systems", "Cooling, Heating & A/C"],
-      ["Complete Diagnostic", "Diagnostics & Electrical"],
-      ["Coolant Flush", "Cooling, Heating & A/C"],
-      ["Cooling Fan", "Cooling, Heating & A/C"],
-      ["Cooling System Flush And Fill", "Cooling, Heating & A/C"],
-      ["Cooling System Maintenance And Repair", "Cooling, Heating & A/C"],
-      ["Emission Control", "Diagnostics & Electrical"],
-      ["Exterior Wash", "Auto Detailing & Body Care"],
-      ["Factory Scheduled Maintenance", "Maintenance & Inspections"],
-      ["Fuel Delivery", "Mechanical Repair"],
-      ["Fuel Filter", "Maintenance & Inspections"],
-      ["Full Interior Cleaning", "Auto Detailing & Body Care"],
-      ["Head Gasket", "Mechanical Repair"],
-      ["Heater Core", "Cooling, Heating & A/C"],
-      ["Hose Inspection", "Maintenance & Inspections"],
-      ["Larger Repair", "Mechanical Repair"],
-      ["Leak Repairs", "Maintenance & Inspections"],
-      ["Master Cylinder", "Brake, Tire & Alignment"],
-      ["Muffler Repair", "Mechanical Repair"],
-      ["New Car", "Maintenance & Inspections"],
-      ["Patch Job", "Brake, Tire & Alignment"],
-      ["Pre-Purchase Inspection", "Maintenance & Inspections"],
-      ["Pressure Tests", "Maintenance & Inspections"],
-      ["Radiator Repair", "Cooling, Heating & A/C"],
-      ["Radiator Replacement", "Cooling, Heating & A/C"],
-      ["Rear Shocks", "Brake, Tire & Alignment"],
-      ["Regular Maintenance", "Maintenance & Inspections"],
-      ["Rust Check", "Auto Detailing & Body Care"],
-      ["Scheduled Car Maintenance", "Maintenance & Inspections"],
-      ["Scratch Removal", "Auto Detailing & Body Care"],
-      ["Shocks Replaced", "Brake, Tire & Alignment"],
-      ["Spark Plugs", "Maintenance & Inspections"],
-      ["Steam Clean", "Auto Detailing & Body Care"],
-      ["Thermostat Replacement", "Cooling, Heating & A/C"],
-      ["Timing Belt Replacement", "Mechanical Repair"],
-      ["Used Car Inspections", "Maintenance & Inspections"],
-      ["Used Vehicle", "Maintenance & Inspections"],
-      ["Vehicle Safety", "Maintenance & Inspections"],
-      ["Visual Inspection", "Maintenance & Inspections"],
-      ["Water Pump Replacement", "Cooling, Heating & A/C"],
-      ["Windshield Wiper Maintenance", "Maintenance & Inspections"]
-    ];
+    (function() {
+      const chart = document.getElementById("wordChartInner");
+      const table = document.getElementById("servicesTableGrid");
+      const tableWrap = document.getElementById("services-table");
+      if (!chart || !table) return;
 
-    const stage = document.getElementById("sphereStage");
-    const tagRoot = document.getElementById("sphereTags");
-    const selectedService = document.getElementById("selectedService");
-    const selectedCategory = document.getElementById("selectedCategory");
-    const selectedCategoryBig = document.getElementById("selectedCategoryBig");
-    const categoryAdvice = document.getElementById("categoryAdvice");
+      const categories = [
+        { name: "Mechanical Repair",         items: ["Engine repair", "Transmission repair", "Exhaust & muffler repair", "Belt & hose replacement", "Head gasket replacement", "Water pump replacement", "Fuel delivery", "Muffler repair", "Timing belt replacement", "General repairs & maintenance"] },
+        { name: "Diagnostics & Electrical",  items: ["Auto engine diagnostic", "Complete diagnostic", "Electrical repair", "Battery", "Charging & starting systems", "Emission control", "Auto engine tuning", "Electrical"] },
+        { name: "Brake, Tire & Alignment",   items: ["Brake service & repair", "Wheel alignment", "Tire rotations", "Tires", "Car pulls", "Patch job", "Master cylinder", "Rear shocks", "Shocks replaced", "Steering & suspension repair"] },
+        { name: "Cooling, Heating & A/C",    items: ["A/C installation & repair", "Air conditioning", "Climate control systems", "Coolant flush", "Radiator replacement", "Radiator repair", "Thermostat replacement", "Cooling fan", "Heater core", "Cooling system flush & fill"] },
+        { name: "Maintenance & Inspections", items: ["Oil change", "Factory scheduled maintenance", "Pre-purchase inspection", "Vehicle safety", "Visual inspection", "Windshield wiper maintenance", "Air & cabin filter replacement", "Fuel filter", "Hose inspection", "Pressure tests", "Spark plugs", "New car inspection", "Used car inspections", "Leak repairs", "Regular maintenance"] },
+        { name: "Auto Detailing & Body Care", items: ["Exterior wash", "Full interior cleaning", "Scratch removal", "Steam clean", "Rust check"] }
+      ];
 
-    const categoryGuidance = {
-      "Mechanical Repair": "Use this category for engine, exhaust, transmission, belt, hose, head gasket, and larger mechanical repair needs.",
-      "Diagnostics & Electrical": "Use this category for check-engine lights, electrical faults, battery, charging, starting, emission, and complete diagnostic concerns.",
-      "Brake, Tire & Alignment": "Use this category for brake noise, tire service, steering pull, suspension concerns, rotations, patch jobs, and wheel alignment.",
-      "Cooling, Heating & A/C": "Use this category for A/C, heater, climate control, radiator, coolant flush, water pump, thermostat, and cooling-system concerns.",
-      "Maintenance & Inspections": "Use this category for oil changes, scheduled maintenance, pre-purchase inspections, safety checks, pressure tests, and visual inspections.",
-      "Auto Detailing & Body Care": "Use this category for exterior wash, interior cleaning, scratch removal, steam cleaning, rust check, auto glass, and body-care requests."
-    };
+      const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-    const sphereItems = services.map(([name, category], index) => {
-      const point = fibonacciPoint(index, services.length);
-      const tag = document.createElement("button");
-      tag.type = "button";
-      tag.className = "sphere-tag";
-      tag.tabIndex = -1;
-      tag.textContent = name;
-      tag.dataset.category = category;
-      tag.dataset.name = name;
-      tag.addEventListener("mouseenter", () => { selectService(tag); highlightListedService(name, category, true); });
-      tag.addEventListener("mouseleave", () => clearListedServiceHighlight());
-      tag.addEventListener("focus", () => { selectService(tag); highlightListedService(name, category, true); });
-      tag.addEventListener("blur", () => clearListedServiceHighlight());
-      tag.addEventListener("click", (event) => {
-        if (didDrag) {
-          event.preventDefault();
-          return;
-        }
-        selectService(tag);
+      // Build master table
+      categories.forEach((cat, ci) => {
+        const col = document.createElement("div");
+        col.className = "service-col";
+        const head = document.createElement("div");
+        head.className = "service-col-head";
+        head.textContent = cat.name;
+        col.appendChild(head);
+        cat.items.forEach((item) => {
+          const row = document.createElement("div");
+          row.className = "service-row";
+          row.id = "svc-" + ci + "-" + slug(item);
+          row.dataset.service = item;
+          row.textContent = item;
+          col.appendChild(row);
+        });
+        table.appendChild(col);
       });
-      tagRoot.appendChild(tag);
-      return { tag, name, category, ...point };
-    });
 
-    let rotationX = -0.18;
-    let rotationY = 0.2;
-    let velocityX = 0.0012;
-    let velocityY = 0.0035;
-    let isDragging = false;
-    let lastX = 0;
-    let lastY = 0;
-    let lastTime = performance.now();
-    let autoResumeAt = 0;
-    let dragDistance = 0;
-    let didDrag = false;
-
-    function fibonacciPoint(index, total) {
-      const offset = 2 / total;
-      const increment = Math.PI * (3 - Math.sqrt(5));
-      const y = index * offset - 1 + offset / 2;
-      const radius = Math.sqrt(1 - y * y);
-      const phi = index * increment;
-      return {
-        x: Math.cos(phi) * radius,
-        y,
-        z: Math.sin(phi) * radius
-      };
-    }
-
-    function normalizeServiceName(value) {
-      return value
-        .toLowerCase()
-        .replace(/&/g, "and")
-        .replace(/[^a-z0-9]+/g, " ")
-        .trim();
-    }
-
-    function prepareCategoryLists() {
-      const cards = Array.from(document.querySelectorAll(".category-card"));
-      const cardByCategory = new Map(cards.map((card) => [card.querySelector("h3").textContent.trim(), card]));
-
-      cards.forEach((card) => {
-        const category = card.querySelector("h3").textContent.trim();
-        const ul = card.querySelector("ul");
-        Array.from(ul.children).forEach((li) => {
-          li.dataset.serviceKey = normalizeServiceName(li.textContent);
-          li.dataset.category = category;
+      // Build word chart — flatten, shuffle, assign size tiers
+      const flat = [];
+      categories.forEach((cat, ci) => {
+        cat.items.forEach((item) => {
+          flat.push({ name: item, category: cat.name, id: "svc-" + ci + "-" + slug(item) });
         });
       });
 
-      services.forEach(([name, category]) => {
-        const card = cardByCategory.get(category);
-        if (!card) return;
-        const ul = card.querySelector("ul");
-        const key = normalizeServiceName(name);
-        const exists = Array.from(ul.children).some((li) => li.dataset.serviceKey === key);
+      let seed = 7;
+      function rand() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+      for (let i = flat.length - 1; i > 0; i--) {
+        const j = Math.floor(rand() * (i + 1));
+        [flat[i], flat[j]] = [flat[j], flat[i]];
+      }
 
-        if (!exists) {
-          const li = document.createElement("li");
-          li.textContent = name;
-          li.dataset.serviceKey = key;
-          li.dataset.category = category;
-          ul.appendChild(li);
-        }
-      });
-    }
+      const tiers = ["sm", "md", "md", "lg", "md", "sm", "md", "lg", "md", "xl", "md", "sm", "lg", "md"];
+      flat.forEach((it, i) => { it.tier = tiers[i % tiers.length]; });
 
-    function clearListedServiceHighlight() {
-      document.querySelectorAll(".service-highlight").forEach((item) => item.classList.remove("service-highlight"));
-      document.querySelectorAll(".category-active").forEach((item) => item.classList.remove("category-active"));
-    }
-
-    function highlightListedService(name, category, scrollIntoView) {
-      clearListedServiceHighlight();
-      const key = normalizeServiceName(name);
-      const target = Array.from(document.querySelectorAll(".category-card li")).find((li) => {
-        return li.dataset.serviceKey === key && li.dataset.category === category;
+      flat.forEach((it) => {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "chip";
+        chip.dataset.tier = it.tier;
+        chip.dataset.target = it.id;
+        chip.dataset.category = it.category;
+        chip.textContent = it.name;
+        chip.setAttribute("aria-label", it.name + " — jump to service list");
+        chart.appendChild(chip);
       });
 
-      if (!target) return;
+      // Click: scroll to table row and pulse it
+      let pulseTimer = null;
+      let lastActive = null;
 
-      const card = target.closest(".category-card");
-      target.classList.add("service-highlight");
-      card.classList.add("category-active");
-
-      if (scrollIntoView) {
-        const list = target.parentElement;
-        const targetTop = target.offsetTop - list.offsetTop - 42;
-        list.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
-      }
-    }
-
-    function selectService(tag) {
-      document.querySelectorAll(".sphere-tag.active").forEach((node) => node.classList.remove("active"));
-      tag.classList.add("active");
-      selectedService.textContent = tag.dataset.name;
-      selectedCategory.textContent = tag.dataset.category;
-      selectedCategoryBig.textContent = tag.dataset.category;
-      categoryAdvice.textContent = categoryGuidance[tag.dataset.category] || "Mention this category when you book so the shop can prepare the right technician time.";
-      highlightListedService(tag.dataset.name, tag.dataset.category, true);
-    }
-
-    function rotatePoint(item) {
-      const cosY = Math.cos(rotationY);
-      const sinY = Math.sin(rotationY);
-      const cosX = Math.cos(rotationX);
-      const sinX = Math.sin(rotationX);
-
-      const x1 = item.x * cosY - item.z * sinY;
-      const z1 = item.x * sinY + item.z * cosY;
-      const y1 = item.y * cosX - z1 * sinX;
-      const z2 = item.y * sinX + z1 * cosX;
-      return { x: x1, y: y1, z: z2 };
-    }
-
-    function renderSphere(now) {
-      const rect = stage.getBoundingClientRect();
-      const size = Math.min(rect.width, rect.height);
-      const radius = size * (rect.width < 720 ? 0.36 : 0.39);
-      const autoActive = !isDragging && now > autoResumeAt;
-
-      if (autoActive) {
-        rotationX += velocityX;
-        rotationY += velocityY;
+      function highlight(targetId) {
+        const row = document.getElementById(targetId);
+        if (!row) return;
+        const tableTop = tableWrap.getBoundingClientRect().top + window.scrollY;
+        const rowTop = row.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: Math.max(tableTop - 24, rowTop - 110), behavior: "smooth" });
+        document.querySelectorAll(".service-row.is-pulse").forEach((r) => r.classList.remove("is-pulse"));
+        clearTimeout(pulseTimer);
+        void row.offsetWidth;
+        row.classList.add("is-pulse");
+        pulseTimer = setTimeout(() => row.classList.remove("is-pulse"), 1800);
       }
 
-      sphereItems.forEach((item) => {
-        const p = rotatePoint(item);
-        const depth = (p.z + 1) / 2;
-        const scale = 0.58 + depth * 0.72;
-        const x = p.x * radius;
-        const y = p.y * radius;
-        const opacity = 0.22 + depth * 0.78;
-        const blur = (1 - depth) * 1.8;
-        const glow = depth > .55 ? 0.25 + depth * .75 : 0;
-
-        item.tag.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), 0) scale(${scale})`;
-        item.tag.style.opacity = opacity.toFixed(3);
-        item.tag.style.filter = `blur(${blur.toFixed(2)}px)`;
-        item.tag.style.zIndex = Math.round(depth * 1000);
-        item.tag.style.boxShadow = `0 0 ${Math.round(glow * 28)}px rgba(73, 166, 255, ${glow})`;
+      chart.addEventListener("click", (e) => {
+        const chip = e.target.closest(".chip");
+        if (!chip) return;
+        if (lastActive) lastActive.classList.remove("is-active");
+        chip.classList.add("is-active");
+        lastActive = chip;
+        highlight(chip.dataset.target);
       });
 
-      requestAnimationFrame(renderSphere);
-    }
-
-    function beginDrag(clientX, clientY) {
-      isDragging = true;
-      didDrag = false;
-      dragDistance = 0;
-      lastX = clientX;
-      lastY = clientY;
-      lastTime = performance.now();
-    }
-
-    function updateDrag(clientX, clientY) {
-      if (!isDragging) return;
-      const now = performance.now();
-      const dx = clientX - lastX;
-      const dy = clientY - lastY;
-      const dt = Math.max(16, now - lastTime);
-      dragDistance += Math.abs(dx) + Math.abs(dy);
-      didDrag = dragDistance > 8;
-      rotationY += dx * 0.006;
-      rotationX -= dy * 0.006;
-      velocityY = (dx / dt) * 0.018;
-      velocityX = (-dy / dt) * 0.018;
-      lastX = clientX;
-      lastY = clientY;
-      lastTime = now;
-    }
-
-    function endDrag() {
-      isDragging = false;
-      autoResumeAt = performance.now() + 1200;
-      setTimeout(() => {
-        didDrag = false;
-      }, 0);
-    }
-
-    function pointerStart(event) {
-      beginDrag(event.clientX, event.clientY);
-      try {
-        stage.setPointerCapture(event.pointerId);
-      } catch (error) {
-        return;
-      }
-    }
-
-    function pointerMove(event) {
-      if (!isDragging) return;
-      event.preventDefault();
-      updateDrag(event.clientX, event.clientY);
-    }
-
-    function pointerEnd(event) {
-      endDrag();
-      try {
-        stage.releasePointerCapture(event.pointerId);
-      } catch (error) {
-        return;
-      }
-    }
-
-    function touchStart(event) {
-      if (!event.touches.length) return;
-      const touch = event.touches[0];
-      beginDrag(touch.clientX, touch.clientY);
-    }
-
-    function touchMove(event) {
-      if (!isDragging || !event.touches.length) return;
-      event.preventDefault();
-      const touch = event.touches[0];
-      updateDrag(touch.clientX, touch.clientY);
-    }
-
-    stage.addEventListener("pointerdown", pointerStart, { capture: true });
-    stage.addEventListener("pointermove", pointerMove, { capture: true });
-    stage.addEventListener("pointerup", pointerEnd, { capture: true });
-    stage.addEventListener("pointercancel", pointerEnd, { capture: true });
-    stage.addEventListener("touchstart", touchStart, { passive: true, capture: true });
-    stage.addEventListener("touchmove", touchMove, { passive: false, capture: true });
-    stage.addEventListener("touchend", endDrag, { capture: true });
-    stage.addEventListener("touchcancel", endDrag, { capture: true });
-    prepareCategoryLists();
-    selectService(document.querySelector(".sphere-tag[data-name='Complete Diagnostic']"));
-
-    // Start the rAF loop only when the sphere stage enters the viewport,
-    // avoiding wasted GPU/CPU work during initial page load.
-    let sphereStarted = false;
-    const sphereObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !sphereStarted) {
-        sphereStarted = true;
-        requestAnimationFrame(renderSphere);
-        sphereObserver.disconnect();
-      }
-    }, { threshold: 0.1 });
-    sphereObserver.observe(stage);
+      chart.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        const chip = e.target.closest(".chip");
+        if (!chip) return;
+        e.preventDefault();
+        chip.click();
+      });
+    })();
 
     // Hours indicator
     (function() {
