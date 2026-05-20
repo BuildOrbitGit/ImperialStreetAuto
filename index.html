@@ -134,12 +134,22 @@
       display: grid; grid-template-columns: auto 1fr auto;
       align-items: center; gap: 24px; min-height: 82px;
     }
+    .brand-logo-wrap {
+      display: inline-flex; align-items: center;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 6px; padding: 6px 10px;
+      backdrop-filter: blur(6px);
+      transition: background .3s, border-color .3s, box-shadow .3s;
+    }
+    .site-nav.scrolled .brand-logo-wrap {
+      background: transparent; border-color: transparent;
+      backdrop-filter: none;
+    }
     .brand-logo {
-      height: 52px; width: auto;
-      mix-blend-mode: multiply;
+      height: 48px; width: auto;
       transition: opacity .3s ease;
     }
-    .site-nav.scrolled .brand-logo { mix-blend-mode: normal; }
     .nav-links {
       display: flex; justify-content: center; gap: 28px;
       font-size: 14px; font-weight: 600; letter-spacing: .02em;
@@ -173,6 +183,8 @@
       background: var(--ink); color: var(--paper); isolation: isolate;
       min-height: 92vh;
       display: flex; align-items: center;
+      margin-top: -82px; /* slide under transparent sticky nav */
+      padding-top: 82px;
     }
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
@@ -307,29 +319,42 @@
 
     /* Services table */
     .services-table-wrap {
-      margin-top: 44px; border-radius: 10px; overflow: hidden;
+      margin-top: 44px; border-radius: 12px; overflow: hidden;
       border: 1px solid var(--line);
-      box-shadow: 0 4px 24px rgba(10,23,54,.06);
+      box-shadow: 0 8px 40px rgba(10,23,54,.10);
     }
-    .services-table { width:100%; border-collapse:collapse; font-size:13.5px; }
+    .services-table { width:100%; border-collapse:collapse; font-size:14px; }
     .services-table th {
-      background: var(--ink); color: rgba(255,255,255,.88);
+      background: var(--ink); color: rgba(255,255,255,.92);
       text-transform: uppercase; font-family: var(--mono);
-      font-size: 10.5px; letter-spacing: .14em; font-weight: 700;
-      padding: 14px 16px; text-align: left;
-      border-right: 1px solid rgba(255,255,255,.08);
+      font-size: 10px; letter-spacing: .18em; font-weight: 700;
+      padding: 16px 18px; text-align: left;
+      border-right: 1px solid rgba(255,255,255,.07);
+      border-bottom: 3px solid;
     }
+    /* Per-column accent colours on the bottom border */
+    .services-table th:nth-child(1) { border-bottom-color: #3b82f6; }
+    .services-table th:nth-child(2) { border-bottom-color: #f59e0b; }
+    .services-table th:nth-child(3) { border-bottom-color: #10b981; }
+    .services-table th:nth-child(4) { border-bottom-color: #8b5cf6; }
+    .services-table th:nth-child(5) { border-bottom-color: #ef4444; }
+    .services-table th:nth-child(6) { border-bottom-color: #06b6d4; }
+    .services-table th:nth-child(7) { border-bottom-color: #f97316; }
     .services-table th:last-child { border-right: none; }
     .services-table td {
-      padding: 11px 16px; color: var(--muted);
+      padding: 13px 18px; color: var(--ink-2);
+      font-family: var(--body); font-size: 14px; font-weight: 500;
       border-bottom: 1px solid var(--line-soft);
       border-right: 1px solid var(--line-soft);
       transition: background .15s, color .15s;
     }
+    .services-table tbody tr:nth-child(even) td { background: rgba(10,23,54,.025); }
     .services-table td:last-child { border-right: none; }
-    .services-table td:empty { background: rgba(10,23,54,.025); }
+    .services-table td:empty { background: rgba(10,23,54,.018) !important; }
     .services-table tr:last-child td { border-bottom: none; }
-    .services-table tr:hover td:not(:empty) { background: var(--paper-2); color: var(--ink); }
+    .services-table tbody tr:hover td:not(:empty) {
+      background: var(--red-soft); color: var(--red); font-weight: 600;
+    }
     .services-table td.svc-highlight {
       background: var(--green-soft) !important;
       color: var(--green) !important;
@@ -348,6 +373,79 @@
       font-size: 15px; color: var(--muted);
     }
     .table-foot a { color: var(--red); font-weight: 600; border-bottom: 1px solid currentColor; }
+
+    /* ── Specials ─────────────────────────────── */
+    .specials-section {
+      background: var(--ink); color: var(--paper);
+      padding: clamp(56px,7vw,88px) 0;
+    }
+    .specials-layout {
+      display: grid; grid-template-columns: 1fr 1.6fr;
+      gap: 48px; align-items: center;
+    }
+    .specials-eyebrow {
+      font-family: var(--mono); font-size: 11px; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 14px;
+    }
+    .specials-heading {
+      font-family: var(--display); font-size: clamp(40px,5vw,72px);
+      font-weight: 900; text-transform: uppercase; line-height: .92;
+      letter-spacing: -.01em;
+    }
+    .specials-note {
+      margin-top: 16px; color: rgba(255,255,255,.48);
+      font-size: 14px; line-height: 1.55;
+    }
+    .specials-cards {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .special-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 10px; padding: 28px 24px;
+      transition: background .2s, border-color .2s;
+    }
+    .special-card:hover {
+      background: rgba(255,255,255,.09);
+      border-color: rgba(255,255,255,.18);
+    }
+    .special-tag {
+      display: inline-block;
+      font-family: var(--mono); font-size: 10px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--red); border: 1px solid var(--red);
+      border-radius: 3px; padding: 3px 8px; margin-bottom: 14px;
+    }
+    .special-name {
+      font-family: var(--mono); font-size: 11px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.6); margin-bottom: 8px;
+    }
+    .special-desc {
+      font-size: 13.5px; color: rgba(255,255,255,.45);
+      line-height: 1.5; margin-bottom: 20px;
+    }
+    .special-price {
+      display: flex; align-items: baseline; gap: 4px;
+    }
+    .price-from {
+      font-family: var(--mono); font-size: 10px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(255,255,255,.4); margin-right: 4px;
+    }
+    .price-num {
+      font-family: var(--display); font-size: clamp(36px,4.5vw,54px);
+      font-weight: 900; color: #fff; line-height: 1;
+    }
+    .price-plus {
+      font-family: var(--display); font-size: 28px; font-weight: 900;
+      color: var(--red); line-height: 1;
+    }
+    @media (max-width:768px) {
+      .specials-layout { grid-template-columns: 1fr; }
+      .specials-cards { grid-template-columns: 1fr; }
+    }
 
     /* ── About / Team ─────────────────────────── */
     .about-section { padding: clamp(70px,9vw,110px) 0; background: var(--paper-2); }
@@ -491,7 +589,7 @@
 <!-- ── Nav ────────────────────────────────────── -->
 <nav class="site-nav" id="siteNav">
   <div class="container nav-inner">
-    <a href="#" aria-label="Imperial Street Auto Repair">
+    <a href="#" aria-label="Imperial Street Auto Repair" class="brand-logo-wrap">
       <img class="brand-logo" src="IST_logo.png" alt="Imperial Street Auto Repair">
     </a>
     <div class="nav-links">
@@ -559,6 +657,41 @@
     </div>
   </div>
 </div>
+
+<!-- ── Specials ─────────────────────────────────── -->
+<section class="specials-section">
+  <div class="container">
+    <div class="specials-layout">
+      <div class="specials-label">
+        <div class="specials-eyebrow">+ Current Pricing</div>
+        <h2 class="specials-heading">Two<br>Specials.</h2>
+        <p class="specials-note">Subject to change. Give us a call to confirm before you drop by.</p>
+      </div>
+      <div class="specials-cards">
+        <div class="special-card">
+          <div class="special-tag">Special</div>
+          <div class="special-name">Oil Change</div>
+          <p class="special-desc">Includes a full lube and a once-over of the basics. Most cars.</p>
+          <div class="special-price">
+            <span class="price-from">from</span>
+            <span class="price-num">$24.95</span>
+            <span class="price-plus">+</span>
+          </div>
+        </div>
+        <div class="special-card">
+          <div class="special-tag">Special</div>
+          <div class="special-name">Wheel Alignment</div>
+          <p class="special-desc">Restores even tire wear and a straight steering wheel. Most cars.</p>
+          <div class="special-price">
+            <span class="price-from">from</span>
+            <span class="price-num">$69.95</span>
+            <span class="price-plus">+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ── Services ────────────────────────────────── -->
 <section class="services-section" id="services">
@@ -985,14 +1118,17 @@
   function scrollToCell(id) {
     const cell = document.getElementById(id);
     if (!cell) return;
+    cell.classList.remove("svc-highlight","svc-fade");
     cell.scrollIntoView({ behavior:"smooth", block:"center" });
-    cell.classList.remove("svc-fade");
-    cell.classList.add("svc-highlight");
-    void cell.offsetWidth;
+    // Wait for smooth scroll to settle (~700ms) then pulse highlight
     setTimeout(() => {
-      cell.classList.add("svc-fade");
-      setTimeout(() => cell.classList.remove("svc-highlight","svc-fade"), 3600);
-    }, 60);
+      cell.classList.add("svc-highlight");
+      void cell.offsetWidth;
+      setTimeout(() => {
+        cell.classList.add("svc-fade");
+        setTimeout(() => cell.classList.remove("svc-highlight","svc-fade"), 3600);
+      }, 900);
+    }, 700);
   }
 
   const stage   = document.getElementById("sphereStage");
