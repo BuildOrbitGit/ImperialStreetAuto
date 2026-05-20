@@ -46,7 +46,7 @@
     },
     "geo": { "@type": "GeoCoordinates", "latitude": 49.2231, "longitude": -123.0011 },
     "openingHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "16:00" }
     ],
     "areaServed": ["Burnaby","Vancouver","New Westminster","Coquitlam","Metrotown","Royal Oak"],
@@ -296,49 +296,53 @@
     /* ── Header ────────────────────────────────── */
     .nav {
       position: sticky; top: 0; z-index: 60;
-      background: rgba(255, 255, 255, .82);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border-bottom: 1px solid var(--line-soft);
+      background: rgba(6, 16, 37, 0.72);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border-bottom: 1px solid rgba(255,255,255,.08);
       transition: box-shadow .25s ease, background .25s ease;
     }
     .nav.scrolled {
-      background: rgba(255, 255, 255, .92);
-      box-shadow: 0 1px 0 var(--line), 0 6px 24px rgba(10, 23, 54, .06);
+      background: rgba(6, 16, 37, 0.88);
+      box-shadow: 0 1px 0 rgba(255,255,255,.06), 0 8px 28px rgba(0,0,0,.22);
     }
     .nav-inner {
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
       gap: 28px;
-      min-height: 88px;
+      min-height: 80px;
     }
     .brand {
       display: flex; align-items: center; gap: 12px;
     }
-    /* Brand logo — full horizontal lockup */
+    /* Brand logo — landscape, no white container */
     .brand-logo {
-      height: 52px;
+      height: 48px;
       width: auto;
       display: block;
+      /* IST_logo.png has white bg — multiply blends it into the dark nav */
+      mix-blend-mode: lighten;
+      filter: brightness(1.05) contrast(1.05);
     }
     @media (max-width: 680px) {
-      .brand-logo { height: 42px; }
+      .brand-logo { height: 38px; }
     }
     .nav-links {
       display: flex; justify-content: center; gap: 30px;
       font-size: 14px; font-weight: 600; letter-spacing: .02em;
     }
-    .nav-links a { color: var(--ink-2); position: relative; padding: 6px 0; }
+    .nav-links a { color: rgba(255,255,255,.78); position: relative; padding: 6px 0;
+      transition: color .2s ease; }
     .nav-links a::after {
       content: ""; position: absolute; left: 0; right: 0; bottom: 0;
       height: 2px; background: var(--red); transform: scaleX(0); transform-origin: left;
       transition: transform .22s ease;
     }
-    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover { color: #fff; }
     .nav-links a:hover::after { transform: scaleX(1); }
     .nav-cta { display: flex; align-items: center; gap: 14px; }
-    .nav-phone { font-family: var(--mono); font-weight: 700; font-size: 13px; color: var(--ink); }
+    .nav-phone { font-family: var(--mono); font-weight: 700; font-size: 13px; color: rgba(255,255,255,.82); }
 
     .menu-btn {
       display: none;
@@ -543,112 +547,76 @@
     }
 
     /* ── Specials strip ───────────────────────── */
-    .specials {
-      background: var(--paper-2);
-      border-bottom: 1px solid var(--line);
+    /* ── Pricing section ─────────────────────────── */
+    .pricing-section {
+      background: var(--ink);
+      color: var(--paper);
+      padding: clamp(52px, 7vw, 88px) 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
-    .specials-inner {
-      padding: 36px 0;
+    .pricing-head {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap; margin-bottom: 40px;
+    }
+    .pricing-head h2 { font-size: clamp(34px,4vw,56px); color: #fff; }
+    .pricing-head .sub { font-size: 14px; color: rgba(255,255,255,.52); max-width: 38ch; line-height: 1.55; text-align: right; }
+    .pricing-cats {
       display: grid;
-      grid-template-columns: minmax(0, .8fr) repeat(2, minmax(0, 1fr));
-      gap: 22px;
-      align-items: stretch;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
-    .specials-intro {
-      display: grid;
-      gap: 10px;
-      align-content: center;
-      padding-right: 12px;
-      border-right: 1px solid var(--line);
+    .pcat {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 10px;
+      padding: 24px 20px;
+      transition: background .2s, border-color .2s, transform .2s;
     }
-    .specials-intro .label {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--red);
+    .pcat:hover { background: rgba(255,255,255,.09); border-color: rgba(31,83,214,.45); transform: translateY(-2px); }
+    .pcat-header {
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding-bottom: 14px; margin-bottom: 16px;
     }
-    .specials-intro h3 {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: clamp(28px, 3vw, 36px);
-      letter-spacing: -.005em;
-      text-transform: uppercase;
-      line-height: .95;
+    .pcat-title {
+      font-family: var(--display); font-weight: 800; font-size: 16px;
+      text-transform: uppercase; letter-spacing: .02em; color: #fff;
     }
-    .specials-intro p {
-      color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.5;
-      max-width: 28ch;
+    .pcat-badge {
+      font-family: var(--mono); font-size: 9.5px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      background: var(--red); color: #fff;
+      border-radius: 3px; padding: 3px 7px;
     }
-    .deal {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 18px;
-      align-items: center;
-      padding: 22px;
-      background: #fff;
-      border: 1px solid var(--line);
-      transition: border-color .2s ease, transform .2s ease;
+    .pcat-badge.special { background: rgba(255,255,255,.12); color: rgba(255,255,255,.7); }
+    .prow {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 8px; padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,.05);
     }
-    .deal:hover { border-color: var(--ink); transform: translateY(-2px); }
-    .deal-meta { display: grid; gap: 6px; }
-    .deal-tag {
-      font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--red);
+    .prow:last-child { border-bottom: none; }
+    .prow-name { font-size: 14px; color: rgba(255,255,255,.78); line-height: 1.35; flex: 1; }
+    .prow-sub { font-size: 11.5px; color: rgba(255,255,255,.38); margin-top: 2px; }
+    .prow-price {
+      font-family: var(--display); font-weight: 900;
+      font-size: 22px; color: #fff; white-space: nowrap; flex-shrink: 0;
     }
-    .deal-name {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: 22px;
-      line-height: 1;
-      letter-spacing: -.005em;
-      text-transform: uppercase;
-      color: var(--ink);
+    .prow-price .up { font-size: 13px; color: var(--red); font-weight: 700; }
+    .prow-price.highlight { color: var(--red); font-size: 26px; }
+    .pricing-disclaimer {
+      margin-top: 28px;
+      background: rgba(31,83,214,.12);
+      border: 1px solid rgba(31,83,214,.25);
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex; gap: 12px; align-items: flex-start;
     }
-    .deal-note {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.45;
-      max-width: 30ch;
+    .pricing-disclaimer svg { flex-shrink: 0; margin-top: 2px; opacity: .7; }
+    .pricing-disclaimer p {
+      font-size: 13px; color: rgba(255,255,255,.62); line-height: 1.55;
     }
-    .deal-price {
-      display: grid;
-      justify-items: end;
-      align-content: center;
-      padding-left: 16px;
-      border-left: 1px solid var(--line);
-      min-width: 110px;
-    }
-    .deal-price .from {
-      font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--muted-2);
-    }
-    .deal-price .num {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: clamp(32px, 3.4vw, 44px);
-      line-height: 1;
-      letter-spacing: -.015em;
-      color: var(--ink);
-    }
-    .deal-price .plus { color: var(--red); }
-    @media (max-width: 1080px) {
-      .specials-inner { grid-template-columns: 1fr 1fr; }
-      .specials-intro { grid-column: 1 / -1; border-right: 0; border-bottom: 1px solid var(--line); padding-bottom: 14px; }
-    }
-    @media (max-width: 680px) {
-      .specials-inner { grid-template-columns: 1fr; }
-      .deal { grid-template-columns: 1fr; }
-      .deal-price { justify-items: start; padding-left: 0; border-left: 0; padding-top: 8px; border-top: 1px solid var(--line); min-width: 0; }
-    }
+    @media (max-width: 1024px) { .pricing-cats { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px)  { .pricing-cats { grid-template-columns: 1fr; } .pricing-head .sub { text-align: left; } }
 
     /* ── Services: word chart + master table ─────── */
     .services-section {
@@ -697,7 +665,7 @@
       position: relative;
       display: inline-flex; align-items: center;
       padding: 9px 18px;
-      background: rgba(255, 255, 255, .68);
+      background: rgba(255, 255, 255, .72);
       border: 1px solid rgba(31, 83, 214, .18);
       border-radius: 999px;
       color: var(--ink);
@@ -708,20 +676,24 @@
       line-height: 1;
       cursor: pointer;
       transition:
-        transform .25s cubic-bezier(.2, .8, .2, 1),
-        background .2s ease,
-        border-color .2s ease,
-        color .2s ease,
-        box-shadow .25s ease;
+        transform .32s cubic-bezier(.18, .89, .32, 1.1),
+        background .22s ease,
+        border-color .22s ease,
+        color .22s ease,
+        box-shadow .32s ease;
       white-space: nowrap;
       user-select: none;
+      will-change: transform;
     }
     .chip:hover, .chip:focus-visible {
-      transform: translateY(-2px) scale(1.04);
-      background: var(--ink);
-      border-color: var(--ink);
+      transform: translateY(-3px) scale(1.07);
+      background: rgba(31, 83, 214, .92);
+      border-color: rgba(31, 83, 214, .9);
       color: #fff;
-      box-shadow: 0 10px 24px -10px rgba(10, 23, 54, .42);
+      box-shadow:
+        0 0 0 4px rgba(31, 83, 214, .12),
+        0 8px 20px -6px rgba(31, 83, 214, .55),
+        0 20px 40px -14px rgba(31, 83, 214, .28);
       outline: none;
     }
     .chip[data-tier="lg"] { font-size: 18px; padding: 11px 22px; font-weight: 700; }
@@ -733,11 +705,16 @@
       border-color: rgba(31, 83, 214, .28);
       color: var(--red-deep);
     }
-    .chip[data-tier="xl"]:hover { background: var(--red); border-color: var(--red); color: #fff; }
+    .chip[data-tier="xl"]:hover {
+      background: var(--red); border-color: var(--red); color: #fff;
+      box-shadow:
+        0 0 0 5px rgba(31,83,214,.15),
+        0 10px 28px -6px rgba(31,83,214,.6);
+    }
     .chip.is-active {
       background: var(--red); border-color: var(--red); color: #fff;
       transform: translateY(-2px) scale(1.06);
-      box-shadow: 0 12px 28px -8px rgba(31, 83, 214, .45);
+      box-shadow: 0 0 0 4px rgba(31,83,214,.18), 0 12px 28px -8px rgba(31, 83, 214, .5);
     }
 
     .word-chart-foot {
@@ -1233,7 +1210,7 @@
       <div class="util-left">
         <span class="status" id="status">
           <span class="status-dot" id="statusDot" aria-hidden="true"></span>
-          <span id="statusLabel">Open · Mon–Fri 8 to 6</span>
+          <span id="statusLabel">Open · Mon–Fri 9 to 5</span>
         </span>
         <a class="util-address" href="https://www.google.com/maps/search/?api=1&query=5186+Imperial+St+Burnaby+BC" target="_blank" rel="noopener" aria-label="Get directions to 5186 Imperial Street, Burnaby BC">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1327,36 +1304,88 @@
     </div>
   </section>
 
-  <!-- ── Specials strip ──────────────────────────────────── -->
-  <section class="specials" aria-label="Current pricing">
-    <div class="container specials-inner">
-      <div class="specials-intro">
-        <span class="label">★ Current pricing</span>
-        <h3>Two specials.</h3>
-        <p>Subject to change. Give us a call to confirm before you drop by.</p>
+  <!-- ── Pricing ──────────────────────────────────────────── -->
+  <section class="pricing-section" id="pricing" aria-label="Service pricing">
+    <div class="container">
+      <div class="pricing-head">
+        <div>
+          <div class="eyebrow" style="color:var(--red);margin-bottom:10px"><span class="dot"></span>Current Pricing</div>
+          <h2>What We Charge.</h2>
+        </div>
+        <p class="sub">All rates are baseline estimates for most vehicles. Subject to change without notice — call us for an exact quote.</p>
       </div>
-      <a class="deal" href="tel:+16044341120" aria-label="Call about the oil change special">
-        <div class="deal-meta">
-          <span class="deal-tag">Special</span>
-          <span class="deal-name">Oil change</span>
-          <span class="deal-note">Includes a full lube and a once-over of the basics. Most cars.</span>
+
+      <div class="pricing-cats">
+
+        <!-- Oil & Filter Change -->
+        <div class="pcat">
+          <div class="pcat-header">
+            <span class="pcat-title">Oil &amp; Filter Change</span>
+            <span class="pcat-badge special">Non-Recycled Oil</span>
+          </div>
+          <div class="prow">
+            <div><div class="prow-name">Standard Vehicles</div><div class="prow-sub">Cars, Crossovers · up to 5L · 5w20/5w30/10w30</div></div>
+            <div class="prow-price">$49.95<span class="up">&amp;up</span></div>
+          </div>
+          <div class="prow">
+            <div><div class="prow-name">Full Sized Vehicles</div><div class="prow-sub">Vans, Trucks, SUVs · up to 5L</div></div>
+            <div class="prow-price">$59.95<span class="up">&amp;up</span></div>
+          </div>
+          <div class="prow">
+            <div><div class="prow-name">Synthetic Oil Change</div><div class="prow-sub">Up to 5L</div></div>
+            <div class="prow-price">$74.95<span class="up">&amp;up</span></div>
+          </div>
         </div>
-        <div class="deal-price">
-          <span class="from">From</span>
-          <span class="num">$24.95<span class="plus">+</span></span>
+
+        <!-- Inspection Fees -->
+        <div class="pcat">
+          <div class="pcat-header">
+            <span class="pcat-title">Inspection Fees</span>
+            <span class="pcat-badge special">Per Inspection</span>
+          </div>
+          <div class="prow">
+            <div class="prow-name">Brake Inspection</div>
+            <div class="prow-price">$39.00<span class="up">&amp;up</span></div>
+          </div>
+          <div class="prow">
+            <div class="prow-name">Front-End Inspection</div>
+            <div class="prow-price">$39.00<span class="up">&amp;up</span></div>
+          </div>
+          <div class="prow">
+            <div class="prow-name">Charging System Inspection</div>
+            <div class="prow-price">$39.00<span class="up">&amp;up</span></div>
+          </div>
+          <div class="prow">
+            <div><div class="prow-name">Multi-Point Safety Inspection</div><div class="prow-sub">Brakes, Steering, Battery, Alternator, Suspension, Lights &amp; more</div></div>
+            <div class="prow-price">$60.00<span class="up">&amp;up</span></div>
+          </div>
         </div>
-      </a>
-      <a class="deal" href="tel:+16044341120" aria-label="Call about the wheel alignment special">
-        <div class="deal-meta">
-          <span class="deal-tag">Special</span>
-          <span class="deal-name">Wheel alignment</span>
-          <span class="deal-note">Restores even tire wear and a straight steering wheel. Most cars.</span>
+
+        <!-- Specials -->
+        <div class="pcat">
+          <div class="pcat-header">
+            <span class="pcat-title">Current Specials</span>
+            <span class="pcat-badge">★ Special</span>
+          </div>
+          <div class="prow">
+            <div><div class="prow-name">Engine Flush</div><div class="prow-sub">Cleans internally, removes sludge, gums &amp; varnishes. Use prior to oil change.</div></div>
+            <div class="prow-price highlight">$14.95</div>
+          </div>
+          <div class="prow">
+            <div><div class="prow-name">3D Wheel Alignment</div><div class="prow-sub">Computerized precision alignment</div></div>
+            <div class="prow-price highlight">$129.95<span class="up">&amp;up</span></div>
+          </div>
+          <div class="prow" style="padding-top:14px;margin-top:6px;border-top:1px solid rgba(255,255,255,.08);border-bottom:none">
+            <div><div class="prow-name" style="color:rgba(255,255,255,.45);font-size:12.5px">Minimum charges apply for diagnostics &amp; inspections (0.3 hr +)</div></div>
+          </div>
         </div>
-        <div class="deal-price">
-          <span class="from">From</span>
-          <span class="num">$69.95<span class="plus">+</span></span>
-        </div>
-      </a>
+
+      </div><!-- /pricing-cats -->
+
+      <div class="pricing-disclaimer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--red)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p>Prices are subject to change without further notice. Rates vary based on vehicle make, model, and engine configuration. All figures are baseline estimates — contact our service advisers for a precise quote before dropping by.</p>
+      </div>
     </div>
   </section>
 
@@ -1413,7 +1442,7 @@
         <div class="step">
           <div class="step-num">01<span class="slash">.</span></div>
           <h3>Drop in or call</h3>
-          <p>5186 Imperial St, Mon–Fri 8–6, Saturday 9–4. Call ahead for larger jobs so we can plan a bay.</p>
+          <p>5186 Imperial St, Mon–Fri 9–5, Saturday 9–4. Call ahead for larger jobs so we can plan a bay.</p>
         </div>
         <div class="step">
           <div class="step-num">02<span class="slash">.</span></div>
@@ -1538,7 +1567,7 @@
               <span class="plus" aria-hidden="true"></span>
             </button>
             <div class="faq-a"><div class="faq-a-inner">
-              For most routine work, oil changes, brakes, tires, diagnostics, no. Just walk in any weekday between 9am and 6pm or Saturday 9am to 4pm. For big jobs (transmission, head gasket) give us a call so we can block off a bay.
+              For most routine work, oil changes, brakes, tires, diagnostics, no. Just walk in any weekday between 9am and 5pm or Saturday 9am to 4pm. For big jobs (transmission, head gasket) give us a call so we can block off a bay.
             </div></div>
           </div>
           <div class="faq-item">
@@ -1616,7 +1645,7 @@
             <div class="visit-row">
               <dt>Hours</dt>
               <dd>
-                <span class="b">Mon – Fri</span> · 8:00 am – 6:00 pm<br>
+                <span class="b">Mon – Fri</span> · 9:00 am – 5:00 pm<br>
                 <span class="b">Saturday</span> · <span class="accent">9:00 am – 4:00 pm</span><br>
                 <span class="b">Sunday</span> · Closed
               </dd>
@@ -1707,9 +1736,9 @@
       const d = now.getDay(); // 0 Sun … 6 Sat
       const h = now.getHours();
       let open = false, msg = "";
-      if (d >= 1 && d <= 5) { // Mon–Fri 9–18
-        open = h >= 9 && h < 18;
-        msg = open ? "Open now · Closes 6pm" : (h < 9 ? "Opens at 9am today" : "Closed · Opens Mon 9am");
+      if (d >= 1 && d <= 5) { // Mon–Fri 9–17
+        open = h >= 9 && h < 17;
+        msg = open ? "Open now · Closes 5pm" : (h < 9 ? "Opens at 9am today" : "Closed · Opens Mon 9am");
       } else if (d === 6) {
         open = h >= 9 && h < 16;
         msg = open ? "Open today · Saturday 9am – 4pm" : (h < 9 ? "Saturday · Opens 9am" : "Closed · Opens Mon 9am");
