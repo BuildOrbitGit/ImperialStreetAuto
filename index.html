@@ -316,16 +316,23 @@
     .brand {
       display: flex; align-items: center; gap: 12px;
     }
-    /* Brand logo — invert+screen removes white JPEG bg on dark nav */
+    /* Brand logo — white pill so coloured logo reads on dark nav */
+    .brand-logo-pill {
+      display: flex;
+      align-items: center;
+      padding: 5px 12px;
+      background: rgba(255,255,255,.95);
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.18);
+      flex-shrink: 0;
+    }
     .brand-logo {
-      height: 48px;
+      height: 42px;
       width: auto;
       display: block;
-      mix-blend-mode: screen;
-      filter: invert(1) brightness(1.08) contrast(1.05);
     }
     @media (max-width: 680px) {
-      .brand-logo { height: 38px; }
+      .brand-logo { height: 32px; }
     }
     .nav-links {
       display: flex; justify-content: center; gap: 30px;
@@ -1193,7 +1200,9 @@
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a class="brand" href="#top" aria-label="Imperial Street Auto Repair home">
-        <img class="brand-logo" src="IST_logo.png" alt="Imperial Street Auto Repair, Burnaby BC, established 1997" width="278" height="52">
+        <div class="brand-logo-pill">
+          <img class="brand-logo" src="IST_logo.png" alt="Imperial Street Auto Repair, Burnaby BC, established 1997" width="278" height="52">
+        </div>
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Primary">
         <a href="#services">Services</a>
@@ -1851,26 +1860,40 @@
         });
       });
 
-      // ── Highlight + scroll helper (used by sphere clicks) ─
-      let pulseTimer = null;
-      function highlight(targetId) {
-        const row = document.getElementById(targetId);
-        if (!row) return;
-        const tableTop = tableWrap.getBoundingClientRect().top + window.scrollY;
-        const rowTop   = row.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({ top: Math.max(tableTop - 24, rowTop - 120), behavior: "smooth" });
-        document.querySelectorAll(".service-row.is-pulse").forEach((r) => r.classList.remove("is-pulse"));
-        clearTimeout(pulseTimer);
-        row.classList.remove("is-pulse");
-        void row.offsetWidth;
-        row.classList.add("is-pulse");
-        pulseTimer = setTimeout(() => row.classList.remove("is-pulse"), 1800);
+      // ── Name-normaliser (slug ≠ required here, just lowercase+trim) ─
+      function normName(s) {
+        return s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
       }
 
-      function previewRow(id) {
+      // ── Highlight ALL rows whose text matches the service name ────
+      let pulseTimer = null;
+      function highlightByName(name) {
+        const key = normName(name);
+        const allRows = Array.from(document.querySelectorAll(".service-row")).filter(
+          (r) => normName(r.dataset.service || r.textContent) === key
+        );
+        if (!allRows.length) return;
+
+        // Scroll to whichever matching row is highest on the page
+        const firstRow = allRows[0];
+        const tableTop = tableWrap.getBoundingClientRect().top + window.scrollY;
+        const rowTop   = firstRow.getBoundingClientRect().top + window.scrollY;
+        const scrollTarget = Math.min(tableTop - 32, rowTop - 130);
+        window.scrollTo({ top: Math.max(0, scrollTarget), behavior: "smooth" });
+
+        // Pulse all matching rows
+        document.querySelectorAll(".service-row.is-pulse").forEach((r) => r.classList.remove("is-pulse"));
+        clearTimeout(pulseTimer);
+        allRows.forEach((r) => { r.classList.remove("is-pulse"); void r.offsetWidth; r.classList.add("is-pulse"); });
+        pulseTimer = setTimeout(() => allRows.forEach((r) => r.classList.remove("is-pulse")), 2000);
+      }
+
+      function previewByName(name) {
+        const key = normName(name);
         document.querySelectorAll(".service-row.is-hover").forEach((r) => r.classList.remove("is-hover"));
-        const row = document.getElementById(id);
-        if (row) row.classList.add("is-hover");
+        document.querySelectorAll(".service-row").forEach((r) => {
+          if (normName(r.dataset.service || r.textContent) === key) r.classList.add("is-hover");
+        });
       }
 
       // ── 3D Sphere ────────────────────────────────────────
@@ -1895,7 +1918,7 @@
         tag.className = "sphere-tag";
         tag.textContent = it.name;
         tag.dataset.target = it.id;
-        tag.addEventListener("mouseenter", () => previewRow(it.id));
+        tag.addEventListener("mouseenter", () => previewByName(it.name));
         tag.addEventListener("mouseleave", () => {
           document.querySelectorAll(".service-row.is-hover").forEach((r) => r.classList.remove("is-hover"));
         });
@@ -1903,7 +1926,7 @@
           if (didDrag) { e.preventDefault(); return; }
           document.querySelectorAll(".sphere-tag.active").forEach((n) => n.classList.remove("active"));
           tag.classList.add("active");
-          highlight(it.id);
+          highlightByName(it.name);
         });
         tagRoot.appendChild(tag);
         return { tag, ...pt };
