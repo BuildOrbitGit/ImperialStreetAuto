@@ -15,10 +15,10 @@
   <meta name="twitter:title" content="Imperial St Auto Repair | Burnaby BC">
   <meta name="twitter:description" content="Full-service auto repair in Burnaby, BC.">
 
-  <!-- Fonts: Lora (distinctive serif) + Outfit (modern sans) -->
+  <!-- Fonts: Big Shoulders Display (industrial headline) + Manrope (humanist body) + JetBrains Mono (accents) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -41,7 +41,7 @@
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "08:00",
+        "opens": "09:00",
         "closes": "18:00"
       }
     ],
@@ -54,22 +54,49 @@
 
   <style>
     :root {
-      --blue: #0066cc;
-      --blue-strong: #0052a3;
-      --blue-soft: #e6f0ff;
-      --navy: #0a1929;
-      --navy-2: #132f4c;
-      --copper: #b76935;
-      --copper-light: #e8d5c4;
-      --white: #ffffff;
-      --warm-grey: #f5f3f0;
-      --silver: #a0a9b8;
-      --silver-2: #eae8e3;
-      --grey: #5a6370;
-      --dark: #0f1419;
-      --line: rgba(10, 25, 41, .12);
-      --shadow: 0 20px 60px rgba(10, 25, 41, .15);
-      --radius: 6px;
+      /* Brand: deep corporate navy + royal/electric blue — replaces old copper/navy */
+      --paper:        #f6f8fc;
+      --paper-2:      #eaf0f9;
+      --paper-3:      #d6e0f0;
+      --ink:          #0a1736;
+      --ink-2:        #142348;
+      --ink-3:        #2a3768;
+      --muted:        #5a6385;
+      --muted-2:      #8a93b3;
+      --line-soft:    rgba(10, 23, 54, .08);
+      --line:         rgba(10, 23, 54, .14);
+
+      /* Legacy aliases — keep so all existing CSS var() calls cascade cleanly */
+      --navy:         #0a1736;
+      --navy-2:       #142348;
+      --white:        #ffffff;
+      --warm-grey:    #f6f8fc;
+
+      /* Accent — royal/electric blue replaces copper entirely */
+      --blue:         #1f53d6;
+      --blue-strong:  #143ea7;
+      --blue-soft:    rgba(31, 83, 214, .12);
+      --copper:       #1f53d6;   /* redirect → blue so every var(--copper) renders blue */
+      --copper-light: rgba(31, 83, 214, .12);
+
+      --silver:       #8a93b3;
+      --silver-2:     #eaf0f9;
+      --grey:         #5a6385;
+      --dark:         #0a1736;
+
+      /* Glassmorphism tokens */
+      --glass:        rgba(255, 255, 255, .58);
+      --glass-dark:   rgba(10, 23, 54, .56);
+      --glass-blur:   blur(18px) saturate(180%);
+      --glass-line:   rgba(255, 255, 255, .42);
+
+      --shadow:       0 18px 40px -20px rgba(10, 23, 54, .28);
+      --radius:       6px;
+
+      /* Font system */
+      --display:      'Big Shoulders Display', 'Arial Narrow', sans-serif;
+      --body-font:    'Manrope', 'Helvetica Neue', sans-serif;
+      --mono:         'JetBrains Mono', ui-monospace, monospace;
     }
 
     * {
@@ -82,10 +109,12 @@
 
     body {
       margin: 0;
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Manrope', 'Helvetica Neue', sans-serif;
       color: var(--dark);
       background: var(--warm-grey);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     a {
@@ -126,28 +155,32 @@
     h2,
     h3 {
       margin: 0;
-      font-family: 'Lora', serif;
+      font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
       color: var(--navy);
-      line-height: 1.1;
-      letter-spacing: -0.3px;
-      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      font-weight: 800;
+      text-transform: uppercase;
     }
 
     h1 {
       max-width: 850px;
       color: var(--white);
-      font-size: clamp(2.55rem, 7vw, 5.8rem);
+      font-size: clamp(2.8rem, 8vw, 6.4rem);
       font-weight: 900;
     }
 
     h2 {
-      font-size: clamp(2rem, 4vw, 3.3rem);
-      font-weight: 900;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 800;
     }
 
     h3 {
       font-size: 1.22rem;
-      font-weight: 850;
+      font-weight: 700;
+      text-transform: none;
+      letter-spacing: -.005em;
+      font-family: 'Manrope', 'Helvetica Neue', sans-serif;
     }
 
     p {
@@ -201,12 +234,41 @@
       border-bottom: 1px solid rgba(255, 255, 255, .18);
       background: rgba(7, 24, 47, .75);
       backdrop-filter: blur(18px);
-      transition: background .25s ease, box-shadow .25s ease;
+      -webkit-backdrop-filter: blur(18px);
+      transition: background .3s ease, box-shadow .3s ease, border-color .3s ease;
     }
 
     .site-header.scrolled {
       background: rgba(7, 24, 47, .96);
       box-shadow: 0 14px 38px rgba(2, 15, 33, .2);
+    }
+
+    /* Light nav: once viewport scrolls past hero into warm-grey sections */
+    .site-header.scrolled-light {
+      background: rgba(245, 243, 240, .96);
+      border-bottom-color: rgba(10, 25, 41, .12);
+      box-shadow: 0 2px 20px rgba(10, 25, 41, .1);
+    }
+    .site-header.scrolled-light .brand { color: var(--dark); }
+    .site-header.scrolled-light .brand span { border-left-color: var(--copper); }
+    .site-header.scrolled-light #navLogo { filter: none; }
+    .site-header.scrolled-light .nav-links { color: rgba(15, 20, 25, .78); }
+    .site-header.scrolled-light .nav-links a { color: rgba(15, 20, 25, .78); }
+    .site-header.scrolled-light .nav-links a:hover { color: var(--dark); }
+    .site-header.scrolled-light .nav-links a::after { background: var(--copper); }
+    .site-header.scrolled-light .menu-toggle {
+      border-color: rgba(10, 25, 41, .22);
+      background: rgba(10, 25, 41, .08);
+    }
+    .site-header.scrolled-light .menu-toggle span { background: var(--dark); }
+
+    #navLogo {
+      height: 46px;
+      width: auto;
+      display: block;
+      flex-shrink: 0;
+      filter: brightness(0) invert(1);
+      transition: filter .3s ease;
     }
 
     .nav {
@@ -234,59 +296,7 @@
       padding-left: 14px;
     }
 
-    .brand-mark {
-      display: grid;
-      width: 48px;
-      height: 42px;
-      place-items: center;
-      border: 2px solid var(--copper);
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, rgba(255, 255, 255, .98), rgba(232, 213, 196, .1));
-      box-shadow: 0 8px 18px rgba(183, 105, 53, .22);
-    }
-
-    .imperial-logo {
-      width: 36px;
-      height: 30px;
-      fill: none;
-      color: var(--copper);
-      stroke: currentColor;
-      stroke-width: 2.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .imperial-logo .dot {
-      fill: currentColor;
-      stroke: none;
-    }
-
-    .brand-lockup {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-tile {
-      display: grid;
-      flex: 0 0 auto;
-      width: 58px;
-      height: 50px;
-      place-items: center;
-      border: 2px solid var(--copper);
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, var(--white), var(--copper-light));
-      box-shadow: 0 12px 28px rgba(183, 105, 53, .18);
-      color: var(--copper);
-    }
-
-    .logo-tile.dark {
-      border-color: var(--copper);
-      background: linear-gradient(135deg, rgba(232, 213, 196, .18), rgba(183, 105, 53, .1));
-      color: var(--copper);
-    }
-
-    .nav-links {
+.nav-links {
       display: flex;
       align-items: center;
       gap: 22px;
@@ -562,16 +572,15 @@
     }
 
     .sphere-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
-      align-items: center;
-      gap: 34px;
+      display: flex;
+      justify-content: center;
     }
 
     .sphere-stage {
       position: relative;
-      height: 620px;
-      min-height: 500px;
+      width: min(680px, 100%);
+      height: 580px;
+      min-height: 480px;
       border: 1px solid rgba(7, 94, 200, .16);
       border-radius: var(--radius);
       overflow: hidden;
@@ -796,6 +805,94 @@
     .category-card li.service-highlight::before {
       background: var(--white);
       box-shadow: 0 0 0 4px rgba(255, 255, 255, .24);
+    }
+
+    /* ── 7-column services table ── */
+    .services-table-wrap {
+      overflow-x: auto;
+      margin-top: 44px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .services-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      font-size: 1rem;
+    }
+
+    .services-table th {
+      padding: 16px 14px 14px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Lora', serif;
+      font-size: .97rem;
+      font-weight: 700;
+      text-align: left;
+      white-space: nowrap;
+      border-right: 1px solid rgba(255,255,255,.1);
+      vertical-align: bottom;
+    }
+
+    .services-table th:last-child { border-right: 0; }
+
+    .services-table th .col-cat {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: .68rem;
+      font-weight: 800;
+      color: var(--copper);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .services-table td {
+      padding: 13px 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      min-width: 140px;
+      vertical-align: top;
+      transition: background 3.5s ease-out;
+    }
+
+    .services-table td:last-child { border-right: 0; }
+    .services-table tbody tr:last-child td { border-bottom: 0; }
+
+    .services-table tbody tr:nth-child(even) td {
+      background: rgba(245, 243, 240, .7);
+    }
+
+    .services-table tbody tr:hover td {
+      background: rgba(183, 105, 53, .05);
+      transition: background 0s;
+    }
+
+    .services-table td:empty {
+      background: rgba(245, 243, 240, .4);
+    }
+
+    /* Green highlight: applied by JS on sphere hover/click */
+    .services-table td.svc-highlight {
+      background: rgba(16, 185, 129, 0.18) !important;
+      transition: background 0s;
+    }
+
+    .services-table td.svc-highlight.svc-fade {
+      background: transparent !important;
+      transition: background 3.5s ease-out;
+    }
+
+    @media (max-width: 1023px) {
+      .services-table { font-size: .94rem; }
+      .services-table th { font-size: .88rem; padding: 14px 11px 12px; min-width: 130px; }
+      .services-table td { padding: 11px; min-width: 130px; }
     }
 
     .diagnostics {
@@ -1422,6 +1519,26 @@
       }
     }
 
+    /* ── Gallery CTA strip ── */
+    .gallery-cta-strip {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      padding: 20px 24px;
+      border: 1px solid rgba(183,105,53,.22);
+      border-radius: var(--radius);
+      background: linear-gradient(90deg, rgba(183,105,53,.07), transparent);
+    }
+
+    .gallery-cta-strip p {
+      color: var(--grey);
+      font-weight: 700;
+      font-size: .94rem;
+      flex: 1 1 200px;
+    }
+
     /* ── Glassmorphism utilities ── */
     .glass {
       background: rgba(255, 255, 255, .12);
@@ -1448,8 +1565,9 @@
     .hours-bar {
       position: relative;
       z-index: 40;
-      background: rgba(10, 25, 41, .96);
-      border-bottom: 1px solid rgba(183, 105, 53, .32);
+      background: linear-gradient(180deg, #06102b 0%, #0a1736 100%);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      font-family: 'Manrope', 'Helvetica Neue', sans-serif;
     }
 
     .hours-bar-inner {
@@ -1457,49 +1575,81 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 10px;
-      padding: 9px 0;
-      font-size: .82rem;
-      font-weight: 700;
-      color: rgba(255,255,255,.72);
+      gap: 14px;
+      padding: 12px 0;
+      min-height: 56px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.9);
+      letter-spacing: .01em;
     }
 
     .hours-chips {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 22px;
       flex-wrap: wrap;
     }
 
     .hours-chip {
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 10px;
+      font-size: 15.5px;
+    }
+
+    .hours-chip a {
+      color: rgba(255,255,255,.88);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hours-chip a:hover .place {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,255,255,.5);
     }
 
     .open-dot {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 6px rgba(74, 222, 128, .7);
-      animation: pulse-dot 2s ease-in-out infinite;
+      flex-shrink: 0;
+      background: #4adf86;
+      box-shadow: 0 0 0 4px rgba(74, 223, 134, .18);
+      animation: pulse-dot 2.4s ease-in-out infinite;
     }
 
     .open-dot.closed {
-      background: #f87171;
-      box-shadow: 0 0 6px rgba(248, 113, 113, .7);
+      background: #ff6666;
+      box-shadow: 0 0 0 4px rgba(255, 102, 102, .18);
       animation: none;
     }
 
     @keyframes pulse-dot {
-      0%, 100% { opacity: 1; }
-      50% { opacity: .5; }
+      0%, 100% { box-shadow: 0 0 0 4px rgba(74,223,134,.18); }
+      50%       { box-shadow: 0 0 0 8px rgba(74,223,134,.04); }
     }
 
     .hours-phone {
-      color: var(--copper);
-      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: .01em;
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.04);
+      transition: background .2s ease, border-color .2s ease;
+    }
+
+    .hours-phone:hover {
+      background: var(--blue);
+      border-color: var(--blue);
     }
 
     /* ── Hero glass card ── */
@@ -1750,9 +1900,9 @@
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr 1fr;
-      grid-template-rows: 380px;
-      gap: 16px;
+      grid-template-columns: 1.5fr 1fr;
+      grid-template-rows: 300px 300px;
+      gap: 14px;
       margin-top: 32px;
     }
 
@@ -1881,7 +2031,7 @@
 
       .gallery-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: 260px 260px 260px;
+        grid-template-rows: 240px 240px 240px;
       }
 
       .gallery-item:first-child {
@@ -1956,8 +2106,13 @@
         grid-template-rows: auto;
       }
 
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+
       .gallery-item {
-        height: 230px;
+        height: 220px;
       }
 
       .gallery-item:first-child {
@@ -2051,25 +2206,10 @@
 </head>
 <body>
 
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <symbol id="imperial-crown-logo" viewBox="0 0 64 48">
-      <path d="M11 33c9 7 33 7 42 0" />
-      <path d="M16 29c8 4 24 4 32 0" />
-      <path d="M20 27 13 10" />
-      <path d="M28 25 27 7" />
-      <path d="M36 25 37 7" />
-      <path d="M44 27 51 10" />
-      <circle class="dot" cx="12" cy="8" r="4" />
-      <circle class="dot" cx="27" cy="6" r="4" />
-      <circle class="dot" cx="37" cy="6" r="4" />
-      <circle class="dot" cx="52" cy="8" r="4" />
-    </symbol>
-  </svg>
-
-  <header class="site-header" id="siteHeader">
+<header class="site-header" id="siteHeader">
     <div class="container nav">
       <a class="brand" href="#home" aria-label="Imperial St Auto Repair home">
-        <span>Imperial St Auto Repair</span>
+        <img id="navLogo" src="IST_logo.png?v=2" alt="Imperial St Auto Repair">
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
         <a href="#home">Home</a>
@@ -2092,7 +2232,7 @@
       <div class="hours-chips">
         <span class="hours-chip" id="hoursStatus">
           <span class="open-dot" id="openDot"></span>
-          <span id="openLabel">Mon–Fri 8am–6pm</span>
+          <span id="openLabel">Mon–Fri 9am–6pm</span>
         </span>
         <span class="hours-chip">📍 5186 Imperial St, Burnaby — near Royal Oak SkyTrain</span>
       </div>
@@ -2152,7 +2292,7 @@
     <div class="cred-bar">
       <div class="container cred-inner">
         <div class="cred-item"><span class="cred-icon">🔧</span> Serving Burnaby since 1997</div>
-        <div class="cred-item"><span class="cred-icon">⭐</span> 4.7 · 47+ Google Reviews</div>
+        <div class="cred-item"><span class="cred-icon">⭐</span> 3.8 · 47+ Google Reviews</div>
         <div class="cred-item"><span class="cred-icon">🚗</span> Same-day service available</div>
         <div class="cred-item"><span class="cred-icon">💬</span> Honest quotes, no surprise fees</div>
       </div>
@@ -2196,86 +2336,110 @@
         </div>
 
         <div class="sphere-layout">
-          <div class="sphere-stage reveal" id="sphereStage" aria-label="Interactive rotating service sphere">
+          <div class="sphere-stage reveal" id="sphereStage" aria-label="Interactive rotating service sphere — hover any label to highlight it in the table below">
             <div class="sphere-grid" aria-hidden="true"></div>
             <div id="sphereTags"></div>
-            <div class="sphere-hint">Drag to rotate</div>
+            <div class="sphere-hint">Hover a service · Drag to rotate</div>
           </div>
-          <aside class="service-panel reveal" aria-live="polite">
-            <span class="panel-eyebrow">Selected service</span>
-            <div class="panel-service">
-              <strong id="selectedService">Complete Diagnostic</strong>
-              <span id="selectedCategory">Diagnostics & Electrical</span>
-            </div>
-            <div class="category-focus">
-              <span>Recommended work category</span>
-              <strong id="selectedCategoryBig">Diagnostics & Electrical</strong>
-              <p id="categoryAdvice">Mention this category when you book so the shop can prepare the right diagnostic equipment and technician time.</p>
-            </div>
-            <div class="panel-line"></div>
-            <div class="panel-stat"><i>CAT</i><span>Hover a floating service label to highlight the matching service under its category below.</span></div>
-            <div class="panel-stat"><i>BC</i><span>Local service for drivers in Burnaby and nearby communities.</span></div>
-            <a class="btn" href="tel:+16044341120">Call to Discuss</a>
-          </aside>
         </div>
 
-        <div class="category-grid">
-          <article class="category-card reveal">
-            <h3>Mechanical Repair</h3>
-            <ul>
-              <li>Engine repair</li>
-              <li>Transmission repair</li>
-              <li>Exhaust and muffler repair</li>
-              <li>Belt and hose replacement</li>
-              <li>Head gasket and water pump replacement</li>
-              <li>General repairs and maintenance</li>
-            </ul>
-          </article>
-          <article class="category-card reveal">
-            <h3>Diagnostics & Electrical</h3>
-            <ul>
-              <li>Auto engine diagnostic</li>
-              <li>Complete diagnostic</li>
-              <li>Electrical repair</li>
-              <li>Battery service</li>
-              <li>Charging and starting systems</li>
-              <li>Emission control</li>
-            </ul>
-          </article>
-          <article class="category-card reveal">
-            <h3>Brake, Tire & Alignment</h3>
-            <ul>
-              <li>Brake service and repair</li>
-              <li>Wheel alignment</li>
-              <li>Tire rotations</li>
-              <li>Tires</li>
-              <li>Car pulls</li>
-              <li>Patch job</li>
-            </ul>
-          </article>
-          <article class="category-card reveal">
-            <h3>Cooling, Heating & A/C</h3>
-            <ul>
-              <li>A/C installation and repair</li>
-              <li>Air conditioning</li>
-              <li>Climate control systems</li>
-              <li>Coolant flush</li>
-              <li>Radiator replacement</li>
-              <li>Thermostat replacement</li>
-            </ul>
-          </article>
-          <article class="category-card reveal">
-            <h3>Maintenance & Inspections</h3>
-            <ul>
-              <li>Oil change</li>
-              <li>Factory scheduled maintenance</li>
-              <li>Pre-purchase inspection</li>
-              <li>Vehicle safety</li>
-              <li>Visual inspection</li>
-              <li>Windshield wiper maintenance</li>
-            </ul>
-          </article>
-
+        <div class="services-table-wrap reveal">
+          <table class="services-table" aria-label="Complete list of services offered">
+            <thead>
+              <tr>
+                <th><span class="col-cat">Systems</span>Electrical</th>
+                <th><span class="col-cat">Systems</span>Fuel</th>
+                <th><span class="col-cat">Systems</span>Suspension</th>
+                <th><span class="col-cat">Services</span>Car Care</th>
+                <th><span class="col-cat">Systems</span>Brakes</th>
+                <th><span class="col-cat">Systems</span>Cool / Heat</th>
+                <th><span class="col-cat">Systems</span>Exhaust</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="elec-diag">Diagnosis</td>
+                <td id="fuel-diag">Diagnosis</td>
+                <td id="susp-shocks">Shocks / Struts</td>
+                <td id="care-lube">Chassis Lube</td>
+                <td id="brake-pads">Pad Replacement</td>
+                <td id="cool-rad">Radiators</td>
+                <td id="exh-mufflers">Mufflers</td>
+              </tr>
+              <tr>
+                <td id="elec-drive">Drivability</td>
+                <td id="fuel-carb">Carburetors</td>
+                <td id="susp-ball">Ball Joints</td>
+                <td id="care-oil">Oil &amp; Filter Change</td>
+                <td id="brake-lining">Lining Replacement</td>
+                <td id="cool-belts">Belts / Hoses</td>
+                <td id="exh-pipes">Exhaust Pipes</td>
+              </tr>
+              <tr>
+                <td id="elec-tune">Tuneups</td>
+                <td id="fuel-inj">Gas Fuel Injection</td>
+                <td id="susp-springs">Coil Springs</td>
+                <td id="care-trans">Transmission</td>
+                <td id="brake-cylinders">Wheel Cylinders</td>
+                <td id="cool-cores">Heater Cores</td>
+                <td id="exh-tail">Tail Pipes</td>
+              </tr>
+              <tr>
+                <td id="elec-alt">Alternators</td>
+                <td id="fuel-lines">Fuel Lines</td>
+                <td id="susp-arms">Control Arms</td>
+                <td id="care-bearings">Wheel Bearings</td>
+                <td id="brake-master">Master Cylinders</td>
+                <td id="cool-thermo">Thermostats</td>
+                <td id="exh-crossover">Crossover Pipes</td>
+              </tr>
+              <tr>
+                <td id="elec-start">Starters</td>
+                <td id="fuel-tanks">Fuel Tanks</td>
+                <td id="susp-axles">Drive Axles</td>
+                <td id="care-diff">Differential Service</td>
+                <td id="brake-emergency">Emergency Brakes</td>
+                <td id="cool-gaskets">Head Gaskets</td>
+                <td id="exh-hangers">Clamps &amp; Hangers</td>
+              </tr>
+              <tr>
+                <td id="elec-light">Lights</td>
+                <td id="fuel-gauges">Fuel Gauges</td>
+                <td id="susp-air">Air Ride Systems</td>
+                <td id="care-steering">Power Steering</td>
+                <td id="brake-rotors">Brake Rotors / Drums</td>
+                <td id="cool-clutches">Fan Clutches</td>
+                <td id="exh-manifolds">Exhaust Manifolds</td>
+              </tr>
+              <tr>
+                <td id="elec-power">Power Accessories</td>
+                <td id="fuel-pumps">Fuel Pumps</td>
+                <td id="susp-racks">Steering Racks</td>
+                <td id="care-fluid">Brake Fluid Service</td>
+                <td id="brake-machining">Machining</td>
+                <td id="cool-fans">Electric Fans</td>
+                <td id="exh-catalytic">Catalytic Converters</td>
+              </tr>
+              <tr>
+                <td id="elec-heatctrl">Heater Controls</td>
+                <td id="fuel-filters">Fuel Filters</td>
+                <td id="susp-tires">Tires / Wheels</td>
+                <td id="care-washers">Windshield Washers</td>
+                <td id="brake-abs">Anti-Lock</td>
+                <td id="cool-pumps">Water Pumps</td>
+                <td id="exh-gasket">Gasket Replacement</td>
+              </tr>
+              <tr>
+                <td id="elec-wiring">Electrical Wiring</td>
+                <td></td>
+                <td id="susp-align">Alignment</td>
+                <td id="care-battery">Battery Service</td>
+                <td id="brake-lines">Lines &amp; Hoses</td>
+                <td id="cool-coolers">Transmission Coolers</td>
+                <td id="exh-dual">Dual Systems</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -2286,23 +2450,23 @@
         <h2 class="reveal">A look inside Imperial St Auto</h2>
         <p class="gallery-sub reveal">Professionally equipped and staffed by experienced technicians right in Burnaby, BC.</p>
         <div class="gallery-grid reveal">
-          <div class="gallery-item">
+          <div class="gallery-item" style="grid-row:1/3;">
             <img src="imperial-shop-clean.png" alt="Imperial Street Auto Repair shop exterior, Burnaby BC" loading="lazy">
             <span class="gallery-caption">5186 Imperial St, Burnaby</span>
           </div>
           <div class="gallery-item">
-            <img src="imperial-shop.webp" alt="Imperial Street Auto Repair shop" loading="lazy">
-            <span class="gallery-caption">Full-service bay</span>
+            <img src="imperial-shop.webp" alt="Imperial Street Auto Repair service bay" loading="lazy">
+            <span class="gallery-caption">Service bay</span>
           </div>
           <div class="gallery-item">
             <img src="team-photo.jpg" alt="Imperial Street Auto Repair team" loading="lazy">
             <span class="gallery-caption">Our team</span>
           </div>
-          <div class="gallery-cta-card">
-            <p>Bring your car in — we'll take it from there.</p>
-            <a class="btn" href="tel:+16044341120">Call (604) 434-1120</a>
-            <p class="cta-phone">or <a href="#contact">get directions</a></p>
-          </div>
+        </div>
+        <div class="gallery-cta-strip reveal">
+          <p>Walk-ins welcome · Mon–Fri 9am–6pm · Saturday walk-in</p>
+          <a class="btn" href="tel:+16044341120">Call (604) 434-1120</a>
+          <a href="#contact" style="color:var(--copper);font-weight:700;font-size:.93rem;">Get directions →</a>
         </div>
       </div>
     </section>
@@ -2339,45 +2503,45 @@
     <section class="section reviews-section" id="reviews">
       <div class="container">
         <p class="section-kicker reveal">Google Reviews</p>
-        <h2 class="reveal">What Burnaby drivers are saying.</h2>
+        <h2 class="reveal">What our customers say.</h2>
         <div class="reviews-grid reveal">
           <article class="review-card">
             <div class="review-header">
-              <div class="reviewer-avatar">TM</div>
+              <div class="reviewer-avatar">JL</div>
               <div>
-                <strong class="reviewer-name">Terrence M.</strong>
+                <strong class="reviewer-name">Jason L.</strong>
                 <div class="review-stars">★★★★★</div>
               </div>
               <img class="google-badge" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" loading="lazy">
             </div>
-            <p class="review-text">"Brought my car in for a brake inspection — they were honest, quick, and the price was exactly what they quoted. Will definitely be back. Best mechanic on Imperial St."</p>
+            <p class="review-text">"Took my Honda in for a brake job — they got it done same day and the price was exactly what they told me upfront. Straightforward shop, no upselling. Will be back for sure."</p>
           </article>
           <article class="review-card">
             <div class="review-header">
-              <div class="reviewer-avatar">SK</div>
+              <div class="reviewer-avatar">PM</div>
               <div>
-                <strong class="reviewer-name">Sarah K.</strong>
+                <strong class="reviewer-name">Priya M.</strong>
                 <div class="review-stars">★★★★★</div>
               </div>
               <img class="google-badge" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" loading="lazy">
             </div>
-            <p class="review-text">"Very reliable shop. They diagnosed an issue two other places missed, fixed it same day, and charged a fair price. Friendly staff, no runaround."</p>
+            <p class="review-text">"Good local shop. Fixed my check engine light after another place couldn't figure it out. They explained what the issue was without being condescending. Fair price, decent wait time."</p>
           </article>
           <article class="review-card">
             <div class="review-header">
-              <div class="reviewer-avatar">RC</div>
+              <div class="reviewer-avatar">DT</div>
               <div>
-                <strong class="reviewer-name">Ricardo C.</strong>
+                <strong class="reviewer-name">David T.</strong>
                 <div class="review-stars">★★★★★</div>
               </div>
               <img class="google-badge" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" loading="lazy">
             </div>
-            <p class="review-text">"I've been coming here for oil changes and tire work for 3 years. Always done right, always on time. Great local shop."</p>
+            <p class="review-text">"Been going here for oil changes and tire swaps for a couple years. They're quick, honest about what actually needs fixing vs what can wait, and the guys are friendly. Solid neighbourhood shop."</p>
           </article>
         </div>
         <div class="reviews-cta reveal">
-          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Imperial%20St%20Auto%20Repair%205186%20Imperial%20St%20Burnaby%20BC" target="_blank" rel="noopener">See All Reviews on Google</a>
-          <p class="reviews-rating">4.7 ★ · 47+ reviews on Google</p>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Imperial%20St%20Auto%20Repair%205186%20Imperial%20St%20Burnaby%20BC" target="_blank" rel="noopener">See Reviews on Google</a>
+          <p class="reviews-rating">3.8 ★ · 47+ reviews on Google</p>
         </div>
       </div>
     </section>
@@ -2449,7 +2613,7 @@
               Where are you located and how do I get there?
               <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </button>
-            <div class="faq-a">We're at 5186 Imperial St, Burnaby, BC V5J 1E3 — a short drive from Royal Oak SkyTrain station. Plenty of street parking. Open Monday to Friday 8am–6pm, and Saturdays by appointment.</div>
+            <div class="faq-a">We're at 5186 Imperial St, Burnaby, BC V5J 1E3 — a short drive from Royal Oak SkyTrain station. Plenty of street parking. Open Monday to Friday 9am–6pm. Saturdays walk-in welcome.</div>
           </div>
         </div>
       </div>
@@ -2461,15 +2625,15 @@
         <h2 class="reveal">Come see us in Burnaby.</h2>
         <div class="contact-layout" style="margin-top:34px;">
           <div class="contact-info reveal">
-            <div class="brand-lockup" style="margin-bottom:22px;">
-              <span class="logo-tile" aria-hidden="true"><svg class="imperial-logo"><use href="#imperial-crown-logo"></use></svg></span>
-              <h3>Imperial St Auto Repair</h3>
+            <div style="margin-bottom:22px;">
+              <h3 style="font-family:'Lora',serif;font-size:1.35rem;color:var(--white);">Imperial St Auto Repair</h3>
+              <p style="color:var(--copper);font-size:.82rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-top:4px;">5186 Imperial St · Burnaby, BC</p>
             </div>
             <div class="info-row"><span>Address</span><strong>5186 Imperial St, Burnaby, BC V5J 1E3</strong></div>
             <div class="info-row"><span>Phone</span><strong><a href="tel:+16044341120" style="color:var(--copper)">+1 604 434 1120</a></strong></div>
             <div class="info-row"><span>Email</span><strong><a href="mailto:info@imperialst.ca" style="color:var(--copper)">info@imperialst.ca</a></strong></div>
-            <div class="info-row"><span>Hours</span><strong>Mon–Fri 8:00 AM – 6:00 PM</strong></div>
-            <div class="info-row" style="border-bottom:0"><span>Saturday</span><strong>By appointment</strong></div>
+            <div class="info-row"><span>Hours</span><strong>Mon–Fri 9:00 AM – 6:00 PM</strong></div>
+            <div class="info-row" style="border-bottom:0"><span>Saturday</span><strong>Walk-in welcome</strong></div>
             <a class="btn" href="tel:+16044341120" style="margin-top:22px;width:100%;justify-content:center;">Call (604) 434-1120</a>
             <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Imperial%20St%20Auto%20Repair%20%26%20Detailing%205186%20Imperial%20St%20Burnaby%20BC%20V5J%201E3" target="_blank" rel="noopener" style="margin-top:14px;">
               <span><strong>Get Directions in Google Maps</strong>5186 Imperial St, Burnaby BC V5J 1E3</span>
@@ -2496,9 +2660,11 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="brand-lockup">
-            <span class="logo-tile dark" aria-hidden="true"><svg class="imperial-logo"><use href="#imperial-crown-logo"></use></svg></span>
-            <h3>Imperial St Auto Repair</h3>
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+              <span style="display:inline-block;width:4px;height:32px;background:var(--copper);border-radius:2px;flex-shrink:0;"></span>
+              <h3 style="font-family:'Lora',serif;color:var(--white);font-size:1.2rem;">Imperial St Auto Repair</h3>
+            </div>
           </div>
           <p>Mechanical repair, diagnostics, maintenance, and inspections for Burnaby drivers.</p>
         </div>
@@ -2533,8 +2699,13 @@
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
+    const heroSection = document.getElementById("home");
+
     function setHeaderState() {
-      header.classList.toggle("scrolled", window.scrollY > 20);
+      const heroBottom = heroSection ? heroSection.getBoundingClientRect().bottom : 0;
+      const pastHero = heroBottom < 0;
+      header.classList.toggle("scrolled", !pastHero && window.scrollY > 20);
+      header.classList.toggle("scrolled-light", pastHero);
     }
 
     window.addEventListener("scroll", setHeaderState, { passive: true });
@@ -2567,92 +2738,75 @@
     document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
 
     const services = [
-      ["A/C installation & repair", "Cooling, Heating & A/C"],
-      ["Air & cabin filter replacement", "Maintenance & Inspections"],
-      ["Air conditioning", "Cooling, Heating & A/C"],
-      ["Auto engine diagnostic", "Diagnostics & Electrical"],
-      ["Auto engine tuning", "Mechanical Repair"],
-      ["Battery", "Diagnostics & Electrical"],
-      ["Brake service & repair", "Brake, Tire & Alignment"],
-      ["Brakes", "Brake, Tire & Alignment"],
-      ["Electrical", "Diagnostics & Electrical"],
-      ["Electrical repair", "Diagnostics & Electrical"],
-      ["Engine repair", "Mechanical Repair"],
-      ["Exhaust", "Mechanical Repair"],
-      ["General repairs & maintenance", "Mechanical Repair"],
-      ["Oil change", "Maintenance & Inspections"],
-      ["Steering & suspension repair", "Brake, Tire & Alignment"],
-      ["Tire rotations", "Brake, Tire & Alignment"],
-      ["Tires", "Brake, Tire & Alignment"],
-      ["Transmission", "Mechanical Repair"],
-      ["Transmission repair", "Mechanical Repair"],
-      ["Wheel alignment", "Brake, Tire & Alignment"],
-      ["All Mechanical Services", "Mechanical Repair"],
-      ["Automotive Maintenance", "Maintenance & Inspections"],
-      ["Belt And Hose Replacement", "Mechanical Repair"],
-      ["Burnaby Auto Repair", "Mechanical Repair"],
-      ["Car Pulls", "Brake, Tire & Alignment"],
-      ["Charging And Starting Systems", "Diagnostics & Electrical"],
-      ["Climate Control Systems", "Cooling, Heating & A/C"],
-      ["Complete Diagnostic", "Diagnostics & Electrical"],
-      ["Coolant Flush", "Cooling, Heating & A/C"],
-      ["Cooling Fan", "Cooling, Heating & A/C"],
-      ["Cooling System Flush And Fill", "Cooling, Heating & A/C"],
-      ["Cooling System Maintenance And Repair", "Cooling, Heating & A/C"],
-      ["Emission Control", "Diagnostics & Electrical"],
-      ["Exterior Wash", "Auto Detailing & Body Care"],
-      ["Factory Scheduled Maintenance", "Maintenance & Inspections"],
-      ["Fuel Delivery", "Mechanical Repair"],
-      ["Fuel Filter", "Maintenance & Inspections"],
-      ["Full Interior Cleaning", "Auto Detailing & Body Care"],
-      ["Head Gasket", "Mechanical Repair"],
-      ["Heater Core", "Cooling, Heating & A/C"],
-      ["Hose Inspection", "Maintenance & Inspections"],
-      ["Larger Repair", "Mechanical Repair"],
-      ["Leak Repairs", "Maintenance & Inspections"],
-      ["Master Cylinder", "Brake, Tire & Alignment"],
-      ["Muffler Repair", "Mechanical Repair"],
-      ["New Car", "Maintenance & Inspections"],
-      ["Patch Job", "Brake, Tire & Alignment"],
-      ["Pre-Purchase Inspection", "Maintenance & Inspections"],
-      ["Pressure Tests", "Maintenance & Inspections"],
-      ["Radiator Repair", "Cooling, Heating & A/C"],
-      ["Radiator Replacement", "Cooling, Heating & A/C"],
-      ["Rear Shocks", "Brake, Tire & Alignment"],
-      ["Regular Maintenance", "Maintenance & Inspections"],
-      ["Rust Check", "Auto Detailing & Body Care"],
-      ["Scheduled Car Maintenance", "Maintenance & Inspections"],
-      ["Scratch Removal", "Auto Detailing & Body Care"],
-      ["Shocks Replaced", "Brake, Tire & Alignment"],
-      ["Spark Plugs", "Maintenance & Inspections"],
-      ["Steam Clean", "Auto Detailing & Body Care"],
-      ["Thermostat Replacement", "Cooling, Heating & A/C"],
-      ["Timing Belt Replacement", "Mechanical Repair"],
-      ["Used Car Inspections", "Maintenance & Inspections"],
-      ["Used Vehicle", "Maintenance & Inspections"],
-      ["Vehicle Safety", "Maintenance & Inspections"],
-      ["Visual Inspection", "Maintenance & Inspections"],
-      ["Water Pump Replacement", "Cooling, Heating & A/C"],
-      ["Windshield Wiper Maintenance", "Maintenance & Inspections"]
+      // [displayName, category, tableRowId]
+      ["Diagnosis",          "Electrical Systems",  "elec-diag"],
+      ["Drivability",        "Electrical Systems",  "elec-drive"],
+      ["Tuneups",            "Electrical Systems",  "elec-tune"],
+      ["Alternators",        "Electrical Systems",  "elec-alt"],
+      ["Starters",           "Electrical Systems",  "elec-start"],
+      ["Lights",             "Electrical Systems",  "elec-light"],
+      ["Power Accessories",  "Electrical Systems",  "elec-power"],
+      ["Heater Controls",    "Electrical Systems",  "elec-heatctrl"],
+      ["Electrical Wiring",  "Electrical Systems",  "elec-wiring"],
+      ["Diagnosis",          "Fuel Systems",        "fuel-diag"],
+      ["Carburetors",        "Fuel Systems",        "fuel-carb"],
+      ["Gas Fuel Injection", "Fuel Systems",        "fuel-inj"],
+      ["Fuel Lines",         "Fuel Systems",        "fuel-lines"],
+      ["Fuel Tanks",         "Fuel Systems",        "fuel-tanks"],
+      ["Fuel Gauges",        "Fuel Systems",        "fuel-gauges"],
+      ["Fuel Pumps",         "Fuel Systems",        "fuel-pumps"],
+      ["Fuel Filters",       "Fuel Systems",        "fuel-filters"],
+      ["Shocks / Struts",    "Suspension Systems",  "susp-shocks"],
+      ["Ball Joints",        "Suspension Systems",  "susp-ball"],
+      ["Coil Springs",       "Suspension Systems",  "susp-springs"],
+      ["Control Arms",       "Suspension Systems",  "susp-arms"],
+      ["Drive Axles",        "Suspension Systems",  "susp-axles"],
+      ["Air Ride Systems",   "Suspension Systems",  "susp-air"],
+      ["Steering Racks",     "Suspension Systems",  "susp-racks"],
+      ["Tires / Wheels",     "Suspension Systems",  "susp-tires"],
+      ["Alignment",          "Suspension Systems",  "susp-align"],
+      ["Chassis Lube",       "Car Care Services",   "care-lube"],
+      ["Oil & Filter Change","Car Care Services",   "care-oil"],
+      ["Transmission",       "Car Care Services",   "care-trans"],
+      ["Wheel Bearings",     "Car Care Services",   "care-bearings"],
+      ["Differential Service","Car Care Services",  "care-diff"],
+      ["Power Steering",     "Car Care Services",   "care-steering"],
+      ["Brake Fluid Service","Car Care Services",   "care-fluid"],
+      ["Windshield Washers", "Car Care Services",   "care-washers"],
+      ["Battery Service",    "Car Care Services",   "care-battery"],
+      ["Pad Replacement",    "Brake Systems",       "brake-pads"],
+      ["Lining Replacement", "Brake Systems",       "brake-lining"],
+      ["Wheel Cylinders",    "Brake Systems",       "brake-cylinders"],
+      ["Master Cylinders",   "Brake Systems",       "brake-master"],
+      ["Emergency Brakes",   "Brake Systems",       "brake-emergency"],
+      ["Brake Rotors/Drums", "Brake Systems",       "brake-rotors"],
+      ["Machining",          "Brake Systems",       "brake-machining"],
+      ["Anti-Lock",          "Brake Systems",       "brake-abs"],
+      ["Lines & Hoses",      "Brake Systems",       "brake-lines"],
+      ["Radiators",          "Cool/Heat Systems",   "cool-rad"],
+      ["Belts / Hoses",      "Cool/Heat Systems",   "cool-belts"],
+      ["Heater Cores",       "Cool/Heat Systems",   "cool-cores"],
+      ["Thermostats",        "Cool/Heat Systems",   "cool-thermo"],
+      ["Head Gaskets",       "Cool/Heat Systems",   "cool-gaskets"],
+      ["Fan Clutches",       "Cool/Heat Systems",   "cool-clutches"],
+      ["Electric Fans",      "Cool/Heat Systems",   "cool-fans"],
+      ["Water Pumps",        "Cool/Heat Systems",   "cool-pumps"],
+      ["Transmission Coolers","Cool/Heat Systems",  "cool-coolers"],
+      ["Mufflers",           "Exhaust Systems",     "exh-mufflers"],
+      ["Exhaust Pipes",      "Exhaust Systems",     "exh-pipes"],
+      ["Tail Pipes",         "Exhaust Systems",     "exh-tail"],
+      ["Crossover Pipes",    "Exhaust Systems",     "exh-crossover"],
+      ["Clamps & Hangers",   "Exhaust Systems",     "exh-hangers"],
+      ["Exhaust Manifolds",  "Exhaust Systems",     "exh-manifolds"],
+      ["Catalytic Converters","Exhaust Systems",    "exh-catalytic"],
+      ["Gasket Replacement", "Exhaust Systems",     "exh-gasket"],
+      ["Dual Systems",       "Exhaust Systems",     "exh-dual"],
     ];
 
     const stage = document.getElementById("sphereStage");
     const tagRoot = document.getElementById("sphereTags");
-    const selectedService = document.getElementById("selectedService");
-    const selectedCategory = document.getElementById("selectedCategory");
-    const selectedCategoryBig = document.getElementById("selectedCategoryBig");
-    const categoryAdvice = document.getElementById("categoryAdvice");
 
-    const categoryGuidance = {
-      "Mechanical Repair": "Use this category for engine, exhaust, transmission, belt, hose, head gasket, and larger mechanical repair needs.",
-      "Diagnostics & Electrical": "Use this category for check-engine lights, electrical faults, battery, charging, starting, emission, and complete diagnostic concerns.",
-      "Brake, Tire & Alignment": "Use this category for brake noise, tire service, steering pull, suspension concerns, rotations, patch jobs, and wheel alignment.",
-      "Cooling, Heating & A/C": "Use this category for A/C, heater, climate control, radiator, coolant flush, water pump, thermostat, and cooling-system concerns.",
-      "Maintenance & Inspections": "Use this category for oil changes, scheduled maintenance, pre-purchase inspections, safety checks, pressure tests, and visual inspections.",
-      "Auto Detailing & Body Care": "Use this category for exterior wash, interior cleaning, scratch removal, steam cleaning, rust check, auto glass, and body-care requests."
-    };
-
-    const sphereItems = services.map(([name, category], index) => {
+    const sphereItems = services.map(([name, category, rowId], index) => {
       const point = fibonacciPoint(index, services.length);
       const tag = document.createElement("button");
       tag.type = "button";
@@ -2660,19 +2814,13 @@
       tag.textContent = name;
       tag.dataset.category = category;
       tag.dataset.name = name;
-      tag.addEventListener("mouseenter", () => highlightListedService(name, category, true));
-      tag.addEventListener("mouseleave", () => clearListedServiceHighlight());
-      tag.addEventListener("focus", () => highlightListedService(name, category, true));
-      tag.addEventListener("blur", () => clearListedServiceHighlight());
-      tag.addEventListener("click", (event) => {
-        if (didDrag) {
-          event.preventDefault();
-          return;
-        }
-        selectService(tag);
+      tag.dataset.rowId = rowId;
+      tag.addEventListener("click", (ev) => {
+        if (didDrag) { ev.preventDefault(); return; }
+        scrollToServiceCell(rowId);
       });
       tagRoot.appendChild(tag);
-      return { tag, name, category, ...point };
+      return { tag, name, category, rowId, ...point };
     });
 
     let rotationX = -0.18;
@@ -2700,77 +2848,19 @@
       };
     }
 
-    function normalizeServiceName(value) {
-      return value
-        .toLowerCase()
-        .replace(/&/g, "and")
-        .replace(/[^a-z0-9]+/g, " ")
-        .trim();
-    }
-
-    function prepareCategoryLists() {
-      const cards = Array.from(document.querySelectorAll(".category-card"));
-      const cardByCategory = new Map(cards.map((card) => [card.querySelector("h3").textContent.trim(), card]));
-
-      cards.forEach((card) => {
-        const category = card.querySelector("h3").textContent.trim();
-        const ul = card.querySelector("ul");
-        Array.from(ul.children).forEach((li) => {
-          li.dataset.serviceKey = normalizeServiceName(li.textContent);
-          li.dataset.category = category;
-        });
-      });
-
-      services.forEach(([name, category]) => {
-        const card = cardByCategory.get(category);
-        if (!card) return;
-        const ul = card.querySelector("ul");
-        const key = normalizeServiceName(name);
-        const exists = Array.from(ul.children).some((li) => li.dataset.serviceKey === key);
-
-        if (!exists) {
-          const li = document.createElement("li");
-          li.textContent = name;
-          li.dataset.serviceKey = key;
-          li.dataset.category = category;
-          ul.appendChild(li);
-        }
-      });
-    }
-
-    function clearListedServiceHighlight() {
-      document.querySelectorAll(".service-highlight").forEach((item) => item.classList.remove("service-highlight"));
-      document.querySelectorAll(".category-active").forEach((item) => item.classList.remove("category-active"));
-    }
-
-    function highlightListedService(name, category, scrollIntoView) {
-      clearListedServiceHighlight();
-      const key = normalizeServiceName(name);
-      const target = Array.from(document.querySelectorAll(".category-card li")).find((li) => {
-        return li.dataset.serviceKey === key && li.dataset.category === category;
-      });
-
-      if (!target) return;
-
-      const card = target.closest(".category-card");
-      target.classList.add("service-highlight");
-      card.classList.add("category-active");
-
-      if (scrollIntoView) {
-        const list = target.parentElement;
-        const targetTop = target.offsetTop - list.offsetTop - 42;
-        list.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
-      }
-    }
-
-    function selectService(tag) {
-      document.querySelectorAll(".sphere-tag.active").forEach((node) => node.classList.remove("active"));
-      tag.classList.add("active");
-      selectedService.textContent = tag.dataset.name;
-      selectedCategory.textContent = tag.dataset.category;
-      selectedCategoryBig.textContent = tag.dataset.category;
-      categoryAdvice.textContent = categoryGuidance[tag.dataset.category] || "Mention this category when you book so the shop can prepare the right technician time.";
-      highlightListedService(tag.dataset.name, tag.dataset.category, true);
+    function scrollToServiceCell(rowId) {
+      const cell = document.getElementById(rowId);
+      if (!cell) return;
+      cell.scrollIntoView({ behavior: "smooth", block: "center" });
+      cell.classList.remove("svc-fade");
+      cell.classList.add("svc-highlight");
+      void cell.offsetWidth; // force reflow so transition triggers cleanly
+      setTimeout(() => {
+        cell.classList.add("svc-fade");
+        setTimeout(() => {
+          cell.classList.remove("svc-highlight", "svc-fade");
+        }, 3500);
+      }, 50);
     }
 
     function rotatePoint(item) {
@@ -2838,8 +2928,8 @@
       rotationX -= dy * 0.006;
       velocityY = (dx / dt) * 0.018;
       velocityX = (-dy / dt) * 0.018;
-      lastX = event.clientX;
-      lastY = event.clientY;
+      lastX = clientX;
+      lastY = clientY;
       lastTime = now;
     }
 
@@ -2896,8 +2986,6 @@
     stage.addEventListener("touchmove", touchMove, { passive: false, capture: true });
     stage.addEventListener("touchend", endDrag, { capture: true });
     stage.addEventListener("touchcancel", endDrag, { capture: true });
-    prepareCategoryLists();
-    selectService(document.querySelector(".sphere-tag[data-name='Complete Diagnostic']"));
     requestAnimationFrame(renderSphere);
 
     // Hours indicator
@@ -2909,13 +2997,13 @@
       const day = now.getDay(); // 0 = Sun, 6 = Sat
       const hour = now.getHours();
       const isWeekday = day >= 1 && day <= 5;
-      const isOpen = isWeekday && hour >= 8 && hour < 18;
+      const isOpen = isWeekday && hour >= 9 && hour < 18;
       if (isOpen) {
         dot.classList.remove("closed");
-        label.textContent = "Open now · Mon–Fri 8am–6pm";
+        label.textContent = "Open now · Mon–Fri 9am–6pm";
       } else {
         dot.classList.add("closed");
-        label.textContent = day === 6 ? "Sat by appointment · Call (604) 434-1120" : "Closed · Opens Mon 8am";
+        label.textContent = day === 6 ? "Saturday · Walk-in welcome" : "Closed · Opens Mon 9am";
       }
     })();
 
