@@ -49,6 +49,11 @@
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "16:00" }
     ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "3.7",
+      "reviewCount": "400"
+    },
     "areaServed": ["Burnaby","Vancouver","New Westminster","Coquitlam","Metrotown","Royal Oak"],
     "sameAs": [
       "https://www.facebook.com/ImperialStAuto/",
@@ -1206,7 +1211,7 @@
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a class="brand" href="#top" aria-label="Imperial Street Auto Repair home">
-        <img class="brand-logo" src="IST_logo.png?v=10" alt="Imperial Street Auto Repair, Burnaby BC, established 1997" width="214" height="76">
+        <img class="brand-logo" src="IST_logo.png?v=11" alt="Imperial Street Auto Repair, Burnaby BC, established 1997" width="214" height="76">
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Primary">
         <a href="#services">Services</a>
@@ -1229,11 +1234,6 @@
     <div class="hero-car-glow" aria-hidden="true"></div>
     <img class="hero-car" src="hero-car-cutout.png" alt="" aria-hidden="true">
     <div class="container hero-inner">
-      <div class="hero-meta">
-        <span class="bar"></span>
-        <span>5186 Imperial St · Burnaby, BC</span>
-      </div>
-
       <h1 class="hero-title">Auto Repair<br><span style="color:var(--red); font-size:.66em;">in Burnaby.</span></h1>
 
       <div class="hero-grid">
@@ -1266,8 +1266,8 @@
       </div>
       <div class="trust-cell">
         <span class="trust-label">Reviews</span>
-        <a class="trust-num" href="https://www.google.com/maps/search/?api=1&query=Imperial+Street+Auto+Repair+Burnaby" target="_blank" rel="noopener" style="text-decoration: none; display: inline-flex; align-items: baseline; gap: 8px;">47+<span style="font-size:.42em; letter-spacing:.1em; color: rgba(255,255,255,.55); vertical-align: 4px;">↗</span></a>
-        <span class="trust-desc">Verified Google reviews. Tap to read every one of them.</span>
+        <a class="trust-num" href="https://www.google.com/maps/search/?api=1&query=Imperial+Street+Auto+Repair+Burnaby" target="_blank" rel="noopener" style="text-decoration: none; display: inline-flex; align-items: baseline; gap: 8px;">400<span style="font-size:.42em; letter-spacing:.1em; color: rgba(255,255,255,.55); vertical-align: 4px;">↗</span></a>
+        <span class="trust-desc">Google reviews. Tap to read them all.</span>
       </div>
       <div class="trust-cell">
         <span class="trust-label">Most jobs</span>
@@ -1416,7 +1416,7 @@
         <div class="step">
           <div class="step-num">01<span class="slash">.</span></div>
           <h3>Drop in or call</h3>
-          <p>5186 Imperial St, Mon–Fri 9–5, Saturday 9–4. Call ahead for larger jobs so we can plan a bay.</p>
+          <p>Mon–Fri 9–5, Saturday 9–4. Closed Sundays and statutory holidays. Call ahead for larger jobs so we can plan a bay.</p>
         </div>
         <div class="step">
           <div class="step-num">02<span class="slash">.</span></div>
@@ -1470,7 +1470,7 @@
       <div class="reviews-top reveal">
         <div class="rating-block">
           <div class="meta">
-            <strong style="font-family:var(--display); font-size:32px; line-height:1; letter-spacing:-.01em;">47+ reviews on Google</strong>
+            <strong style="font-family:var(--display); font-size:32px; line-height:1; letter-spacing:-.01em;">400 reviews on Google</strong>
             <small>Real customers, Imperial Street, Burnaby BC</small>
           </div>
         </div>
@@ -1541,7 +1541,7 @@
               <span class="plus" aria-hidden="true"></span>
             </button>
             <div class="faq-a"><div class="faq-a-inner">
-              For most routine work, oil changes, brakes, tires, diagnostics, no. Just walk in any weekday between 9am and 5pm or Saturday 9am to 4pm. For big jobs (transmission, head gasket) give us a call so we can block off a bay.
+              For most routine work, oil changes, brakes, tires, diagnostics, no. Just walk in any weekday between 9am and 5pm or Saturday 9am to 4pm. We're closed Sundays and on statutory holidays. For big jobs (transmission, head gasket) give us a call so we can block off a bay.
             </div></div>
           </div>
           <div class="faq-item">
@@ -1621,7 +1621,8 @@
               <dd>
                 <span class="b">Mon – Fri</span> · 9:00 am – 5:00 pm<br>
                 <span class="b">Saturday</span> · <span class="accent">9:00 am – 4:00 pm</span><br>
-                <span class="b">Sunday</span> · Closed
+                <span class="b">Sunday</span> · Closed<br>
+                <span class="b">Statutory holidays</span> · Closed
               </dd>
             </div>
             <div class="visit-row">
@@ -1869,6 +1870,18 @@
         return s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
       }
 
+      function stickyHeaderHeight() {
+        const util = document.querySelector(".util");
+        const nav  = document.getElementById("nav");
+        return (util ? util.offsetHeight : 0) + (nav ? nav.offsetHeight : 0) + 16;
+      }
+
+      function scrollToServiceRow(row) {
+        const offset = stickyHeaderHeight();
+        const target = row.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: Math.max(0, target), behavior: "smooth" });
+      }
+
       // ── Highlight rows + column, scroll table into view ───────────
       let pulseTimer = null;
       let colTimer = null;
@@ -1882,11 +1895,7 @@
         const firstRow = allRows[0];
         const col = firstRow.closest(".service-col");
 
-        // Scroll the services table into view, then center the row
-        tableWrap.scrollIntoView({ behavior: "smooth", block: "start" });
-        window.setTimeout(() => {
-          firstRow.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 320);
+        scrollToServiceRow(firstRow);
 
         document.querySelectorAll(".service-col.is-active").forEach((c) => c.classList.remove("is-active"));
         document.querySelectorAll(".service-row.is-pulse").forEach((r) => r.classList.remove("is-pulse"));
