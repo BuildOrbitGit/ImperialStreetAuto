@@ -6,7 +6,7 @@
   <title>Imperial Street Auto Repair · Burnaby, BC</title>
   <meta name="description" content="Walk-in auto repair in Burnaby, BC since 1997. Brakes, diagnostics, oil changes, inspections, tires &amp; alignment. 5186 Imperial St, (604) 434-1120.">
   <meta name="keywords" content="auto repair Burnaby, mechanic near Royal Oak SkyTrain, Imperial Street Auto, walk-in mechanic, pre-purchase inspection Burnaby, brakes Burnaby, oil change Burnaby">
-  <meta name="theme-color" content="#0d0e10">
+  <meta name="theme-color" content="#faf8f4">
   <link rel="canonical" href="https://imperialst.ca/">
 
   <!-- Open Graph / social -->
@@ -14,7 +14,7 @@
   <meta property="og:description" content="Walk-in auto repair in Burnaby, BC since 1997. Honest quotes, same-day service.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://imperialst.ca/">
-  <meta property="og:image" content="imperial-shop-clean.png">
+  <meta property="og:image" content="photos/garage-front.jpg">
   <meta property="og:locale" content="en_CA">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
-  <link rel="preload" as="image" href="imperial-shop-clean.png">
+  <link rel="preload" as="image" href="hero-car-cutout.webp" type="image/webp">
 
   <!-- Local business schema for SEO / Google Business -->
   <script type="application/ld+json">
@@ -31,7 +31,7 @@
     "@context": "https://schema.org",
     "@type": ["AutoRepair", "LocalBusiness"],
     "name": "Imperial Street Auto Repair",
-    "image": "https://imperialst.ca/imperial-shop-clean.png",
+    "image": "https://imperialst.ca/photos/garage-front.jpg",
     "url": "https://imperialst.ca/",
     "telephone": "+1-604-434-1120",
     "email": "info@imperialst.ca",
@@ -721,6 +721,14 @@
       text-transform: uppercase;
       pointer-events: none;
     }
+    @media (max-width: 720px) {
+      .sphere-tag {
+        font-size: clamp(.74rem, 3.4vw, .88rem);
+        padding: 7px 16px;
+        max-width: min(220px, 58vw);
+      }
+      .sphere-stage { height: clamp(280px, 44vw, 400px); }
+    }
 
     /* Master 7-column table */
     .services-table { scroll-margin-top: var(--header-offset, 140px); }
@@ -896,6 +904,7 @@
     .shop-carousel-viewport {
       position: relative;
       overflow: hidden;
+      touch-action: pan-y pinch-zoom;
     }
     .shop-carousel-track {
       display: flex;
@@ -983,6 +992,12 @@
       .shop-carousel-btn { width: 40px; height: 40px; }
       .shop-carousel-btn.prev { left: 10px; }
       .shop-carousel-btn.next { right: 10px; }
+      .shop-figure figcaption {
+        left: 14px; right: 14px; bottom: 14px;
+        max-width: calc(100% - 100px);
+      }
+      .util-phone { display: none; }
+      .util-inner { min-height: 44px; padding: 8px 0; }
     }
 
     /* ── Reviews ──────────────────────────────── */
@@ -1276,7 +1291,10 @@
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a class="brand" href="#top" aria-label="Imperial Street Auto Repair home">
-        <img class="brand-logo" src="IST_logo.png?v=16" alt="Imperial Street Auto Repair, Burnaby BC, established 1997" width="234" height="76">
+        <picture>
+          <source srcset="IST_logo.webp?v=17" type="image/webp">
+          <img class="brand-logo" src="IST_logo.png?v=17" alt="Imperial Street Auto Repair, Burnaby BC, established 1997" width="234" height="76">
+        </picture>
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Primary">
         <a href="#services">Services</a>
@@ -1297,7 +1315,10 @@
   <section class="hero" id="top">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-car-glow" aria-hidden="true"></div>
-    <img class="hero-car" src="hero-car-cutout.png" alt="" aria-hidden="true">
+    <picture>
+      <source srcset="hero-car-cutout.webp?v=2" type="image/webp">
+      <img class="hero-car" src="hero-car-cutout.png?v=2" alt="" aria-hidden="true" width="1400" height="700">
+    </picture>
     <div class="container hero-inner">
       <h1 class="hero-title">Auto Repair<br><span style="color:var(--red); font-size:.66em;">in Burnaby.</span></h1>
 
@@ -2097,8 +2118,10 @@
 
       function renderSphere(now) {
         const rect    = stage.getBoundingClientRect();
-        const radiusX = rect.width  * (rect.width < 720 ? 0.41 : 0.46);
-        const radiusY = rect.height * (rect.width < 720 ? 0.36 : 0.40);
+        const narrow  = rect.width < 720;
+        const radiusX = rect.width  * (narrow ? 0.48 : 0.46);
+        const radiusY = rect.height * (narrow ? 0.38 : 0.40);
+        const tapDepth = narrow ? 0.72 : 0.78;
         if (!isDragging && now > autoAt) { rotX += velX; rotY += velY; }
         sphereItems.forEach((item) => {
           const p     = rotatePt(item);
@@ -2109,7 +2132,7 @@
           item.tag.style.opacity   = (0.18 + depth * 0.82).toFixed(3);
           item.tag.style.filter    = `blur(${((1 - depth) * 1.6).toFixed(2)}px)`;
           item.tag.style.zIndex    = Math.round(depth * 1000);
-          item.tag.style.pointerEvents = depth > 0.78 ? "auto" : "none";
+          item.tag.style.pointerEvents = depth > tapDepth ? "auto" : "none";
         });
         requestAnimationFrame(renderSphere);
       }
@@ -2148,11 +2171,12 @@
 
     // ── Shop photo carousel ───────────────────────────────
     (function () {
-      const track   = document.getElementById("shopCarouselTrack");
-      const prevBtn = document.getElementById("shopCarouselPrev");
-      const nextBtn = document.getElementById("shopCarouselNext");
-      const labelEl = document.getElementById("shopCarouselLabel");
-      const countEl = document.getElementById("shopCarouselCount");
+      const track    = document.getElementById("shopCarouselTrack");
+      const prevBtn  = document.getElementById("shopCarouselPrev");
+      const nextBtn  = document.getElementById("shopCarouselNext");
+      const labelEl  = document.getElementById("shopCarouselLabel");
+      const countEl  = document.getElementById("shopCarouselCount");
+      const viewport = document.querySelector(".shop-carousel-viewport");
       if (!track || !prevBtn || !nextBtn) return;
 
       const slides = [
@@ -2162,6 +2186,8 @@
         { label: "At work",        alt: "workshop" },
       ];
       let index = 0;
+      let touchStartX = 0;
+      let touchDx = 0;
 
       function render() {
         track.style.transform = `translateX(-${index * 100}%)`;
@@ -2181,6 +2207,20 @@
         if (e.key === "ArrowLeft")  { e.preventDefault(); step(-1); }
         if (e.key === "ArrowRight") { e.preventDefault(); step(1); }
       });
+
+      if (viewport) {
+        viewport.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].clientX;
+          touchDx = 0;
+        }, { passive: true });
+        viewport.addEventListener("touchmove", (e) => {
+          touchDx = e.changedTouches[0].clientX - touchStartX;
+        }, { passive: true });
+        viewport.addEventListener("touchend", () => {
+          if (Math.abs(touchDx) > 44) step(touchDx < 0 ? 1 : -1);
+          touchDx = 0;
+        }, { passive: true });
+      }
 
       render();
     })();

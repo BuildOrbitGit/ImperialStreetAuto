@@ -8,6 +8,12 @@
       ]
     },
     {
+      "source": "/IST_logo.webp",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
       "source": "/(.*\\.(?:png|jpg|jpeg|webp|ico|svg|woff2?))",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }
