@@ -316,12 +316,12 @@
     .brand {
       display: flex; align-items: center; gap: 12px;
     }
-    /* Brand logo — transparent PNG, sits directly on dark nav */
+    /* Brand logo — transparent PNG on dark nav; brighten so dark text reads */
     .brand-logo {
       height: 46px;
       width: auto;
       display: block;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,.35));
+      filter: brightness(1.6) contrast(0.9) drop-shadow(0 1px 4px rgba(0,0,0,.4));
     }
     @media (max-width: 680px) {
       .brand-logo { height: 34px; }
@@ -1192,7 +1192,7 @@
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a class="brand" href="#top" aria-label="Imperial Street Auto Repair home">
-        <img class="brand-logo" src="IST_logo.png" alt="Imperial Street Auto Repair, Burnaby BC, established 1997" width="120" height="46">
+        <img class="brand-logo" src="IST_logo.png" alt="Imperial Street Auto Repair, Burnaby BC, established 1997" width="230" height="46">
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Primary">
         <a href="#services">Services</a>
