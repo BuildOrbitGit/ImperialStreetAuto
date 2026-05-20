@@ -647,7 +647,7 @@
     }
     .sphere-stage {
       position: relative;
-      height: clamp(340px, 46vw, 520px);
+      height: clamp(300px, 40vw, 460px);
       overflow: visible;
       background: transparent;
       border: none;
@@ -659,7 +659,10 @@
     .sphere-stage:active { cursor: grabbing; }
     .sphere-grid {
       position: absolute;
-      inset: 10%;
+      left: 2%;
+      right: 2%;
+      top: 6%;
+      bottom: 6%;
       border: 1px solid rgba(31, 83, 214, .14);
       border-radius: 50%;
       background:
@@ -2093,15 +2096,15 @@
       }
 
       function renderSphere(now) {
-        const rect   = stage.getBoundingClientRect();
-        const size   = Math.min(rect.width, rect.height);
-        const radius = size * (rect.width < 720 ? 0.36 : 0.4);
+        const rect    = stage.getBoundingClientRect();
+        const radiusX = rect.width  * (rect.width < 720 ? 0.41 : 0.46);
+        const radiusY = rect.height * (rect.width < 720 ? 0.36 : 0.40);
         if (!isDragging && now > autoAt) { rotX += velX; rotY += velY; }
         sphereItems.forEach((item) => {
           const p     = rotatePt(item);
           const depth = (p.z + 1) / 2;
           const scale = 0.52 + depth * 0.72;
-          const x     = p.x * radius, y = p.y * radius;
+          const x     = p.x * radiusX, y = p.y * radiusY;
           item.tag.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), 0) scale(${scale})`;
           item.tag.style.opacity   = (0.18 + depth * 0.82).toFixed(3);
           item.tag.style.filter    = `blur(${((1 - depth) * 1.6).toFixed(2)}px)`;
