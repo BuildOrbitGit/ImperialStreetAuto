@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
-  <link rel="preload" as="image" href="hero-car-cutout.webp" type="image/webp">
+  <link rel="preload" as="image" href="hero-car-cutout.png">
 
   <!-- Local business schema for SEO / Google Business -->
   <script type="application/ld+json">
@@ -391,7 +391,9 @@
       right: clamp(-40px, -2vw, 30px);
       bottom: clamp(40px, 6vh, 88px);
       width: min(820px, 56vw);
+      height: auto;
       max-width: none;
+      object-fit: contain;
       z-index: 2;
       pointer-events: none;
       filter: drop-shadow(-28px 24px 30px rgba(0,0,0,.5));
@@ -1315,10 +1317,7 @@
   <section class="hero" id="top">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-car-glow" aria-hidden="true"></div>
-    <picture>
-      <source srcset="hero-car-cutout.webp?v=2" type="image/webp">
-      <img class="hero-car" src="hero-car-cutout.png?v=2" alt="" aria-hidden="true" width="1400" height="700">
-    </picture>
+    <img class="hero-car" src="hero-car-cutout.png?v=3" alt="" aria-hidden="true">
     <div class="container hero-inner">
       <h1 class="hero-title">Auto Repair<br><span style="color:var(--red); font-size:.66em;">in Burnaby.</span></h1>
 
