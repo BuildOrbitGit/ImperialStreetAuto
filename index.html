@@ -4,1201 +4,1928 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Imperial Street Auto Repair · Burnaby, BC</title>
-  <meta name="description" content="Walk-in auto repair in Burnaby BC since 1997. Brakes, diagnostics, oil changes, inspections, tires & alignment. 5186 Imperial St · (604) 434-1120.">
+  <meta name="description" content="Walk-in auto repair in Burnaby, BC since 1997. Brakes, diagnostics, oil changes, inspections, tires &amp; alignment. 5186 Imperial St, (604) 434-1120.">
   <meta name="keywords" content="auto repair Burnaby, mechanic near Royal Oak SkyTrain, Imperial Street Auto, walk-in mechanic, pre-purchase inspection Burnaby, brakes Burnaby, oil change Burnaby">
-  <meta name="theme-color" content="#0a1736">
+  <meta name="theme-color" content="#0d0e10">
   <link rel="canonical" href="https://imperialst.ca/">
-  <meta property="og:title" content="Imperial Street Auto Repair · Burnaby BC">
-  <meta property="og:description" content="Walk-in auto repair since 1997. Honest quotes, same-day service.">
+
+  <!-- Open Graph / social -->
+  <meta property="og:title" content="Imperial Street Auto Repair · Burnaby">
+  <meta property="og:description" content="Walk-in auto repair in Burnaby, BC since 1997. Honest quotes, same-day service.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://imperialst.ca/">
   <meta property="og:image" content="imperial-shop-clean.png">
   <meta property="og:locale" content="en_CA">
   <meta name="twitter:card" content="summary_large_image">
 
+  <!-- Fonts: Big Shoulders Display (industrial headline) + Manrope (body) + JetBrains Mono (accents) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
+  <link rel="preload" as="image" href="imperial-shop-clean.png">
+
+  <!-- Local business schema for SEO / Google Business -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": ["AutoRepair","LocalBusiness"],
+    "@type": ["AutoRepair", "LocalBusiness"],
     "name": "Imperial Street Auto Repair",
     "image": "https://imperialst.ca/imperial-shop-clean.png",
     "url": "https://imperialst.ca/",
     "telephone": "+1-604-434-1120",
+    "email": "info@imperialst.ca",
     "priceRange": "$$",
-    "address": { "@type":"PostalAddress","streetAddress":"5186 Imperial St","addressLocality":"Burnaby","addressRegion":"BC","postalCode":"V5J 1E3","addressCountry":"CA" },
-    "geo": { "@type":"GeoCoordinates","latitude":49.2231,"longitude":-123.0011 },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "5186 Imperial St",
+      "addressLocality": "Burnaby",
+      "addressRegion": "BC",
+      "postalCode": "V5J 1E3",
+      "addressCountry": "CA"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 49.2231, "longitude": -123.0011 },
     "openingHoursSpecification": [
-      { "@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00" },
-      { "@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"16:00" }
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "16:00" }
     ],
-    "areaServed":["Burnaby","Vancouver","New Westminster","Coquitlam"],
-    "sameAs":["https://www.facebook.com/ImperialStAuto/","https://www.yelp.ca/biz/imperial-street-auto-repair-burnaby-2"]
+    "areaServed": ["Burnaby","Vancouver","New Westminster","Coquitlam","Metrotown","Royal Oak"],
+    "sameAs": [
+      "https://www.facebook.com/ImperialStAuto/",
+      "https://www.yelp.ca/biz/imperial-street-auto-repair-burnaby-2"
+    ],
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Auto Repair & Diagnostics" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brakes, Tires & Alignment" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pre-Purchase Inspections" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Oil Change & Maintenance" } }
+    ]
   }
   </script>
 
   <style>
+    /* ─────────────────────────────────────────────
+       Imperial Street, design tokens
+       Palette: warm paper · deep ink · automotive red · brass
+       Type: Big Shoulders Display (industrial) + Manrope (humanist)
+       ───────────────────────────────────────────── */
     :root {
+      /* Brand: pristine white, deep corporate navy, royal/electric blue accent */
       --paper:      #f6f8fc;
       --paper-2:    #eaf0f9;
-      --ink:        #0a1736;
+      --paper-3:    #d6e0f0;
+      --ink:        #0a1736;   /* deep corporate navy */
       --ink-2:      #142348;
       --ink-3:      #2a3768;
       --muted:      #5a6385;
       --muted-2:    #8a93b3;
-      --line:       rgba(10,23,54,.14);
-      --line-soft:  rgba(10,23,54,.08);
-      --red:        #1f53d6;
+      --line:       rgba(10, 23, 54, .14);
+      --line-soft:  rgba(10, 23, 54, .08);
+      /* Accent — replaces former red/copper. Kept var names so existing rules cascade. */
+      --red:        #1f53d6;   /* royal/electric blue accent */
       --red-deep:   #143ea7;
-      --red-soft:   rgba(31,83,214,.12);
-      --green:      #10b981;
-      --green-soft: rgba(16,185,129,.18);
-      --glass:      rgba(255,255,255,.58);
+      --red-soft:   rgba(31, 83, 214, .12);
+      --brass:      #5d8df7;   /* light electric blue (on-dark accent) */
+      --brass-deep: #3a6fd9;
+      /* Glassmorphism overlays */
+      --glass:      rgba(255, 255, 255, .58);
+      --glass-dark: rgba(10, 23, 54, .56);
       --glass-blur: blur(18px) saturate(180%);
-      --display:    "Big Shoulders Display","Arial Narrow",sans-serif;
-      --body:       "Manrope","Helvetica Neue",sans-serif;
-      --mono:       "JetBrains Mono",ui-monospace,monospace;
-      --container:  1240px;
+      --glass-line: rgba(255, 255, 255, .42);
+
+      --display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+      --body:    "Manrope", "Helvetica Neue", sans-serif;
+      --mono:    "JetBrains Mono", ui-monospace, monospace;
+
+      --container: 1240px;
+      --shadow-1: 0 1px 0 rgba(13,14,16,.06), 0 1px 2px rgba(13,14,16,.04);
+      --shadow-2: 0 18px 40px -20px rgba(13,14,16,.28);
     }
 
-    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
-    html { scroll-behavior:smooth; }
-    body { background:var(--paper); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
-    a { color:inherit; text-decoration:none; }
-    img,svg { display:block; max-width:100%; }
-    button { font:inherit; cursor:pointer; border:none; background:none; }
-    ::selection { background:var(--ink); color:var(--paper); }
-    .container { width:min(var(--container),calc(100% - 40px)); margin-inline:auto; }
+    *, *::before, *::after { box-sizing: border-box; }
 
-    /* ── Util Bar ─────────────────────────────── */
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+    button { font: inherit; cursor: pointer; }
+
+    ::selection { background: var(--ink); color: var(--paper); }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    /* ── Type system ────────────────────────────── */
+    .display {
+      font-family: var(--display);
+      font-weight: 800;
+      letter-spacing: -.01em;
+      line-height: .92;
+      text-transform: uppercase;
+      font-stretch: 90%;
+    }
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .eyebrow .dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: var(--red);
+      border-radius: 50%;
+      margin-right: 10px;
+      vertical-align: middle;
+      transform: translateY(-1px);
+    }
+    h1, h2, h3, h4 { margin: 0; }
+    h1 { font: 800 clamp(64px, 11vw, 156px)/.88 var(--display); letter-spacing: -.015em; text-transform: uppercase; }
+    h2 { font: 800 clamp(40px, 6vw, 84px)/.92 var(--display); letter-spacing: -.01em; text-transform: uppercase; }
+    h3 { font: 700 22px/1.25 var(--body); letter-spacing: -.005em; }
+    h4 { font: 700 16px/1.3 var(--body); }
+    p  { margin: 0; }
+
+    /* ── Buttons ────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 52px;
+      padding: 0 22px;
+      border: 1px solid var(--ink);
+      border-radius: 2px;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { background: var(--red); border-color: var(--red); transform: translateY(-1px); }
+    .btn.ghost {
+      background: transparent; color: var(--ink);
+    }
+    .btn.ghost:hover { background: var(--ink); color: var(--paper); }
+    .btn.on-dark {
+      background: var(--red); border-color: var(--red); color: #fff;
+    }
+    .btn.on-dark:hover { background: #fff; color: var(--ink); border-color: #fff; }
+    .btn.ghost.on-dark {
+      background: transparent; color: var(--paper); border-color: rgba(255,255,255,.32);
+    }
+    .btn.ghost.on-dark:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+    .btn .arrow { transition: transform .18s ease; }
+    .btn:hover .arrow { transform: translateX(3px); }
+
+    .linklike {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid currentColor;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-family: var(--mono);
+    }
+    .linklike:hover { color: var(--red); }
+
+    /* ── Top utility bar — high-contrast, larger, classy ── */
     .util {
-      background: linear-gradient(180deg,#06102b 0%,#0a1736 100%);
+      background: linear-gradient(180deg, #06102b 0%, #0a1736 100%);
+      color: #fff;
+      font-family: var(--body);
+      font-weight: 500;
+      letter-spacing: .015em;
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
     .util-inner {
       display: flex; align-items: center; justify-content: space-between;
-      gap: 20px; min-height: 56px; padding: 8px 0; flex-wrap: wrap;
+      gap: 24px;
+      min-height: 56px;
+      padding: 10px 0;
+      flex-wrap: wrap;
     }
-    .util-left { display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
-    .status { display:inline-flex; align-items:center; gap:11px; color:#fff; font-size:16px; font-weight:600; }
-    .status-dot {
-      width:11px; height:11px; flex-shrink:0;
-      background:#4adf86; border-radius:50%;
-      box-shadow:0 0 0 5px rgba(74,223,134,.18);
-      animation:pulse 2.4s ease-in-out infinite;
+    .util-left {
+      display: flex; align-items: center; gap: 28px;
+      flex-wrap: wrap;
+      min-width: 0;
     }
-    .status-dot.closed { background:#ff6666; box-shadow:0 0 0 5px rgba(255,102,102,.18); animation:none; }
-    @keyframes pulse {
-      0%,100% { box-shadow:0 0 0 5px rgba(74,223,134,.18); }
-      50%      { box-shadow:0 0 0 9px rgba(74,223,134,.04); }
-    }
+    .util a { color: #fff; text-decoration: none; }
     .util-address {
-      display:inline-flex; align-items:center; gap:9px;
-      color:rgba(255,255,255,.82); font-size:16px; font-weight:500;
-      padding-left:24px; position:relative;
+      position: relative;
+      padding-left: 28px;
+      font-size: 15.5px;
+      font-weight: 500;
+      color: rgba(255,255,255,.88);
+      display: inline-flex; align-items: center; gap: 10px;
     }
     .util-address::before {
-      content:""; position:absolute; left:0; top:50%;
-      width:1px; height:20px; background:rgba(255,255,255,.18); transform:translateY(-50%);
+      content: "";
+      position: absolute; left: 0; top: 50%;
+      width: 1px; height: 20px;
+      background: rgba(255,255,255,.18);
+      transform: translateY(-50%);
     }
-    .util-address svg { width:16px; height:16px; opacity:.8; flex-shrink:0; }
-    .util-address:hover .place { text-decoration:underline; text-underline-offset:3px; }
+    .util-address svg { width: 17px; height: 17px; opacity: .82; flex: 0 0 17px; }
+    .util-address:hover { color: #fff; }
+    .util-address:hover .place {
+      text-decoration: underline; text-underline-offset: 4px;
+      text-decoration-color: rgba(255,255,255,.55);
+    }
     .util-phone {
-      display:inline-flex; align-items:center; gap:10px;
-      color:#fff; font-weight:700; font-size:17px;
-      padding:6px 16px; border-radius:4px;
-      border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.05);
-      transition:background .2s,border-color .2s;
+      display: inline-flex; align-items: center; gap: 10px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: .01em;
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.04);
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
     }
-    .util-phone svg { width:16px; height:16px; }
-    .util-phone:hover { background:var(--red); border-color:var(--red); }
+    .util-phone:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+    .util-phone svg { width: 16px; height: 16px; }
+    .status {
+      display: inline-flex; align-items: center; gap: 12px;
+      color: #fff;
+      font-size: 15.5px;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+    .status-dot {
+      width: 11px; height: 11px;
+      background: #4adf86;
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(74,223,134,.18);
+      animation: pulse 2.4s ease-in-out infinite;
+      flex: 0 0 11px;
+    }
+    .status-dot.closed { background: #ff6666; box-shadow: 0 0 0 5px rgba(255,102,102,.18); animation: none; }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 5px rgba(74,223,134,.18); }
+      50%      { box-shadow: 0 0 0 9px rgba(74,223,134,.04); }
+    }
 
-    /* ── Sticky Nav ───────────────────────────── */
-    .site-nav {
-      position: sticky; top: 0; z-index: 80;
-      background: transparent;
-      border-bottom: 1px solid transparent;
-      transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
-    }
-    .site-nav.scrolled {
-      background: rgba(255,255,255,.88);
+
+    /* ── Header ────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 60;
+      background: rgba(255, 255, 255, .82);
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
-      border-color: var(--line-soft);
-      box-shadow: 0 6px 24px rgba(10,23,54,.07);
+      border-bottom: 1px solid var(--line-soft);
+      transition: box-shadow .25s ease, background .25s ease;
+    }
+    .nav.scrolled {
+      background: rgba(255, 255, 255, .92);
+      box-shadow: 0 1px 0 var(--line), 0 6px 24px rgba(10, 23, 54, .06);
     }
     .nav-inner {
-      display: grid; grid-template-columns: auto 1fr auto;
-      align-items: center; gap: 24px; min-height: 82px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 28px;
+      min-height: 88px;
     }
-    .brand-logo-wrap {
-      display: inline-flex; align-items: center;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 6px; padding: 6px 10px;
-      backdrop-filter: blur(6px);
-      transition: background .3s, border-color .3s, box-shadow .3s;
+    .brand {
+      display: flex; align-items: center; gap: 12px;
     }
-    .site-nav.scrolled .brand-logo-wrap {
-      background: transparent; border-color: transparent;
-      backdrop-filter: none;
-    }
+    /* Brand logo — full horizontal lockup */
     .brand-logo {
-      height: 48px; width: auto;
-      transition: opacity .3s ease;
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+    @media (max-width: 680px) {
+      .brand-logo { height: 42px; }
     }
     .nav-links {
-      display: flex; justify-content: center; gap: 28px;
+      display: flex; justify-content: center; gap: 30px;
       font-size: 14px; font-weight: 600; letter-spacing: .02em;
     }
-    .nav-links a { color: rgba(255,255,255,.82); position: relative; padding: 5px 0; transition: color .2s; }
+    .nav-links a { color: var(--ink-2); position: relative; padding: 6px 0; }
     .nav-links a::after {
-      content:""; position:absolute; left:0; right:0; bottom:0;
-      height:2px; background:#fff; transform:scaleX(0); transform-origin:left; transition:transform .2s;
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+      height: 2px; background: var(--red); transform: scaleX(0); transform-origin: left;
+      transition: transform .22s ease;
     }
-    .nav-links a:hover { color:#fff; }
-    .nav-links a:hover::after { transform:scaleX(1); }
-    .site-nav.scrolled .nav-links a { color: var(--ink-2); }
-    .site-nav.scrolled .nav-links a::after { background: var(--red); }
-    .site-nav.scrolled .nav-links a:hover { color: var(--ink); }
-    .nav-cta-btn {
-      display:inline-flex; align-items:center; gap:9px;
-      height:46px; padding:0 20px; border-radius:2px;
-      background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.28);
-      color:#fff; font-family:var(--body); font-weight:700; font-size:13px;
-      letter-spacing:.04em; text-transform:uppercase;
-      transition:background .2s,border-color .2s,color .2s,transform .15s;
-      white-space:nowrap;
-    }
-    .nav-cta-btn:hover { background:#fff; color:var(--ink); transform:translateY(-1px); }
-    .site-nav.scrolled .nav-cta-btn { background:var(--ink); border-color:var(--ink); color:#fff; }
-    .site-nav.scrolled .nav-cta-btn:hover { background:var(--red); border-color:var(--red); }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta { display: flex; align-items: center; gap: 14px; }
+    .nav-phone { font-family: var(--mono); font-weight: 700; font-size: 13px; color: var(--ink); }
 
-    /* ── Hero ─────────────────────────────────── */
+    .menu-btn {
+      display: none;
+      width: 44px; height: 44px;
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+    }
+    .menu-btn span { display:block; width: 20px; height: 1.5px; background: var(--ink); margin: 5px auto; transition: transform .2s ease, opacity .2s ease; }
+    body.menu-open .menu-btn span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    body.menu-open .menu-btn span:nth-child(2) { opacity: 0; }
+    body.menu-open .menu-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── Hero ──────────────────────────────────── */
     .hero {
-      position: relative; overflow: hidden;
-      background: var(--ink); color: var(--paper); isolation: isolate;
-      min-height: 92vh;
-      display: flex; align-items: center;
-      margin-top: -82px; /* slide under transparent sticky nav */
-      padding-top: 82px;
+      position: relative;
+      overflow: hidden;
+      background: var(--ink);
+      color: var(--paper);
+      isolation: isolate;
     }
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
       background-image:
-        linear-gradient(90deg, rgba(10,23,54,.95) 0%, rgba(10,23,54,.72) 45%, rgba(10,23,54,.38) 72%, rgba(10,23,54,.7) 100%),
+        linear-gradient(90deg, rgba(13,14,16,.92) 0%, rgba(13,14,16,.62) 42%, rgba(13,14,16,.28) 72%, rgba(13,14,16,.62) 100%),
         url("imperial-shop-clean.png");
-      background-size: cover; background-position: center 60%;
-      filter: saturate(.9) contrast(1.05);
+      background-size: cover;
+      background-position: center 65%;
+      filter: saturate(.92) contrast(1.04);
+    }
+    .hero-bg::after {
+      content: ""; position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(180deg, transparent 0 3px, rgba(255,255,255,.012) 3px 4px),
+        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(13,14,16,.7), transparent 70%);
+    }
+    /* Hero car cut-out */
+    .hero-car {
+      position: absolute;
+      right: clamp(-40px, -2vw, 30px);
+      bottom: clamp(40px, 6vh, 88px);
+      width: min(820px, 56vw);
+      max-width: none;
+      z-index: 2;
+      pointer-events: none;
+      filter: drop-shadow(-28px 24px 30px rgba(0,0,0,.5));
+      transform: perspective(900px) rotateY(-6deg) translateZ(20px);
+      transform-origin: 70% 60%;
+      animation: car-arrive 1.1s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .hero-car-glow {
+      position: absolute;
+      right: -10vw;
+      bottom: 4vh;
+      width: 56vw;
+      height: 28vw;
+      z-index: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,56,30,.22), rgba(200,56,30,.06) 40%, transparent 72%);
+      filter: blur(14px);
+      pointer-events: none;
+    }
+    @keyframes car-arrive {
+      from { opacity: 0; transform: perspective(900px) rotateY(-9deg) translateX(80px) translateZ(0) scale(.97); }
+      to   { opacity: 1; transform: perspective(900px) rotateY(-6deg) translateX(0) translateZ(20px) scale(1); }
     }
     .hero-inner {
       position: relative; z-index: 3;
-      display: grid; grid-template-columns: 1.1fr 1fr;
-      gap: 48px; align-items: center;
-      padding: clamp(60px,10vw,140px) 0 clamp(48px,7vw,80px);
-      width: 100%;
+      padding: clamp(80px, 12vw, 160px) 0 clamp(56px, 8vw, 96px);
+      display: grid;
+      gap: clamp(30px, 4vw, 56px);
     }
-    .hero-left {}
-    .hero-eyebrow {
-      font-family: var(--mono); font-size: 12px; font-weight: 500;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: rgba(255,255,255,.5); margin-bottom: 20px;
-      display: flex; align-items: center; gap: 12px;
+    .hero-meta {
+      display: flex; align-items: center; gap: 16px;
+      color: rgba(255,255,255,.74);
+      font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; font-weight: 500;
     }
-    .hero-eyebrow::before {
-      content:""; width:32px; height:1px; background:var(--red); flex-shrink:0;
+    .hero-meta .bar {
+      flex: 0 0 28px;
+      height: 2px;
+      background: var(--red);
     }
     .hero-title {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(52px,8.5vw,128px); line-height: .88;
-      letter-spacing: -.02em; text-transform: uppercase; color: #fff;
-      margin-bottom: clamp(20px,3vw,32px);
+      color: var(--paper);
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(56px, 9vw, 132px);
+      line-height: .88;
+      letter-spacing: -.02em;
+      text-transform: uppercase;
     }
-    .hero-title .accent { color: var(--red); }
-    .hero-sub {
-      font-size: clamp(15px,1.4vw,18px); color: rgba(255,255,255,.72);
-      line-height: 1.6; max-width: 480px; margin-bottom: clamp(28px,4vw,44px);
-    }
-    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
-    .btn-primary {
-      display:inline-flex; align-items:center; gap:10px;
-      height:52px; padding:0 24px; border-radius:2px;
-      background:var(--red); border:1px solid var(--red); color:#fff;
-      font-family:var(--body); font-weight:700; font-size:14px;
-      letter-spacing:.04em; text-transform:uppercase;
-      transition:background .18s,transform .15s,border-color .18s;
-    }
-    .btn-primary:hover { background:#fff; color:var(--ink); border-color:#fff; transform:translateY(-1px); }
-    .btn-ghost-hero {
-      display:inline-flex; align-items:center; gap:10px;
-      height:52px; padding:0 22px; border-radius:2px;
-      background:transparent; border:1px solid rgba(255,255,255,.28); color:#fff;
-      font-family:var(--body); font-weight:700; font-size:14px;
-      letter-spacing:.04em; text-transform:uppercase;
-      transition:background .18s,border-color .18s,transform .15s;
-    }
-    .btn-ghost-hero:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.55); transform:translateY(-1px); }
-    .hero-right { display:flex; justify-content:center; align-items:flex-end; }
-    .hero-car-wrap {
-      position: relative; width: 100%; max-width: 520px;
-      filter: drop-shadow(0 24px 48px rgba(0,0,0,.6));
-    }
-    .hero-car-wrap img { width:100%; height:auto; }
-
-    /* ── Cred Strip ───────────────────────────── */
-    .cred {
-      background: linear-gradient(180deg,#06102b 0%,#0a1736 100%);
-      border-top: 1px solid rgba(255,255,255,.06);
-    }
-    .cred-grid {
-      display: grid; grid-template-columns: repeat(4,1fr);
-      padding: 40px 0; gap: 0;
-    }
-    .cred-item {
-      padding: 0 32px; text-align: center;
-      border-right: 1px solid rgba(255,255,255,.08);
-    }
-    .cred-item:last-child { border-right:none; }
-    .cred-num {
-      font-family: var(--display); font-size: clamp(36px,5vw,64px);
-      font-weight: 900; line-height: 1; color: #fff; letter-spacing: -.01em;
-    }
-    .cred-label {
-      font-family: var(--mono); font-size: 11px; letter-spacing: .18em;
-      text-transform: uppercase; color: rgba(255,255,255,.42); margin-top: 8px;
-    }
-    .cred-sub { font-size: 13px; color: rgba(255,255,255,.56); margin-top: 4px; }
-
-    /* ── Services Section ─────────────────────── */
-    .services-section { padding: clamp(70px,10vw,120px) 0; background: var(--paper); }
-    .section-eyebrow {
-      font-family: var(--mono); font-size: 11px; font-weight: 500;
-      letter-spacing: .2em; text-transform: uppercase; color: var(--muted);
-      margin-bottom: 14px; display: flex; align-items: center; gap: 12px;
-    }
-    .section-eyebrow::before { content:""; width:24px; height:1px; background:var(--red); flex-shrink:0; }
-    .section-h2 {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(36px,5.5vw,72px); line-height: .92;
-      letter-spacing: -.01em; text-transform: uppercase;
-      color: var(--ink); margin-bottom: 14px;
-    }
-    .section-sub { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.6; }
-    .section-header { margin-bottom: 56px; }
-
-    /* Sphere */
-    .sphere-wrap {
-      display: flex; justify-content: center; margin-bottom: 16px;
-    }
-    .sphere-stage {
-      position: relative;
-      width: min(720px,100%); height: 580px;
-      border-radius: 16px;
-      border: 1px solid var(--line-soft);
-      background: rgba(255,255,255,.6);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    .sphere-tags { position: absolute; inset: 0; }
-    .sphere-tag {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      background: rgba(10,23,54,.06);
-      border: 1px solid rgba(10,23,54,.10);
-      color: var(--ink-2);
-      padding: 6px 14px; border-radius: 100px;
-      font-size: 13px; font-weight: 600; font-family: var(--body);
-      white-space: nowrap; cursor: pointer;
-      transition: color .15s, border-color .15s, background .15s;
-      pointer-events: all;
-    }
-    .sphere-tag:hover { color: var(--red); border-color: var(--red); background: var(--red-soft); }
-
-    /* Services table */
-    .services-table-wrap {
-      margin-top: 44px; border-radius: 12px; overflow: hidden;
-      border: 1px solid var(--line);
-      box-shadow: 0 8px 40px rgba(10,23,54,.10);
-    }
-    .services-table { width:100%; border-collapse:collapse; font-size:14px; }
-    .services-table th {
-      background: var(--ink); color: rgba(255,255,255,.92);
-      text-transform: uppercase; font-family: var(--mono);
-      font-size: 10px; letter-spacing: .18em; font-weight: 700;
-      padding: 16px 18px; text-align: left;
-      border-right: 1px solid rgba(255,255,255,.07);
-      border-bottom: 3px solid;
-    }
-    /* Per-column accent colours on the bottom border */
-    .services-table th:nth-child(1) { border-bottom-color: #3b82f6; }
-    .services-table th:nth-child(2) { border-bottom-color: #f59e0b; }
-    .services-table th:nth-child(3) { border-bottom-color: #10b981; }
-    .services-table th:nth-child(4) { border-bottom-color: #8b5cf6; }
-    .services-table th:nth-child(5) { border-bottom-color: #ef4444; }
-    .services-table th:nth-child(6) { border-bottom-color: #06b6d4; }
-    .services-table th:nth-child(7) { border-bottom-color: #f97316; }
-    .services-table th:last-child { border-right: none; }
-    .services-table td {
-      padding: 13px 18px; color: var(--ink-2);
-      font-family: var(--body); font-size: 14px; font-weight: 500;
-      border-bottom: 1px solid var(--line-soft);
-      border-right: 1px solid var(--line-soft);
-      transition: background .15s, color .15s;
-    }
-    .services-table tbody tr:nth-child(even) td { background: rgba(10,23,54,.025); }
-    .services-table td:last-child { border-right: none; }
-    .services-table td:empty { background: rgba(10,23,54,.018) !important; }
-    .services-table tr:last-child td { border-bottom: none; }
-    .services-table tbody tr:hover td:not(:empty) {
-      background: var(--red-soft); color: var(--red); font-weight: 600;
-    }
-    .services-table td.svc-highlight {
-      background: var(--green-soft) !important;
-      color: var(--green) !important;
-      font-weight: 700;
-      border-left: 2px solid rgba(16,185,129,.4);
-    }
-    .services-table td.svc-highlight.svc-fade {
-      transition: background 3.5s ease, color 3.5s ease, border-color 3.5s ease;
-      background: transparent !important;
-      color: var(--muted) !important;
-      font-weight: 400;
-      border-left-color: transparent;
-    }
-    .table-foot {
-      text-align: center; margin-top: 20px;
-      font-size: 15px; color: var(--muted);
-    }
-    .table-foot a { color: var(--red); font-weight: 600; border-bottom: 1px solid currentColor; }
-
-    /* ── Specials ─────────────────────────────── */
-    .specials-section {
-      background: var(--ink); color: var(--paper);
-      padding: clamp(56px,7vw,88px) 0;
-    }
-    .specials-layout {
-      display: grid; grid-template-columns: 1fr 1.6fr;
-      gap: 48px; align-items: center;
-    }
-    .specials-eyebrow {
-      font-family: var(--mono); font-size: 11px; font-weight: 600;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: var(--red); margin-bottom: 14px;
-    }
-    .specials-heading {
-      font-family: var(--display); font-size: clamp(40px,5vw,72px);
-      font-weight: 900; text-transform: uppercase; line-height: .92;
-      letter-spacing: -.01em;
-    }
-    .specials-note {
-      margin-top: 16px; color: rgba(255,255,255,.48);
-      font-size: 14px; line-height: 1.55;
-    }
-    .specials-cards {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-    }
-    .special-card {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 10px; padding: 28px 24px;
-      transition: background .2s, border-color .2s;
-    }
-    .special-card:hover {
-      background: rgba(255,255,255,.09);
-      border-color: rgba(255,255,255,.18);
-    }
-    .special-tag {
+    .hero-title .amp {
       display: inline-block;
-      font-family: var(--mono); font-size: 10px; font-weight: 700;
-      letter-spacing: .18em; text-transform: uppercase;
-      color: var(--red); border: 1px solid var(--red);
-      border-radius: 3px; padding: 3px 8px; margin-bottom: 14px;
+      font-family: var(--body);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--red);
+      transform: translateY(-.06em);
+      font-size: .8em;
+      padding: 0 .08em;
     }
-    .special-name {
-      font-family: var(--mono); font-size: 11px; font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase;
-      color: rgba(255,255,255,.6); margin-bottom: 8px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .8fr;
+      gap: clamp(28px, 4vw, 56px);
+      align-items: end;
     }
-    .special-desc {
-      font-size: 13.5px; color: rgba(255,255,255,.45);
-      line-height: 1.5; margin-bottom: 20px;
+    .hero-tag {
+      max-width: 460px;
+      color: rgba(255,255,255,.78);
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.55;
     }
-    .special-price {
-      display: flex; align-items: baseline; gap: 4px;
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Marquee / shop signage strip */
+    .signage {
+      position: relative;
+      background: var(--red);
+      color: #fff;
+      overflow: hidden;
+      border-block: 1px solid var(--red-deep);
     }
-    .price-from {
-      font-family: var(--mono); font-size: 10px; font-weight: 600;
-      letter-spacing: .12em; text-transform: uppercase;
-      color: rgba(255,255,255,.4); margin-right: 4px;
+    .signage-track {
+      display: flex; gap: 48px;
+      padding: 14px 0;
+      white-space: nowrap;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      animation: marquee 38s linear infinite;
+      width: max-content;
     }
-    .price-num {
-      font-family: var(--display); font-size: clamp(36px,4.5vw,54px);
-      font-weight: 900; color: #fff; line-height: 1;
+    .signage-track span { display: inline-flex; align-items: center; gap: 48px; }
+    .signage-track .sep {
+      width: 8px; height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: .85;
+      flex: 0 0 8px;
+      align-self: center;
     }
-    .price-plus {
-      font-family: var(--display); font-size: 28px; font-weight: 900;
-      color: var(--red); line-height: 1;
-    }
-    @media (max-width:768px) {
-      .specials-layout { grid-template-columns: 1fr; }
-      .specials-cards { grid-template-columns: 1fr; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
 
-    /* ── About / Team ─────────────────────────── */
-    .about-section { padding: clamp(70px,9vw,110px) 0; background: var(--paper-2); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center; }
-    .about-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .about-photos img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:10px; border:1px solid var(--line-soft); }
-    .about-photos img.wide { grid-column:span 2; aspect-ratio:2.2/1; }
-    .about-text {}
-    .about-text h2 { font-family:var(--display); font-size:clamp(34px,4vw,54px); font-weight:900; text-transform:uppercase; line-height:.94; letter-spacing:-.01em; margin-bottom:20px; }
-    .about-text p { color:var(--muted); font-size:15.5px; line-height:1.65; margin-bottom:14px; }
-    .stats-row { display:flex; gap:36px; margin-top:32px; padding-top:32px; border-top:1px solid var(--line-soft); }
-    .stat h4 { font-family:var(--display); font-size:44px; font-weight:900; color:var(--red); line-height:1; }
-    .stat p { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:5px; }
+    /* ── Trust / stats strip ───────────────────── */
+    .trust {
+      background: var(--ink);
+      color: var(--paper);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .trust-cell {
+      padding: 38px 28px;
+      border-right: 1px solid rgba(255,255,255,.08);
+      display: grid;
+      gap: 6px;
+    }
+    .trust-cell:last-child { border-right: 0; }
+    .trust-num {
+      font: 800 clamp(38px, 4vw, 56px)/.95 var(--display);
+      letter-spacing: -.01em;
+      color: var(--paper);
+    }
+    .trust-num .accent { color: var(--red); }
+    .trust-label {
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+    }
+    .trust-desc { color: rgba(255,255,255,.74); font-size: 14px; line-height: 1.45; max-width: 260px; }
+
+    /* ── Section base ──────────────────────────── */
+    section { position: relative; }
+    .section { padding: clamp(72px, 9vw, 128px) 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 64px);
+      align-items: end;
+      margin-bottom: clamp(40px, 5vw, 72px);
+    }
+    .section-head .right { max-width: 460px; color: var(--muted); font-size: 16px; }
+    .section-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .22em;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-num::before {
+      content: ""; width: 24px; height: 1px; background: var(--red);
+    }
+
+    /* ── Specials strip ───────────────────────── */
+    .specials {
+      background: var(--paper-2);
+      border-bottom: 1px solid var(--line);
+    }
+    .specials-inner {
+      padding: 36px 0;
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      align-items: stretch;
+    }
+    .specials-intro {
+      display: grid;
+      gap: 10px;
+      align-content: center;
+      padding-right: 12px;
+      border-right: 1px solid var(--line);
+    }
+    .specials-intro .label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+    .specials-intro h3 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(28px, 3vw, 36px);
+      letter-spacing: -.005em;
+      text-transform: uppercase;
+      line-height: .95;
+    }
+    .specials-intro p {
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.5;
+      max-width: 28ch;
+    }
+    .deal {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 22px;
+      background: #fff;
+      border: 1px solid var(--line);
+      transition: border-color .2s ease, transform .2s ease;
+    }
+    .deal:hover { border-color: var(--ink); transform: translateY(-2px); }
+    .deal-meta { display: grid; gap: 6px; }
+    .deal-tag {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+    .deal-name {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 1;
+      letter-spacing: -.005em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .deal-note {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+      max-width: 30ch;
+    }
+    .deal-price {
+      display: grid;
+      justify-items: end;
+      align-content: center;
+      padding-left: 16px;
+      border-left: 1px solid var(--line);
+      min-width: 110px;
+    }
+    .deal-price .from {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+    .deal-price .num {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(32px, 3.4vw, 44px);
+      line-height: 1;
+      letter-spacing: -.015em;
+      color: var(--ink);
+    }
+    .deal-price .plus { color: var(--red); }
+    @media (max-width: 1080px) {
+      .specials-inner { grid-template-columns: 1fr 1fr; }
+      .specials-intro { grid-column: 1 / -1; border-right: 0; border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+    }
+    @media (max-width: 680px) {
+      .specials-inner { grid-template-columns: 1fr; }
+      .deal { grid-template-columns: 1fr; }
+      .deal-price { justify-items: start; padding-left: 0; border-left: 0; padding-top: 8px; border-top: 1px solid var(--line); min-width: 0; }
+    }
+
+    /* ── Services: word chart + master table ─────── */
+    .services-section {
+      position: relative;
+      background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 60%, var(--paper) 100%);
+      overflow: hidden;
+    }
+    .services-bg {
+      position: absolute; inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 0%, rgba(31, 83, 214, .14), transparent 70%),
+        radial-gradient(ellipse 50% 35% at 80% 100%, rgba(10, 23, 54, .08), transparent 70%);
+    }
+    .services-section .container { position: relative; z-index: 1; }
+
+    /* Floating word chart — frosted-glass container */
+    .word-chart {
+      position: relative;
+      margin: 8px 0 64px;
+      padding: clamp(28px, 4vw, 56px) clamp(20px, 3vw, 44px) clamp(20px, 3vw, 36px);
+      background: rgba(255, 255, 255, .42);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid rgba(255, 255, 255, .56);
+      border-radius: 18px;
+      box-shadow:
+        0 30px 80px -40px rgba(10, 23, 54, .25),
+        inset 0 1px 0 rgba(255, 255, 255, .8);
+    }
+    .word-chart::before {
+      content: ""; position: absolute; inset: 0;
+      border-radius: 18px; pointer-events: none;
+      background: linear-gradient(180deg, transparent 70%, rgba(246, 248, 252, .35));
+    }
+    .word-chart-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .chip {
+      position: relative;
+      display: inline-flex; align-items: center;
+      padding: 9px 18px;
+      background: rgba(255, 255, 255, .68);
+      border: 1px solid rgba(31, 83, 214, .18);
+      border-radius: 999px;
+      color: var(--ink);
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: .005em;
+      line-height: 1;
+      cursor: pointer;
+      transition:
+        transform .25s cubic-bezier(.2, .8, .2, 1),
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        box-shadow .25s ease;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .chip:hover, .chip:focus-visible {
+      transform: translateY(-2px) scale(1.04);
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+      box-shadow: 0 10px 24px -10px rgba(10, 23, 54, .42);
+      outline: none;
+    }
+    .chip[data-tier="lg"] { font-size: 18px; padding: 11px 22px; font-weight: 700; }
+    .chip[data-tier="md"] { font-size: 16px; padding: 10px 19px; }
+    .chip[data-tier="sm"] { font-size: 14px; padding: 8px 15px; color: var(--ink-3); }
+    .chip[data-tier="xl"] {
+      font-size: 20px; padding: 12px 24px; font-weight: 700;
+      background: rgba(31, 83, 214, .10);
+      border-color: rgba(31, 83, 214, .28);
+      color: var(--red-deep);
+    }
+    .chip[data-tier="xl"]:hover { background: var(--red); border-color: var(--red); color: #fff; }
+    .chip.is-active {
+      background: var(--red); border-color: var(--red); color: #fff;
+      transform: translateY(-2px) scale(1.06);
+      box-shadow: 0 12px 28px -8px rgba(31, 83, 214, .45);
+    }
+
+    .word-chart-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+      margin-top: clamp(20px, 3vw, 32px);
+      padding-top: 18px;
+      border-top: 1px dashed rgba(10, 23, 54, .14);
+      position: relative; z-index: 1;
+    }
+    .word-chart-hint {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .word-chart-jump {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 16px;
+      font-family: var(--body);
+      font-weight: 600; font-size: 13px;
+      letter-spacing: .03em; text-transform: uppercase;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      transition: background .2s ease, color .2s ease, border-color .2s ease;
+    }
+    .word-chart-jump:hover { background: var(--red); color: #fff; border-color: var(--red); }
+    .word-chart-jump svg { width: 14px; height: 14px; }
+
+    /* Master 7-column table */
+    .services-table { scroll-margin-top: 120px; }
+    .services-table-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 0;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px -50px rgba(10, 23, 54, .25);
+    }
+    .service-col {
+      display: flex; flex-direction: column;
+      border-right: 1px solid var(--line-soft);
+      background: #fff;
+    }
+    .service-col:last-child { border-right: 0; }
+    .service-col-head {
+      padding: 18px 18px 14px;
+      background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+      color: #fff;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      line-height: 1.15;
+      border-bottom: 2px solid var(--red);
+      min-height: 68px;
+      display: flex; align-items: center;
+    }
+    .service-row {
+      padding: 12px 16px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--ink);
+      border-bottom: 1px solid var(--line-soft);
+      transition: background .2s ease, color .2s ease, padding .2s ease;
+      line-height: 1.35;
+      scroll-margin-top: 120px;
+    }
+    .service-row:last-child { border-bottom: 0; }
+    .service-row:hover { background: var(--paper); }
+    .service-row.is-pulse {
+      background: var(--red);
+      color: #fff;
+      padding-left: 22px;
+      animation: cell-pulse 1.8s ease;
+    }
+    @keyframes cell-pulse {
+      0%   { background: var(--red); box-shadow: 0 0 0 0 rgba(31, 83, 214, .45); }
+      40%  { background: var(--red); box-shadow: 0 0 0 12px rgba(31, 83, 214, 0); }
+      100% { background: var(--red); box-shadow: 0 0 0 0 rgba(31, 83, 214, 0); }
+    }
+    .services-foot {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .services-foot a {
+      color: var(--red);
+      font-weight: 700;
+      border-bottom: 1px solid currentColor;
+    }
+    .services-foot a:hover { color: var(--red-deep); }
+
+    /* Responsive: 4 cols @ <1280, 2 cols @ <900, 1 col @ <560 */
+    @media (max-width: 1280px) {
+      .services-table-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .service-col:nth-child(4) { border-right: 0; }
+      .service-col:nth-child(n+5) { border-top: 1px solid var(--line-soft); }
+    }
+    @media (max-width: 900px) {
+      .services-table-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .service-col { border-right: 1px solid var(--line-soft); }
+      .service-col:nth-child(2n) { border-right: 0; }
+      .service-col:nth-child(n+3) { border-top: 1px solid var(--line-soft); }
+    }
+    @media (max-width: 560px) {
+      .services-table-grid { grid-template-columns: 1fr; }
+      .service-col { border-right: 0; }
+      .service-col:nth-child(n+2) { border-top: 1px solid var(--line-soft); }
+    }
+
+    /* ── Process / "How a visit goes" ──────────── */
+    .process-section { background: var(--paper-2); }
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+    .step {
+      padding: 32px 28px 36px;
+      border-right: 1px solid var(--line);
+      position: relative;
+    }
+    .step:last-child { border-right: 0; }
+    .step-num {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 24px;
+      letter-spacing: -.02em;
+    }
+    .step-num .slash { color: var(--red); }
+    .step h3 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 24px;
+      letter-spacing: -.005em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .step p { color: var(--muted); font-size: 14.5px; line-height: 1.55; }
+
+    /* ── Why us / cards ────────────────────────── */
+    .why-section { background: var(--paper); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .why-card {
+      padding: 32px;
+      background: #fff;
+      border: 1px solid var(--line);
+      display: grid;
+      gap: 18px;
+      transition: border-color .2s ease, transform .2s ease;
+    }
+    .why-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+    .why-icon {
+      width: 48px; height: 48px;
+      display: grid; place-items: center;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 2px;
+    }
+    .why-icon svg { width: 24px; height: 24px; }
+    .why-card h3 { font-family: var(--display); font-size: 24px; text-transform: uppercase; letter-spacing: -.005em; }
+    .why-card p { color: var(--muted); font-size: 14.5px; line-height: 1.55; }
+
+    /* ── Shop figure / team photo ─────────────── */
+    .shop-section { background: var(--paper); }
+    .shop-figure {
+      position: relative;
+      margin: 0;
+      border: 1px solid var(--line);
+      background: var(--paper-2);
+      overflow: hidden;
+    }
+    .shop-figure img {
+      display: block;
+      width: 100%;
+      height: clamp(360px, 56vw, 640px);
+      object-fit: cover;
+      filter: contrast(1.03) saturate(.95);
+    }
+    .shop-figure figcaption {
+      position: absolute;
+      left: 22px; bottom: 22px;
+      padding: 14px 18px;
+      background: rgba(13,14,16,.86);
+      color: #fff;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: grid;
+      gap: 4px;
+    }
+    .shop-figure figcaption span {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.66);
+    }
+    .shop-figure figcaption strong {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -.005em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
 
     /* ── Reviews ──────────────────────────────── */
-    .reviews-section { padding: clamp(60px,8vw,100px) 0; background: var(--ink); color: #fff; }
-    .reviews-section .section-eyebrow { color: rgba(255,255,255,.42); }
-    .reviews-section .section-eyebrow::before { background: var(--red); }
-    .reviews-section .section-h2 { color: #fff; }
-    .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
-    .review-card {
-      background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.09);
-      border-radius: 10px; padding: 28px;
+    .reviews-section { background: var(--paper-2); }
+    .reviews-top {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+      margin-bottom: 40px;
     }
-    .review-stars { color: #f59e0b; font-size: 15px; letter-spacing: 2px; margin-bottom: 14px; }
-    .review-text { font-size: 15px; color: rgba(255,255,255,.7); line-height: 1.65; margin-bottom: 18px; font-style: italic; }
-    .review-author { font-weight: 700; color: #fff; font-size: 14px; }
-    .review-via { font-size: 12px; color: rgba(255,255,255,.38); font-family: var(--mono); letter-spacing: .1em; }
+    .rating-block { display: flex; align-items: center; gap: 18px; }
+    .rating-block .num {
+      font-family: var(--display); font-weight: 900;
+      font-size: 64px; line-height: 1; letter-spacing: -.02em;
+    }
+    .rating-block .meta {
+      display: grid; gap: 4px;
+    }
+    .stars {
+      color: #e6a521;
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+    .rating-block small {
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: .22em; text-transform: uppercase; color: var(--muted);
+    }
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .review {
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 26px;
+      display: grid; gap: 14px;
+    }
+    .review-stars { color: #e6a521; letter-spacing: 2px; font-size: 14px; }
+    .review-q { font-family: var(--display); font-size: 56px; line-height: .6; color: var(--red); height: 22px; }
+    .review-text { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+    .review-by {
+      display: flex; align-items: center; gap: 10px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line-soft);
+      font-size: 13px;
+    }
+    .review-avatar {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--ink); color: var(--paper);
+      display: grid; place-items: center;
+      font-weight: 700; font-size: 12px;
+      font-family: var(--mono);
+    }
+    .review-by strong { font-weight: 700; }
+    .review-by .small { color: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
 
     /* ── FAQ ──────────────────────────────────── */
-    .faq-section { padding: clamp(60px,8vw,100px) 0; background: var(--paper); }
-    .faq-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: start; }
-    .faq-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--line); }
+    .faq-section { background: var(--paper); }
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: clamp(28px, 4vw, 64px);
+      align-items: start;
+    }
+    .faq-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
     .faq-item { border-bottom: 1px solid var(--line); }
     .faq-q {
-      width: 100%; text-align: left; background: none; border: none;
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 16px; padding: 20px 0; cursor: pointer;
-      font-size: 16px; font-weight: 700; color: var(--ink); font-family: var(--body);
-      transition: color .2s;
+      width: 100%; background: none; border: 0;
+      padding: 22px 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 18px;
+      color: var(--ink);
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: -.005em;
+      text-align: left;
+      line-height: 1.15;
     }
-    .faq-q:hover { color: var(--red); }
-    .faq-icon {
-      width: 26px; height: 26px; border-radius: 50%;
-      border: 1.5px solid var(--line); display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; transition: background .2s, border-color .2s;
-      font-size: 16px; color: var(--muted); line-height: 1;
+    .faq-q .plus {
+      width: 28px; height: 28px;
+      display: grid; place-items: center;
+      flex: 0 0 28px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      position: relative;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
     }
-    .faq-item.open .faq-q { color: var(--red); }
-    .faq-item.open .faq-icon { background: var(--red); border-color: var(--red); color: #fff; }
+    .faq-q .plus::before, .faq-q .plus::after {
+      content: ""; position: absolute; background: currentColor;
+    }
+    .faq-q .plus::before { width: 12px; height: 1.5px; }
+    .faq-q .plus::after  { width: 1.5px; height: 12px; transition: transform .2s ease; }
+    .faq-item.open .faq-q .plus { background: var(--red); color: #fff; border-color: var(--red); }
+    .faq-item.open .faq-q .plus::after { transform: scaleY(0); }
     .faq-a {
-      font-size: 15px; color: var(--muted); line-height: 1.65;
-      padding: 0 0 20px; display: none;
+      max-height: 0; overflow: hidden;
+      transition: max-height .35s ease;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.65;
     }
-    .faq-item.open .faq-a { display: block; }
+    .faq-a-inner { padding: 0 0 22px; max-width: 60ch; }
+    .faq-item.open .faq-a { max-height: 280px; }
 
-    /* ── Contact / Visit ──────────────────────── */
-    .contact-section { padding: clamp(60px,8vw,100px) 0; background: var(--ink); color: #fff; }
-    .contact-section .section-eyebrow { color: rgba(255,255,255,.42); }
-    .contact-section .section-eyebrow::before { background: var(--red); }
-    .contact-section .section-h2 { color: #fff; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; margin-top: 48px; align-items: start; }
-    .contact-card {
-      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.09);
-      border-radius: 12px; padding: 36px;
+    /* ── Visit / contact ──────────────────────── */
+    .visit-section { background: var(--ink); color: var(--paper); }
+    .visit-section h2 { color: var(--paper); }
+    .visit-section .right { color: rgba(255,255,255,.72); }
+    .visit-section .section-num { color: var(--red); }
+    .visit-section .section-num::before { background: var(--red); }
+    .visit-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 0;
+      border: 1px solid rgba(255,255,255,.1);
+      background: var(--ink-2);
+      overflow: hidden;
     }
-    .info-rows { display: flex; flex-direction: column; gap: 20px; margin-bottom: 32px; }
-    .info-row { display: grid; grid-template-columns: 100px 1fr; gap: 12px; align-items: start; }
-    .info-label { font-family: var(--mono); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.38); padding-top: 2px; }
-    .info-val { font-size: 15.5px; color: #fff; font-weight: 500; line-height: 1.55; }
-    .info-val a { color: #fff; }
-    .info-val .sat { color: rgba(255,255,255,.55); font-size: 14px; }
-    .contact-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .map-wrap { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,.09); height: 380px; }
-    .map-wrap iframe { width: 100%; height: 100%; border: none; }
+    .visit-info { padding: 40px; display: grid; gap: 0; }
+    .visit-row {
+      display: grid; grid-template-columns: 130px 1fr; gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      align-items: baseline;
+    }
+    .visit-row:last-child { border-bottom: 0; }
+    .visit-row dt {
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+    }
+    .visit-row dd { margin: 0; font-size: 16px; color: var(--paper); font-weight: 500; }
+    .visit-row dd .b { font-weight: 700; }
+    .visit-row dd .accent { color: var(--brass); font-weight: 700; }
+    .visit-row dd a { color: var(--paper); border-bottom: 1px solid rgba(255,255,255,.3); }
+    .visit-row dd a:hover { color: #fff; border-bottom-color: var(--red); }
+    .visit-cta { display: flex; gap: 12px; padding-top: 22px; flex-wrap: wrap; }
+    .visit-map { position: relative; min-height: 460px; background: var(--ink-3); }
+    .visit-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(.4) contrast(1.1); }
+    .visit-map .pin {
+      position: absolute; top: 18px; right: 18px; z-index: 2;
+      padding: 8px 12px;
+      background: var(--red); color: #fff;
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600;
+    }
 
-    /* ── Footer ───────────────────────────────── */
+    /* ── Footer ──────────────────────────────── */
     footer {
-      background: #040710; border-top: 1px solid rgba(255,255,255,.06);
-      padding: 56px 24px 28px; color: rgba(255,255,255,.42); font-size: 13.5px;
+      background: #050608;
+      color: rgba(255,255,255,.65);
+      padding: 56px 0 28px;
     }
-    .footer-grid { max-width: var(--container); margin: 0 auto 40px; display: grid; grid-template-columns: 1.5fr repeat(3,1fr); gap: 40px; }
-    .footer-brand h4 { font-family:var(--display); font-size:22px; color:#fff; font-weight:900; margin-bottom:10px; }
-    .footer-col h5 { font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:16px; }
-    .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
-    .footer-col ul a { color:rgba(255,255,255,.5); transition:color .2s; }
-    .footer-col ul a:hover { color:#fff; }
-    .footer-bottom { max-width:var(--container); margin:0 auto; border-top:1px solid rgba(255,255,255,.06); padding-top:24px; display:flex; justify-content:space-between; font-size:12px; }
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .7fr .7fr .9fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .foot-grid h4 {
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .foot-links { display: grid; gap: 8px; font-size: 14px; }
+    .foot-links a:hover { color: #fff; }
+    .foot-bottom {
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      padding-top: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.42);
+    }
+    .foot-brand {
+      font-family: var(--display); font-weight: 800;
+      font-size: 28px; text-transform: uppercase;
+      color: #fff; letter-spacing: -.005em; line-height: 1;
+    }
+    .foot-brand small {
+      display: block;
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: .22em; color: rgba(255,255,255,.45);
+      margin-top: 6px; font-weight: 500;
+    }
+    .foot-pitch { color: rgba(255,255,255,.65); font-size: 14px; line-height: 1.55; margin-top: 18px; max-width: 360px; }
 
-    /* ── Responsive ───────────────────────────── */
-    @media (max-width: 1024px) {
-      .cred-grid { grid-template-columns: repeat(2,1fr); }
-      .cred-item:nth-child(2) { border-right: none; }
-      .cred-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,.08); }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .reviews-grid { grid-template-columns: 1fr; }
-      .faq-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+    /* ── Floating call button (mobile) ─────── */
+    .call-fab {
+      display: none;
+      position: fixed; right: 18px; bottom: 18px; z-index: 80;
+      align-items: center; gap: 8px;
+      padding: 0 18px; height: 50px;
+      background: var(--ink); color: #fff;
+      font-family: var(--body); font-weight: 700; font-size: 13.5px;
+      letter-spacing: .04em; text-transform: uppercase;
+      border-radius: 2px;
+      box-shadow: 0 8px 20px rgba(13,14,16,.22);
+      border: 1px solid var(--ink);
     }
-    @media (max-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-right { display: none; }
+    .call-fab:hover { background: var(--red); border-color: var(--red); }
+    .call-fab svg { width: 16px; height: 16px; }
+
+    /* ── Reveal-on-scroll ─────────────────── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in  { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ────────────────────────── */
+    @media (max-width: 1080px) {
       .nav-links { display: none; }
-      .nav-inner { grid-template-columns: 1fr auto; }
-      .util-address { display: none; }
-      .services-table-wrap { overflow-x: auto; }
-      .services-table { min-width: 740px; }
-      .cred-grid { grid-template-columns: 1fr 1fr; }
-      .about-photos { grid-template-columns: 1fr; }
-      .about-photos img.wide { aspect-ratio: 16/9; }
-      .reviews-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 6px; }
-      .sphere-stage { height: 420px; }
+      .menu-btn { display: block; }
+      body.menu-open .nav-links {
+        display: flex;
+        position: absolute; left: 20px; right: 20px; top: 76px;
+        flex-direction: column;
+        background: var(--paper); padding: 18px; gap: 6px;
+        border: 1px solid var(--line);
+        z-index: 70;
+      }
+      body.menu-open .nav-links a { padding: 12px; border-bottom: 1px solid var(--line-soft); }
+      body.menu-open .nav-links a:last-child { border-bottom: 0; }
+      .pillars { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: repeat(2,1fr); }
+      .trust-cell:nth-child(2) { border-right: 0; }
+      .trust-cell:nth-child(3), .trust-cell:nth-child(4) { border-top: 1px solid rgba(255,255,255,.08); }
+      .process { grid-template-columns: repeat(2,1fr); }
+      .step:nth-child(2) { border-right: 0; }
+      .step:nth-child(3), .step:nth-child(4) { border-top: 1px solid var(--line); }
+      .why-grid { grid-template-columns: repeat(2,1fr); }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+      .ba-wrap { grid-template-columns: 1fr; }
+      .visit-layout { grid-template-columns: 1fr; }
+      .visit-map { min-height: 360px; }
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+      .section-head { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .trust-grid { grid-template-columns: 1fr; }
+      .trust-cell { border-right: 0; border-top: 1px solid rgba(255,255,255,.08); }
+      .trust-cell:first-child { border-top: 0; }
+      .process { grid-template-columns: 1fr; }
+      .step { border-right: 0; border-top: 1px solid var(--line); }
+      .step:first-child { border-top: 0; }
+      .why-grid, .reviews-grid { grid-template-columns: 1fr; }
+      .svc-list { grid-template-columns: 1fr; }
+      .svc-list li:nth-child(even) { padding-left: 0; border-left: 0; }
+      .call-fab { display: inline-flex; }
+      .nav-cta .btn { display: none; }
+      .hero-car {
+        right: -40px;
+        bottom: 18px;
+        width: 92vw;
+        opacity: .32;
+        filter: drop-shadow(0 18px 26px rgba(0,0,0,.5));
+        transform: none;
+      }
+      .hero-car-glow { display: none; }
+      .faq-layout { grid-template-columns: 1fr; }
+      .foot-grid { grid-template-columns: 1fr; }
+      .pillar-body, .pillar-hd, .pillar-foot, .visit-info { padding-inline: 22px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── Utility Bar ─────────────────────────────── -->
-<div class="util">
-  <div class="container util-inner">
-    <div class="util-left">
-      <div class="status">
-        <div class="status-dot" id="statusDot"></div>
-        <span id="statusText">Open · Same-Day Service Available</span>
+  <!-- ── Utility / status bar ─────────────────────────────── -->
+  <div class="util" role="complementary" aria-label="Shop hours and contact">
+    <div class="container util-inner">
+      <div class="util-left">
+        <span class="status" id="status">
+          <span class="status-dot" id="statusDot" aria-hidden="true"></span>
+          <span id="statusLabel">Open · Mon–Fri 8 to 6</span>
+        </span>
+        <a class="util-address" href="https://www.google.com/maps/search/?api=1&query=5186+Imperial+St+Burnaby+BC" target="_blank" rel="noopener" aria-label="Get directions to 5186 Imperial Street, Burnaby BC">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="place">5186 Imperial St, Burnaby BC</span>
+        </a>
       </div>
-      <a class="util-address" href="#contact">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span class="place">5186 Imperial St, Burnaby BC</span>
+      <a class="util-phone" href="tel:+16044341120" aria-label="Call (604) 434-1120">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.5 12a19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 3.41 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.17 6.17l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (604) 434-1120
       </a>
     </div>
-    <a class="util-phone" href="tel:+16044341120">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      <span>(604) 434-1120</span>
-    </a>
   </div>
-</div>
 
-<!-- ── Nav ────────────────────────────────────── -->
-<nav class="site-nav" id="siteNav">
-  <div class="container nav-inner">
-    <a href="#" aria-label="Imperial Street Auto Repair" class="brand-logo-wrap">
-      <img class="brand-logo" src="IST_logo.png" alt="Imperial Street Auto Repair">
-    </a>
-    <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#about">The Shop</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Visit</a>
+  <!-- ── Header / Nav ────────────────────────────────────── -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Imperial Street Auto Repair home">
+        <img class="brand-logo" src="IST_logo.png" alt="Imperial Street Auto Repair, Burnaby BC, established 1997" width="278" height="52">
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#process">How It Works</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <div class="nav-cta">
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-    <a class="nav-cta-btn" href="tel:+16044341120">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      Call the Shop
-    </a>
-  </div>
-</nav>
+  </header>
 
-<!-- ── Hero ───────────────────────────────────── -->
-<section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="container hero-inner">
-    <div class="hero-left">
-      <div class="hero-eyebrow">5186 Imperial St · Burnaby BC · Est. 1997</div>
-      <h1 class="hero-title">Honest Quotes.<br><span class="accent">Same-Day</span><br>Service.</h1>
-      <p class="hero-sub">Burnaby's trusted independent garage for over 25 years. Walk in any weekday — we diagnose, quote, and fix before you leave work.</p>
-      <div class="hero-actions">
-        <a class="btn-primary" href="tel:+16044341120">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Call (604) 434-1120
+  <!-- ── Hero ────────────────────────────────────────────── -->
+  <section class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-car-glow" aria-hidden="true"></div>
+    <img class="hero-car" src="hero-car-cutout.png" alt="" aria-hidden="true">
+    <div class="container hero-inner">
+      <div class="hero-meta">
+        <span class="bar"></span>
+        <span>5186 Imperial St · Burnaby, BC</span>
+      </div>
+
+      <h1 class="hero-title">Auto Repair<br><span style="color:var(--red); font-size:.66em;">in Burnaby.</span></h1>
+
+      <div class="hero-grid">
+        <p class="hero-tag">
+          A neighbourhood shop on Imperial Street since 1997. Walk in for brakes, an oil change, a diagnosis, or a tune-up. Honest quotes, work done right.
+        </p>
+        <div class="hero-actions">
+          <a class="btn on-dark" href="tel:+16044341120">
+            Call (604) 434-1120
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn ghost on-dark" href="#services">See Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Signage marquee ────────────────────────────────── -->
+  <div class="signage" aria-hidden="true" hidden style="display:none;">
+    <div class="signage-track"></div>
+  </div>
+
+  <!-- ── Trust strip ────────────────────────────────────── -->
+  <section class="trust" aria-label="Shop at a glance">
+    <div class="trust-grid">
+      <div class="trust-cell">
+        <span class="trust-label">Established</span>
+        <span class="trust-num">1997</span>
+        <span class="trust-desc">Same shop, same street, for over twenty-five years.</span>
+      </div>
+      <div class="trust-cell">
+        <span class="trust-label">Reviews</span>
+        <a class="trust-num" href="https://www.google.com/maps/search/?api=1&query=Imperial+Street+Auto+Repair+Burnaby" target="_blank" rel="noopener" style="text-decoration: none; display: inline-flex; align-items: baseline; gap: 8px;">47+<span style="font-size:.42em; letter-spacing:.1em; color: rgba(255,255,255,.55); vertical-align: 4px;">↗</span></a>
+        <span class="trust-desc">Verified Google reviews. Tap to read every one of them.</span>
+      </div>
+      <div class="trust-cell">
+        <span class="trust-label">Most jobs</span>
+        <span class="trust-num">Same day</span>
+        <span class="trust-desc">Routine work usually finished the day you drop in.</span>
+      </div>
+      <div class="trust-cell">
+        <span class="trust-label">Appointments</span>
+        <span class="trust-num">Walk-in</span>
+        <span class="trust-desc">No booking needed for most services. Call ahead for big jobs.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Specials strip ──────────────────────────────────── -->
+  <section class="specials" aria-label="Current pricing">
+    <div class="container specials-inner">
+      <div class="specials-intro">
+        <span class="label">★ Current pricing</span>
+        <h3>Two specials.</h3>
+        <p>Subject to change. Give us a call to confirm before you drop by.</p>
+      </div>
+      <a class="deal" href="tel:+16044341120" aria-label="Call about the oil change special">
+        <div class="deal-meta">
+          <span class="deal-tag">Special</span>
+          <span class="deal-name">Oil change</span>
+          <span class="deal-note">Includes a full lube and a once-over of the basics. Most cars.</span>
+        </div>
+        <div class="deal-price">
+          <span class="from">From</span>
+          <span class="num">$24.95<span class="plus">+</span></span>
+        </div>
+      </a>
+      <a class="deal" href="tel:+16044341120" aria-label="Call about the wheel alignment special">
+        <div class="deal-meta">
+          <span class="deal-tag">Special</span>
+          <span class="deal-name">Wheel alignment</span>
+          <span class="deal-note">Restores even tire wear and a straight steering wheel. Most cars.</span>
+        </div>
+        <div class="deal-price">
+          <span class="from">From</span>
+          <span class="num">$69.95<span class="plus">+</span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Services: floating word chart + master table ────── -->
+  <section class="section services-section" id="services" aria-label="Services we offer">
+    <div class="services-bg" aria-hidden="true"></div>
+    <div class="container">
+
+      <div class="section-head reveal">
+        <div>
+          <div class="section-num">01 · Services</div>
+          <h2>Everything we work on.</h2>
+        </div>
+        <div class="right">
+          Hover or tap any service in the chart below to find it in the master list. Mechanical work on every system, by the same team since 1997.
+        </div>
+      </div>
+
+      <!-- Floating word chart (frosted-glass) -->
+      <div class="word-chart reveal" id="wordChart" role="navigation" aria-label="Service quick-find">
+        <div class="word-chart-fade" aria-hidden="true"></div>
+        <div class="word-chart-inner" id="wordChartInner"></div>
+        <div class="word-chart-foot">
+          <span class="word-chart-hint">Tap a service to jump to the list</span>
+          <a href="#services-table" class="word-chart-jump">
+            View full list
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Master 7-column services table -->
+      <div class="services-table reveal" id="services-table" aria-label="Complete services list">
+        <div class="services-table-grid" id="servicesTableGrid"></div>
+      </div>
+
+      <p class="services-foot reveal">
+        Don't see something? <a href="tel:+16044341120">Give us a call,</a> we probably do it.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ── Process / how a visit goes ──────────────────────── -->
+  <section class="section process-section" id="process">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-num">02 · How a visit works</div>
+          <h2>What to expect.</h2>
+        </div>
+      </div>
+      <div class="process reveal">
+        <div class="step">
+          <div class="step-num">01<span class="slash">.</span></div>
+          <h3>Drop in or call</h3>
+          <p>5186 Imperial St, Mon–Fri 8–6, Saturday 9–4. Call ahead for larger jobs so we can plan a bay.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02<span class="slash">.</span></div>
+          <h3>Inspection</h3>
+          <p>We look the car over, scan any codes, and explain what we find in plain language.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03<span class="slash">.</span></div>
+          <h3>Written quote</h3>
+          <p>Parts, labour, and total, written down before any work starts. We only proceed once you approve.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04<span class="slash">.</span></div>
+          <h3>Pick-up</h3>
+          <p>We aim to finish most jobs the same day. When you pick up, we walk through what was done.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Our shop / team photo ─────────────────────────── -->
+  <section class="section shop-section" id="shop">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-num">03 · The shop</div>
+          <h2>On Imperial Street<br>since 1997.</h2>
+        </div>
+        <div class="right">
+          Same address, same workshop. We want to be your mechanics, come by during hours and the people in the picture are the ones you'll meet at the desk.
+        </div>
+      </div>
+
+      <figure class="shop-figure reveal">
+        <img src="team-photo.jpg" alt="The Imperial Street Auto Repair team at the shop in Burnaby" loading="lazy">
+        <figcaption><span>Imperial Street Auto Repair</span><strong>The team</strong></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ── Reviews ─────────────────────────────────────────── -->
+  <section class="section reviews-section" id="reviews">
+    <div class="container">
+      <div class="section-head reveal" style="margin-bottom:30px;">
+        <div>
+          <div class="section-num">04 · Google reviews</div>
+          <h2>What customers say.</h2>
+        </div>
+      </div>
+
+      <div class="reviews-top reveal">
+        <div class="rating-block">
+          <div class="meta">
+            <strong style="font-family:var(--display); font-size:32px; line-height:1; letter-spacing:-.01em;">47+ reviews on Google</strong>
+            <small>Real customers, Imperial Street, Burnaby BC</small>
+          </div>
+        </div>
+        <a class="linklike" href="https://www.google.com/maps/search/?api=1&query=Imperial+Street+Auto+Repair+Burnaby" target="_blank" rel="noopener">
+          Read every review on Google
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M7 17L17 7M9 7h8v8"/></svg>
         </a>
-        <a class="btn-ghost-hero" href="#services">See All Services</a>
       </div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-car-wrap">
-        <img src="hero-car-cutout.png" alt="" aria-hidden="true">
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ── Cred Strip ──────────────────────────────── -->
-<div class="cred">
-  <div class="container">
-    <div class="cred-grid">
-      <div class="cred-item">
-        <div class="cred-num">1997</div>
-        <div class="cred-label">Established</div>
-        <div class="cred-sub">Same shop, same street</div>
-      </div>
-      <div class="cred-item">
-        <div class="cred-num">47+</div>
-        <div class="cred-label">Google Reviews</div>
-        <div class="cred-sub">Verified community feedback</div>
-      </div>
-      <div class="cred-item">
-        <div class="cred-num">Same Day</div>
-        <div class="cred-label">Most Jobs</div>
-        <div class="cred-sub">Routine work, in before lunch</div>
-      </div>
-      <div class="cred-item">
-        <div class="cred-num">Walk-In</div>
-        <div class="cred-label">Appointments</div>
-        <div class="cred-sub">No booking needed most days</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ── Specials ─────────────────────────────────── -->
-<section class="specials-section">
-  <div class="container">
-    <div class="specials-layout">
-      <div class="specials-label">
-        <div class="specials-eyebrow">+ Current Pricing</div>
-        <h2 class="specials-heading">Two<br>Specials.</h2>
-        <p class="specials-note">Subject to change. Give us a call to confirm before you drop by.</p>
-      </div>
-      <div class="specials-cards">
-        <div class="special-card">
-          <div class="special-tag">Special</div>
-          <div class="special-name">Oil Change</div>
-          <p class="special-desc">Includes a full lube and a once-over of the basics. Most cars.</p>
-          <div class="special-price">
-            <span class="price-from">from</span>
-            <span class="price-num">$24.95</span>
-            <span class="price-plus">+</span>
+      <div class="reviews-grid">
+        <article class="review reveal">
+          <div class="review-q">&ldquo;</div>
+          <p class="review-text">Took my Honda in for a brake job, done same day and the price was exactly what they quoted. Straightforward shop, no upselling. Will be back for sure.</p>
+          <div class="review-by">
+            <span class="review-avatar">JL</span>
+            <div>
+              <strong>Jason L.</strong><br>
+              <span class="small">Google Review</span>
+            </div>
           </div>
+        </article>
+        <article class="review reveal">
+          <div class="review-q">&ldquo;</div>
+          <p class="review-text">Fixed my check-engine light after another place couldn't figure it out. They explained the issue without being condescending. Fair price, reasonable wait. Solid neighbourhood shop.</p>
+          <div class="review-by">
+            <span class="review-avatar">PM</span>
+            <div>
+              <strong>Priya M.</strong><br>
+              <span class="small">Google Review</span>
+            </div>
+          </div>
+        </article>
+        <article class="review reveal">
+          <div class="review-q">&ldquo;</div>
+          <p class="review-text">Brought my Civic in for a full brake job and an oil change before a road trip. Done same day, quote was exactly what I paid, and the car drives smoother than it has in years.</p>
+          <div class="review-by">
+            <span class="review-avatar">DT</span>
+            <div>
+              <strong>David T.</strong><br>
+              <span class="small">Google Review</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ─────────────────────────────────────────────── -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <div class="faq-layout">
+        <div class="reveal">
+          <div class="section-num">05 · Common questions</div>
+          <h2>Things people ask.</h2>
+          <p style="color:var(--muted); margin-top:18px; max-width:36ch;">
+            A few things we get asked often. If yours isn't here, give us a call, someone usually picks up during shop hours.
+          </p>
+          <a class="linklike" href="tel:+16044341120" style="margin-top:22px;">
+            Call us · (604) 434-1120
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
         </div>
-        <div class="special-card">
-          <div class="special-tag">Special</div>
-          <div class="special-name">Wheel Alignment</div>
-          <p class="special-desc">Restores even tire wear and a straight steering wheel. Most cars.</p>
-          <div class="special-price">
-            <span class="price-from">from</span>
-            <span class="price-num">$69.95</span>
-            <span class="price-plus">+</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ── Services ────────────────────────────────── -->
-<section class="services-section" id="services">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">01 · Services</div>
-      <h2 class="section-h2">Everything We Work On.</h2>
-      <p class="section-sub">Tap or hover any service in the chart below to find it in the master list. 62 services across 7 systems — same team since 1997.</p>
-    </div>
-    <div class="sphere-wrap">
-      <div class="sphere-stage" id="sphereStage">
-        <div class="sphere-tags" id="sphereTags"></div>
-      </div>
-    </div>
-    <div class="services-table-wrap">
-      <table class="services-table">
-        <thead>
-          <tr>
-            <th>Electrical Systems</th>
-            <th>Fuel Systems</th>
-            <th>Suspension Systems</th>
-            <th>Car Care Services</th>
-            <th>Brake Systems</th>
-            <th>Cool / Heat Systems</th>
-            <th>Exhaust Systems</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="elec-diag">Diagnosis</td>
-            <td id="fuel-diag">Diagnosis</td>
-            <td id="susp-shocks">Shocks / Struts</td>
-            <td id="care-lube">Chassis Lube</td>
-            <td id="brake-pads">Pad Replacement</td>
-            <td id="cool-rad">Radiators</td>
-            <td id="exh-mufflers">Mufflers</td>
-          </tr>
-          <tr>
-            <td id="elec-drive">Drivability</td>
-            <td id="fuel-carb">Carburetors</td>
-            <td id="susp-ball">Ball Joints</td>
-            <td id="care-oil">Oil &amp; Filter Change</td>
-            <td id="brake-lining">Lining Replacement</td>
-            <td id="cool-belts">Belts / Hoses</td>
-            <td id="exh-pipes">Exhaust Pipes</td>
-          </tr>
-          <tr>
-            <td id="elec-tune">Tuneups</td>
-            <td id="fuel-inj">Gas Fuel Injection</td>
-            <td id="susp-springs">Coil Springs</td>
-            <td id="care-trans">Transmission</td>
-            <td id="brake-cylinders">Wheel Cylinders</td>
-            <td id="cool-cores">Heater Cores</td>
-            <td id="exh-tail">Tail Pipes</td>
-          </tr>
-          <tr>
-            <td id="elec-alt">Alternators</td>
-            <td id="fuel-lines">Fuel Lines</td>
-            <td id="susp-arms">Control Arms</td>
-            <td id="care-bearings">Wheel Bearings</td>
-            <td id="brake-master">Master Cylinders</td>
-            <td id="cool-thermo">Thermostats</td>
-            <td id="exh-crossover">Crossover Pipes</td>
-          </tr>
-          <tr>
-            <td id="elec-start">Starters</td>
-            <td id="fuel-tanks">Fuel Tanks</td>
-            <td id="susp-axles">Drive Axles</td>
-            <td id="care-diff">Differential Service</td>
-            <td id="brake-emergency">Emergency Brakes</td>
-            <td id="cool-gaskets">Head Gaskets</td>
-            <td id="exh-hangers">Clamps &amp; Hangers</td>
-          </tr>
-          <tr>
-            <td id="elec-light">Lights</td>
-            <td id="fuel-gauges">Fuel Gauges</td>
-            <td id="susp-air">Air Ride Systems</td>
-            <td id="care-steering">Power Steering</td>
-            <td id="brake-rotors">Brake Rotors / Drums</td>
-            <td id="cool-clutches">Fan Clutches</td>
-            <td id="exh-manifolds">Exhaust Manifolds</td>
-          </tr>
-          <tr>
-            <td id="elec-power">Power Accessories</td>
-            <td id="fuel-pumps">Fuel Pumps</td>
-            <td id="susp-racks">Steering Racks</td>
-            <td id="care-fluid">Brake Fluid Service</td>
-            <td id="brake-machining">Machining</td>
-            <td id="cool-fans">Electric Fans</td>
-            <td id="exh-catalytic">Catalytic Converters</td>
-          </tr>
-          <tr>
-            <td id="elec-heatctrl">Heater Controls</td>
-            <td id="fuel-filters">Fuel Filters</td>
-            <td id="susp-tires">Tires / Wheels</td>
-            <td id="care-washers">Windshield Washers</td>
-            <td id="brake-abs">Anti-Lock</td>
-            <td id="cool-pumps">Water Pumps</td>
-            <td id="exh-gasket">Gasket Replacement</td>
-          </tr>
-          <tr>
-            <td id="elec-wiring">Electrical Wiring</td>
-            <td></td>
-            <td id="susp-align">Alignment</td>
-            <td id="care-battery">Battery Service</td>
-            <td id="brake-lines">Lines &amp; Hoses</td>
-            <td id="cool-coolers">Transmission Coolers</td>
-            <td id="exh-dual">Dual Systems</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-foot">Don't see something? <a href="tel:+16044341120">Give us a call</a> — we probably do it.</p>
-  </div>
-</section>
-
-<!-- ── About / Team ────────────────────────────── -->
-<section class="about-section" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-photos">
-        <img src="team-photo.jpg" alt="Imperial Street Auto Repair team at the front desk" class="wide">
-        <img src="imperial-shop.webp" alt="Service bays at Imperial Street Auto">
-        <img src="imperial-shop-clean.png" alt="Imperial Street Auto Repair exterior, Burnaby BC">
-      </div>
-      <div class="about-text">
-        <div class="section-eyebrow" style="color:var(--muted);">02 · The Shop</div>
-        <h2>On Imperial Street<br>Since 1997.</h2>
-        <p>Same address, same workshop. The people in that photo are the mechanics and the ones you'll talk to at the desk — not a call centre, not a franchise.</p>
-        <p>Whether it's a modern vehicle needing computer diagnostics or a daily driver that's overdue for brakes, our team handles every job the same way: inspect it honestly, quote it clearly, fix it right.</p>
-        <div class="stats-row">
-          <div class="stat">
-            <h4>1997</h4>
-            <p>Est.</p>
+        <div class="faq-list reveal" id="faqList">
+          <div class="faq-item open">
+            <button class="faq-q" aria-expanded="true">
+              Do I need an appointment?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              For most routine work, oil changes, brakes, tires, diagnostics, no. Just walk in any weekday between 9am and 6pm or Saturday 9am to 4pm. For big jobs (transmission, head gasket) give us a call so we can block off a bay.
+            </div></div>
           </div>
-          <div class="stat">
-            <h4>47+</h4>
-            <p>Reviews</p>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Do you offer pre-purchase inspections?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              Yes, bring any used vehicle you're considering. We check mechanical, electrical, suspension, brakes, and safety items and give you a written report you can bring to the seller. Usually 60–90 minutes. Most-recommended thing we do for first-time buyers.
+            </div></div>
           </div>
-          <div class="stat">
-            <h4>3.8★</h4>
-            <p>Google</p>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Will you give me a quote before starting work?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              Always, in writing. Parts, labour, total. Nothing happens until you sign off. If we open something up and find an issue we didn't see in diagnosis, we stop, call, and re-quote. No surprises on the invoice.
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How do I get there from the SkyTrain?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              We're an 8-minute walk west of Royal Oak Station along Imperial Street, about 600 metres. Street parking is plentiful. If you're dropping a car for the day, transit back is easy.
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              What vehicles do you work on?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              All makes, foreign and domestic, Toyota, Honda, Mazda, Subaru, Nissan, Hyundai, Kia, Ford, GM, Chrysler, Dodge, VW, BMW, Mercedes, and Audi. Diesel and hybrid welcome. Heavy-duty or fleet vans? Call first so we can confirm bay clearance.
+            </div></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── Reviews ─────────────────────────────────── -->
-<section class="reviews-section" id="reviews">
-  <div class="container">
-    <div class="section-eyebrow">03 · Reviews</div>
-    <h2 class="section-h2">What Customers Say.</h2>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Brought my car in without an appointment. They diagnosed the issue, gave me a clear quote, and had it done the same afternoon. Honest and efficient."</p>
-        <div class="review-author">Mohammed A.</div>
-        <div class="review-via">Google Review</div>
+  <!-- ── Visit / Contact ─────────────────────────────────── -->
+  <section class="section visit-section" id="visit">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-num">06 · Find the shop</div>
+          <h2>Come say hi.</h2>
+        </div>
+        <div class="right">
+          Between Royal Oak and Patterson on Imperial Street. Street parking out front. Walk-ins welcome during hours.
+        </div>
       </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Been taking my cars here for years. They never upsell, always explain what's needed and what can wait. That kind of honesty is rare in a mechanic."</p>
-        <div class="review-author">Jennifer L.</div>
-        <div class="review-via">Google Review</div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Walk-in, done in a few hours, price exactly as quoted. Close to Royal Oak SkyTrain so I could grab a coffee and walk back. Will be back for sure."</p>
-        <div class="review-author">David K.</div>
-        <div class="review-via">Google Review</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ── FAQ ─────────────────────────────────────── -->
-<section class="faq-section" id="faq">
-  <div class="container">
-    <div class="faq-grid">
-      <div>
-        <div class="section-eyebrow">04 · FAQ</div>
-        <h2 class="section-h2">Things People Ask.</h2>
-        <p style="color:var(--muted);margin-top:16px;font-size:15px;line-height:1.65;">A few questions we hear often. Yours isn't here? Call us — someone picks up during shop hours.</p>
-        <a href="tel:+16044341120" style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--red);border-bottom:1px solid currentColor;padding-bottom:3px;">Call Us · (604) 434-1120</a>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item open">
-          <button class="faq-q" aria-expanded="true">
-            Do I need an appointment?
-            <span class="faq-icon">−</span>
-          </button>
-          <div class="faq-a">For most work — oil changes, brakes, diagnostics, tires — no. Walk in any weekday between 9am and 6pm. For bigger jobs like transmission or head gasket work, a quick call ahead helps us plan a bay.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            Will you give me a quote before starting?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a">Always. We inspect the vehicle first, then call you with a written breakdown of parts and labour before any wrench moves. No surprises on pickup.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            Do you offer pre-purchase inspections?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a">Yes. Bring in any used vehicle before you buy it and we'll do a full inspection — mechanical, electrical, brakes, and undercarriage. We'll tell you exactly what you're buying.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            How do I get here from the SkyTrain?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a">We're at 5186 Imperial St, Burnaby — about an 8-minute walk from Royal Oak SkyTrain station. Bus 110 also stops one block east. Street parking is available out front.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            What kinds of vehicles do you work on?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a">All makes and models — domestic, Japanese, European. Gas and hybrid. Older vehicles and modern ones that need computer diagnostics. If it has four wheels, we can help.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Contact / Visit ─────────────────────────── -->
-<section class="contact-section" id="contact">
-  <div class="container">
-    <div class="section-eyebrow">05 · Visit</div>
-    <h2 class="section-h2">Come Say Hi.</h2>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="info-rows">
-          <div class="info-row">
-            <span class="info-label">Address</span>
-            <span class="info-val">5186 Imperial St<br>Burnaby, BC V5J 1E3</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Phone</span>
-            <span class="info-val"><a href="tel:+16044341120">(604) 434-1120</a></span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Hours</span>
-            <span class="info-val">
-              Mon – Fri · 9:00 am – 6:00 pm<br>
-              <span class="sat">Saturday · Walk-in welcome<br>Sunday · Closed</span>
-            </span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Transit</span>
-            <span class="info-val" style="font-size:14.5px;color:rgba(255,255,255,.6);">8-min walk from Royal Oak SkyTrain · Bus 110 one block east</span>
+      <div class="visit-layout reveal">
+        <div class="visit-info">
+          <dl style="margin:0; padding:0;">
+            <div class="visit-row">
+              <dt>Address</dt>
+              <dd>
+                <span class="b">5186 Imperial St</span><br>
+                Burnaby, BC V5J 1E3
+              </dd>
+            </div>
+            <div class="visit-row">
+              <dt>Phone</dt>
+              <dd><a href="tel:+16044341120" class="b">(604) 434-1120</a></dd>
+            </div>
+            <div class="visit-row">
+              <dt>Email</dt>
+              <dd><a href="mailto:info@imperialst.ca">info@imperialst.ca</a></dd>
+            </div>
+            <div class="visit-row">
+              <dt>Hours</dt>
+              <dd>
+                <span class="b">Mon – Fri</span> · 8:00 am – 6:00 pm<br>
+                <span class="b">Saturday</span> · <span class="accent">9:00 am – 4:00 pm</span><br>
+                <span class="b">Sunday</span> · Closed
+              </dd>
+            </div>
+            <div class="visit-row">
+              <dt>Transit</dt>
+              <dd>8-min walk from Royal Oak SkyTrain · Bus 110 stops one block east.</dd>
+            </div>
+          </dl>
+          <div class="visit-cta">
+            <a class="btn on-dark" href="tel:+16044341120">Call the shop</a>
+            <a class="btn ghost on-dark" href="https://www.google.com/maps/search/?api=1&query=5186+Imperial+St+Burnaby+BC" target="_blank" rel="noopener">Get directions</a>
           </div>
         </div>
-        <div class="contact-btns">
-          <a class="btn-primary" href="tel:+16044341120">Call the Shop</a>
-          <a class="btn-ghost-hero" href="https://maps.google.com/?q=5186+Imperial+St+Burnaby+BC" target="_blank" rel="noopener">Get Directions</a>
+        <div class="visit-map">
+          <span class="pin">5186 Imperial St</span>
+          <iframe
+            title="Imperial Street Auto Repair on Google Maps"
+            src="https://www.google.com/maps?q=5186%20Imperial%20St%2C%20Burnaby%2C%20BC%20V5J%201E3&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
         </div>
       </div>
-      <div class="map-wrap">
-        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.05!2d-123.0017!3d49.2231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548774b5b5b5b5b5%3A0x0!2s5186+Imperial+St%2C+Burnaby%2C+BC!5e0!3m2!1sen!2sca!4v1"
-          title="Imperial Street Auto Repair location">
-        </iframe>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-brand">Imperial Street<small>Auto Repair · Burnaby BC · Est. 1997</small></div>
+          <p class="foot-pitch">Independent neighbourhood shop on Imperial Street. Repair, diagnostics, inspections, and routine maintenance, handled the same day for most jobs.</p>
+        </div>
+        <div>
+          <h4>Repair</h4>
+          <div class="foot-links">
+            <a href="#services">Brakes &amp; Tires</a>
+            <a href="#services">Diagnostics</a>
+            <a href="#services">Oil Changes</a>
+            <a href="#services">Inspections</a>
+            <a href="#services">Transmission</a>
+          </div>
+        </div>
+        <div>
+          <h4>Maintenance</h4>
+          <div class="foot-links">
+            <a href="#services">Oil Change</a>
+            <a href="#services">Scheduled Maintenance</a>
+            <a href="#services">Pre-Purchase Inspection</a>
+            <a href="#services">Safety Inspection</a>
+            <a href="#services">Tune-Ups</a>
+          </div>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <div class="foot-links">
+            <a href="tel:+16044341120">(604) 434-1120</a>
+            <a href="mailto:info@imperialst.ca">info@imperialst.ca</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=5186+Imperial+St+Burnaby+BC" target="_blank" rel="noopener">5186 Imperial St, Burnaby</a>
+            <a href="#visit">Hours &amp; Directions</a>
+          </div>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="year"></span> Imperial Street Auto Repair</span>
+        <span>5186 Imperial St · Burnaby BC V5J 1E3 · (604) 434-1120</span>
       </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<!-- ── Footer ──────────────────────────────────── -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <h4>IMPERIAL STREET AUTO</h4>
-      <p>Independent neighbourhood repair shop in Burnaby, BC since 1997. Walk-in mechanics, honest quotes, same-day service for most jobs.</p>
-    </div>
-    <div class="footer-col">
-      <h5>Repair</h5>
-      <ul>
-        <li><a href="#services">Brakes &amp; Tires</a></li>
-        <li><a href="#services">Engine Diagnostics</a></li>
-        <li><a href="#services">Oil Changes</a></li>
-        <li><a href="#services">Suspension</a></li>
-        <li><a href="#services">Exhaust</a></li>
-        <li><a href="#services">Transmission</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Location</h5>
-      <ul>
-        <li>5186 Imperial St</li>
-        <li>Burnaby, BC V5J 1E3</li>
-        <li>Near Royal Oak SkyTrain</li>
-        <li>Street parking out front</li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Contact</h5>
-      <ul>
-        <li><a href="tel:+16044341120"><strong style="color:#fff;">(604) 434-1120</strong></a></li>
-        <li>Walk-ins welcome</li>
-        <li>Mon–Fri · 9am–6pm</li>
-        <li>Saturday · Walk-in</li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 Imperial Street Auto Repair. All rights reserved.</p>
-    <p>5186 Imperial St · Burnaby BC V5J 1E3 · (604) 434-1120</p>
-  </div>
-</footer>
+  <!-- Floating call button on mobile -->
+  <a class="call-fab" href="tel:+16044341120" aria-label="Call (604) 434-1120">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.5 12a19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 3.41 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.17 6.17l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call (604) 434-1120
+  </a>
 
-<script>
-  // ── Hours (Vancouver time) ──────────────────────────────────────
-  (function() {
-    const dot  = document.getElementById("statusDot");
-    const text = document.getElementById("statusText");
-    const now  = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Vancouver" }));
-    const day  = now.getDay(), hr = now.getHours();
-    const wkday = day >= 1 && day <= 5;
-    const open  = (wkday && hr >= 9 && hr < 18) || (day === 6 && hr >= 9 && hr < 16);
-    if (!open) {
-      dot.classList.add("closed");
-      text.textContent = day === 6 ? "Saturday · Walk-in Welcome" : "Closed · Opens Monday 9am";
-    }
-  })();
+  <script>
+    // ── Year stamp ────────────────────────────────────────
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  // ── Nav: transparent over hero → frosted after scroll ──────────
-  const nav = document.getElementById("siteNav");
-  const hero = document.querySelector(".hero");
-  function setNav() {
-    const heroEnd = hero ? hero.getBoundingClientRect().bottom : 0;
-    nav.classList.toggle("scrolled", heroEnd <= nav.offsetHeight || window.scrollY > 40);
-  }
-  window.addEventListener("scroll", setNav, { passive: true });
-  setNav();
+    // ── Open / closed indicator ───────────────────────────
+    (function() {
+      const dot = document.getElementById("statusDot");
+      const lbl = document.getElementById("statusLabel");
+      const now = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Vancouver" }));
+      const d = now.getDay(); // 0 Sun … 6 Sat
+      const h = now.getHours();
+      let open = false, msg = "";
+      if (d >= 1 && d <= 5) { // Mon–Fri 9–18
+        open = h >= 9 && h < 18;
+        msg = open ? "Open now · Closes 6pm" : (h < 9 ? "Opens at 9am today" : "Closed · Opens Mon 9am");
+      } else if (d === 6) {
+        open = h >= 9 && h < 16;
+        msg = open ? "Open today · Saturday 9am – 4pm" : (h < 9 ? "Saturday · Opens 9am" : "Closed · Opens Mon 9am");
+      } else {
+        msg = "Closed Sunday · Opens Mon 9am";
+      }
+      if (!open) dot.classList.add("closed");
+      lbl.textContent = msg;
+    })();
 
-  // ── FAQ accordion ───────────────────────────────────────────────
-  document.querySelectorAll(".faq-q").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const item = btn.closest(".faq-item");
-      const open = item.classList.contains("open");
-      document.querySelectorAll(".faq-item.open").forEach(i => {
-        i.classList.remove("open");
-        i.querySelector(".faq-q").setAttribute("aria-expanded","false");
-        i.querySelector(".faq-icon").textContent = "+";
-      });
-      if (!open) {
-        item.classList.add("open");
-        btn.setAttribute("aria-expanded","true");
-        btn.querySelector(".faq-icon").textContent = "−";
+    // ── Header scroll state ───────────────────────────────
+    const nav = document.getElementById("nav");
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 18);
+    }, { passive: true });
+
+    // ── Mobile menu ───────────────────────────────────────
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    menuBtn.addEventListener("click", () => {
+      const open = document.body.classList.toggle("menu-open");
+      menuBtn.setAttribute("aria-expanded", String(open));
+    });
+    navLinks.addEventListener("click", (e) => {
+      if (e.target.tagName === "A") {
+        document.body.classList.remove("menu-open");
+        menuBtn.setAttribute("aria-expanded", "false");
       }
     });
-  });
 
-  // ── Sphere → table highlight ────────────────────────────────────
-  const services = [
-    ["Diagnosis","Electrical Systems","elec-diag"],
-    ["Drivability","Electrical Systems","elec-drive"],
-    ["Tuneups","Electrical Systems","elec-tune"],
-    ["Alternators","Electrical Systems","elec-alt"],
-    ["Starters","Electrical Systems","elec-start"],
-    ["Lights","Electrical Systems","elec-light"],
-    ["Power Accessories","Electrical Systems","elec-power"],
-    ["Heater Controls","Electrical Systems","elec-heatctrl"],
-    ["Electrical Wiring","Electrical Systems","elec-wiring"],
-    ["Diagnosis","Fuel Systems","fuel-diag"],
-    ["Carburetors","Fuel Systems","fuel-carb"],
-    ["Gas Fuel Injection","Fuel Systems","fuel-inj"],
-    ["Fuel Lines","Fuel Systems","fuel-lines"],
-    ["Fuel Tanks","Fuel Systems","fuel-tanks"],
-    ["Fuel Gauges","Fuel Systems","fuel-gauges"],
-    ["Fuel Pumps","Fuel Systems","fuel-pumps"],
-    ["Fuel Filters","Fuel Systems","fuel-filters"],
-    ["Shocks / Struts","Suspension Systems","susp-shocks"],
-    ["Ball Joints","Suspension Systems","susp-ball"],
-    ["Coil Springs","Suspension Systems","susp-springs"],
-    ["Control Arms","Suspension Systems","susp-arms"],
-    ["Drive Axles","Suspension Systems","susp-axles"],
-    ["Air Ride Systems","Suspension Systems","susp-air"],
-    ["Steering Racks","Suspension Systems","susp-racks"],
-    ["Tires / Wheels","Suspension Systems","susp-tires"],
-    ["Alignment","Suspension Systems","susp-align"],
-    ["Chassis Lube","Car Care Services","care-lube"],
-    ["Oil & Filter Change","Car Care Services","care-oil"],
-    ["Transmission","Car Care Services","care-trans"],
-    ["Wheel Bearings","Car Care Services","care-bearings"],
-    ["Differential Service","Car Care Services","care-diff"],
-    ["Power Steering","Car Care Services","care-steering"],
-    ["Brake Fluid Service","Car Care Services","care-fluid"],
-    ["Windshield Washers","Car Care Services","care-washers"],
-    ["Battery Service","Car Care Services","care-battery"],
-    ["Pad Replacement","Brake Systems","brake-pads"],
-    ["Lining Replacement","Brake Systems","brake-lining"],
-    ["Wheel Cylinders","Brake Systems","brake-cylinders"],
-    ["Master Cylinders","Brake Systems","brake-master"],
-    ["Emergency Brakes","Brake Systems","brake-emergency"],
-    ["Brake Rotors/Drums","Brake Systems","brake-rotors"],
-    ["Machining","Brake Systems","brake-machining"],
-    ["Anti-Lock","Brake Systems","brake-abs"],
-    ["Lines & Hoses","Brake Systems","brake-lines"],
-    ["Radiators","Cool/Heat Systems","cool-rad"],
-    ["Belts / Hoses","Cool/Heat Systems","cool-belts"],
-    ["Heater Cores","Cool/Heat Systems","cool-cores"],
-    ["Thermostats","Cool/Heat Systems","cool-thermo"],
-    ["Head Gaskets","Cool/Heat Systems","cool-gaskets"],
-    ["Fan Clutches","Cool/Heat Systems","cool-clutches"],
-    ["Electric Fans","Cool/Heat Systems","cool-fans"],
-    ["Water Pumps","Cool/Heat Systems","cool-pumps"],
-    ["Transmission Coolers","Cool/Heat Systems","cool-coolers"],
-    ["Mufflers","Exhaust Systems","exh-mufflers"],
-    ["Exhaust Pipes","Exhaust Systems","exh-pipes"],
-    ["Tail Pipes","Exhaust Systems","exh-tail"],
-    ["Crossover Pipes","Exhaust Systems","exh-crossover"],
-    ["Clamps & Hangers","Exhaust Systems","exh-hangers"],
-    ["Exhaust Manifolds","Exhaust Systems","exh-manifolds"],
-    ["Catalytic Converters","Exhaust Systems","exh-catalytic"],
-    ["Gasket Replacement","Exhaust Systems","exh-gasket"],
-    ["Dual Systems","Exhaust Systems","exh-dual"],
-  ];
+    // ── Reveal-on-scroll ──────────────────────────────────
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-  function scrollToCell(id) {
-    const cell = document.getElementById(id);
-    if (!cell) return;
-    cell.classList.remove("svc-highlight","svc-fade");
-    cell.scrollIntoView({ behavior:"smooth", block:"center" });
-    // Wait for smooth scroll to settle (~700ms) then pulse highlight
-    setTimeout(() => {
-      cell.classList.add("svc-highlight");
-      void cell.offsetWidth;
-      setTimeout(() => {
-        cell.classList.add("svc-fade");
-        setTimeout(() => cell.classList.remove("svc-highlight","svc-fade"), 3600);
-      }, 900);
-    }, 700);
-  }
-
-  const stage   = document.getElementById("sphereStage");
-  const tagRoot = document.getElementById("sphereTags");
-  let rotX = -0.18, rotY = 0.22;
-  let velX = 0.0010, velY = 0.0032;
-  let dragging = false, lastX = 0, lastY = 0;
-  let dragDist = 0, didDrag = false;
-  let autoAt = 0, lastT = performance.now();
-
-  function fib(i, n) {
-    const inc = Math.PI * (3 - Math.sqrt(5));
-    const y = i * (2/n) - 1 + 1/n;
-    const r = Math.sqrt(1 - y*y);
-    return { x: Math.cos(i*inc)*r, y, z: Math.sin(i*inc)*r };
-  }
-
-  const items = services.map(([name,,id], i) => {
-    const pt  = fib(i, services.length);
-    const tag = document.createElement("button");
-    tag.type = "button"; tag.className = "sphere-tag";
-    tag.textContent = name;
-    tag.addEventListener("click", ev => {
-      if (didDrag) { ev.preventDefault(); return; }
-      scrollToCell(id);
+    // ── FAQ accordion ─────────────────────────────────────
+    document.querySelectorAll(".faq-q").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item");
+        const willOpen = !item.classList.contains("open");
+        document.querySelectorAll(".faq-item.open").forEach((i) => {
+          i.classList.remove("open");
+          i.querySelector(".faq-q").setAttribute("aria-expanded", "false");
+        });
+        if (willOpen) {
+          item.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
     });
-    tagRoot.appendChild(tag);
-    return { tag, ...pt };
-  });
 
-  function rot(item) {
-    const cy = Math.cos(rotY), sy = Math.sin(rotY);
-    const cx = Math.cos(rotX), sx = Math.sin(rotX);
-    const x1 = item.x*cy - item.z*sy, z1 = item.x*sy + item.z*cy;
-    const y1 = item.y*cx - z1*sx,     z2 = item.y*sx + z1*cx;
-    return { x:x1, y:y1, z:z2 };
-  }
+    // ── Before / After slider ─────────────────────────────
+    (function() {
+      const slider = document.getElementById("baSlider");
+      const clip   = document.getElementById("baClip");
+      const handle = document.getElementById("baHandle");
+      const knob   = document.getElementById("baKnob");
+      if (!slider) return;
+      let dragging = false;
 
-  function render(now) {
-    const r = stage.getBoundingClientRect();
-    const rad = Math.min(r.width, r.height) * (r.width < 720 ? 0.35 : 0.38);
-    if (!dragging && now > autoAt) { rotX += velX; rotY += velY; }
-    items.forEach(it => {
-      const p = rot(it), d = (p.z+1)/2;
-      it.tag.style.cssText = `transform:translate3d(calc(-50% + ${p.x*rad}px),calc(-50% + ${p.y*rad}px),0) scale(${.55+d*.72});opacity:${(.18+d*.82).toFixed(3)};filter:blur(${((1-d)*1.8).toFixed(2)}px);z-index:${Math.round(d*1000)}`;
-    });
-    requestAnimationFrame(render);
-  }
+      function setPct(pct) {
+        const p = Math.max(2, Math.min(98, pct));
+        clip.style.width = p + "%";
+        handle.style.left = p + "%";
+      }
 
-  function beg(cx,cy) { dragging=true; didDrag=false; dragDist=0; lastX=cx; lastY=cy; lastT=performance.now(); }
-  function upd(cx,cy) {
-    if (!dragging) return;
-    const now=performance.now(), dx=cx-lastX, dy=cy-lastY, dt=Math.max(16,now-lastT);
-    dragDist+=Math.abs(dx)+Math.abs(dy); didDrag=dragDist>8;
-    rotY+=dx*.006; rotX-=dy*.006;
-    velY=(dx/dt)*.018; velX=(-dy/dt)*.018;
-    lastX=cx; lastY=cy; lastT=now;
-  }
-  function fin() { dragging=false; autoAt=performance.now()+1200; setTimeout(()=>{didDrag=false;},0); }
+      function fromEvent(e) {
+        const rect = slider.getBoundingClientRect();
+        const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+        setPct((x / rect.width) * 100);
+      }
 
-  stage.addEventListener("pointerdown",  e=>{beg(e.clientX,e.clientY);try{stage.setPointerCapture(e.pointerId);}catch(_){}},true);
-  stage.addEventListener("pointermove",  e=>{if(!dragging)return;e.preventDefault();upd(e.clientX,e.clientY);},true);
-  stage.addEventListener("pointerup",    e=>{fin();try{stage.releasePointerCapture(e.pointerId);}catch(_){}},true);
-  stage.addEventListener("pointercancel",fin,true);
-  stage.addEventListener("touchstart",   e=>{if(e.touches.length)beg(e.touches[0].clientX,e.touches[0].clientY);},{passive:true,capture:true});
-  stage.addEventListener("touchmove",    e=>{if(dragging&&e.touches.length){e.preventDefault();upd(e.touches[0].clientX,e.touches[0].clientY);}},{passive:false,capture:true});
-  stage.addEventListener("touchend",     fin,true);
-  stage.addEventListener("touchcancel",  fin,true);
+      const start = (e) => { dragging = true; fromEvent(e); e.preventDefault(); };
+      const move  = (e) => { if (dragging) fromEvent(e); };
+      const end   = () => { dragging = false; };
 
-  requestAnimationFrame(render);
-</script>
+      knob.addEventListener("mousedown", start);
+      slider.addEventListener("mousedown", start);
+      window.addEventListener("mousemove", move);
+      window.addEventListener("mouseup", end);
+
+      knob.addEventListener("touchstart", start, { passive: false });
+      slider.addEventListener("touchstart", start, { passive: false });
+      window.addEventListener("touchmove", move, { passive: false });
+      window.addEventListener("touchend", end);
+
+      // Slow auto-demo until first interaction
+      let t = 0, demo = true, dir = 1;
+      ["mousedown","touchstart"].forEach((ev) => slider.addEventListener(ev, () => demo = false, { once: true }));
+      function tick() {
+        if (demo) {
+          t += 0.6 * dir;
+          if (t > 68) dir = -1;
+          if (t < 32) dir = 1;
+          setPct(50 + (t - 50) * 0.8);
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
+
+  
+    // ── Services: word chart + master table ───────────────
+    (function() {
+      const chart = document.getElementById("wordChartInner");
+      const table = document.getElementById("servicesTableGrid");
+      const tableWrap = document.getElementById("services-table");
+      if (!chart || !table) return;
+
+      const categories = [
+        { name: "Electrical Systems",  items: ["Diagnosis","Drivability","Tuneups","Alternators","Starters","Lights","Power Accessories","Heater Controls","Electrical Wiring"] },
+        { name: "Fuel Systems",        items: ["Diagnosis","Carburetors","Gas Fuel Injection","Fuel Lines","Fuel Tanks","Fuel Gauges","Fuel Pumps","Fuel Filters"] },
+        { name: "Suspension Systems",  items: ["Shocks / Struts","Ball Joints","Coil Springs","Control Arms","Drive Axles","Air Ride Systems","Steering Racks","Tires / Wheels","Alignment"] },
+        { name: "Car Care Services",   items: ["Chassis Lube","Oil & Filter Change","Transmission","Wheel Bearings","Differential Service","Power Steering","Brake Fluid Service","Windshield Washers","Battery Service"] },
+        { name: "Brake Systems",       items: ["Pad Replacement","Lining Replacement","Wheel Cylinders","Master Cylinders","Emergency Brakes","Brake Rotors / Drums","Machining","Anti-Lock","Lines & Hoses"] },
+        { name: "Cool / Heat Systems", items: ["Radiators","Belts / Hoses","Heater Cores","Thermostats","Head Gaskets","Fan Clutches","Electric Fans","Water Pumps","Transmission Coolers"] },
+        { name: "Exhaust Systems",     items: ["Mufflers","Exhaust Pipes","Tail Pipes","Crossover Pipes","Clamps & Hangers","Exhaust Manifolds","Catalytic Converters","Gasket Replacement","Dual Systems"] }
+      ];
+
+      const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+      // Build the master table
+      categories.forEach((cat, ci) => {
+        const col = document.createElement("div");
+        col.className = "service-col";
+        const head = document.createElement("div");
+        head.className = "service-col-head";
+        head.textContent = cat.name;
+        col.appendChild(head);
+        cat.items.forEach((item) => {
+          const row = document.createElement("div");
+          row.className = "service-row";
+          row.id = "svc-" + ci + "-" + slug(item);
+          row.dataset.category = cat.name;
+          row.dataset.service = item;
+          row.textContent = item;
+          col.appendChild(row);
+        });
+        table.appendChild(col);
+      });
+
+      // Build the word chart — flatten everything, randomized order, varied tier sizes
+      const flat = [];
+      categories.forEach((cat, ci) => {
+        cat.items.forEach((item) => {
+          flat.push({ name: item, category: cat.name, id: "svc-" + ci + "-" + slug(item) });
+        });
+      });
+
+      // Pseudo-random shuffle (seeded for stability between renders)
+      let seed = 7;
+      function rand() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+      for (let i = flat.length - 1; i > 0; i--) {
+        const j = Math.floor(rand() * (i + 1));
+        [flat[i], flat[j]] = [flat[j], flat[i]];
+      }
+
+      // Assign size tiers — bias longer names to lg, popular short names to sm
+      const tiers = ["sm","md","md","lg","md","sm","md","lg","md","xl","md","sm","lg","md"];
+      flat.forEach((it, i) => {
+        it.tier = tiers[i % tiers.length];
+      });
+
+      flat.forEach((it) => {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "chip";
+        chip.dataset.tier = it.tier;
+        chip.dataset.target = it.id;
+        chip.dataset.category = it.category;
+        chip.textContent = it.name;
+        chip.setAttribute("aria-label", it.name + ", in " + it.category + ". Jump to service list.");
+        chart.appendChild(chip);
+      });
+
+      // Highlight + scroll behaviour
+      let pulseTimer = null;
+      function highlight(targetId) {
+        const row = document.getElementById(targetId);
+        if (!row) return;
+        // Smooth scroll
+        const tableTop = tableWrap.getBoundingClientRect().top + window.scrollY;
+        const offset = 120; // for sticky nav + util bar
+        const rowTop = row.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: Math.max(tableTop - 24, rowTop - offset), behavior: "smooth" });
+        // Pulse
+        document.querySelectorAll(".service-row.is-pulse").forEach((r) => r.classList.remove("is-pulse"));
+        clearTimeout(pulseTimer);
+        // Re-trigger animation
+        row.classList.remove("is-pulse");
+        void row.offsetWidth;
+        row.classList.add("is-pulse");
+        pulseTimer = setTimeout(() => row.classList.remove("is-pulse"), 1800);
+      }
+
+      // Click + Enter/Space activates jump. Hover gives subtle preview highlight.
+      let lastActive = null;
+      chart.addEventListener("click", (e) => {
+        const chip = e.target.closest(".chip");
+        if (!chip) return;
+        if (lastActive) lastActive.classList.remove("is-active");
+        chip.classList.add("is-active");
+        lastActive = chip;
+        highlight(chip.dataset.target);
+      });
+      chart.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        const chip = e.target.closest(".chip");
+        if (!chip) return;
+        e.preventDefault();
+        chip.click();
+      });
+    })();
+  </script>
 </body>
 </html>
