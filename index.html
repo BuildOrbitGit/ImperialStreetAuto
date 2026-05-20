@@ -1211,7 +1211,7 @@
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a class="brand" href="#top" aria-label="Imperial Street Auto Repair home">
-        <img class="brand-logo" src="IST_logo.png?v=12" alt="Imperial Street Auto Repair, Burnaby BC, established 1997" width="214" height="76">
+        <img class="brand-logo" src="IST_logo.png?v=13" alt="Imperial Street Auto Repair, Burnaby BC, established 1997" width="214" height="76">
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Primary">
         <a href="#services">Services</a>
@@ -1266,7 +1266,7 @@
       </div>
       <div class="trust-cell">
         <span class="trust-label">Reviews</span>
-        <a class="trust-num" href="https://www.google.com/maps/search/?api=1&query=Imperial+Street+Auto+Repair+Burnaby" target="_blank" rel="noopener" style="text-decoration: none; display: inline-flex; align-items: baseline; gap: 8px;">400<span style="font-size:.42em; letter-spacing:.1em; color: rgba(255,255,255,.55); vertical-align: 4px;">↗</span></a>
+        <a class="trust-num" href="https://www.google.com/maps/search/?api=1&query=Imperial+Street+Auto+Repair+Burnaby" target="_blank" rel="noopener" style="text-decoration: none; display: inline-flex; align-items: baseline; gap: 8px;">400+<span style="font-size:.42em; letter-spacing:.1em; color: rgba(255,255,255,.55); vertical-align: 4px;">↗</span></a>
         <span class="trust-desc">Google reviews. Tap to read them all.</span>
       </div>
       <div class="trust-cell">
@@ -1470,7 +1470,7 @@
       <div class="reviews-top reveal">
         <div class="rating-block">
           <div class="meta">
-            <strong style="font-family:var(--display); font-size:32px; line-height:1; letter-spacing:-.01em;">400 reviews on Google</strong>
+            <strong style="font-family:var(--display); font-size:32px; line-height:1; letter-spacing:-.01em;">400+ reviews on Google</strong>
             <small>Real customers, Imperial Street, Burnaby BC</small>
           </div>
         </div>
@@ -1883,29 +1883,31 @@
       window.addEventListener("resize", setHeaderOffsetVar, { passive: true });
 
       function scrollToServiceRow(row) {
-        if (!row?.id) return;
+        if (!tableWrap) return;
         setHeaderOffsetVar();
         const offset = stickyHeaderHeight();
         const html = document.documentElement;
         const prevScroll = html.style.scrollBehavior;
-        html.style.scrollBehavior = "auto";
+        html.style.scrollBehavior = "smooth";
 
-        const alignRow = () => {
-          const y = row.getBoundingClientRect().top + window.pageYOffset - offset;
-          window.scrollTo(0, Math.max(0, y));
-        };
+        const tableTop = tableWrap.getBoundingClientRect().top + window.pageYOffset;
+        const tableH = tableWrap.offsetHeight;
+        const viewH = window.innerHeight - offset;
+        const pad = 20;
 
-        // Jump to row anchor (works on mobile Safari), then correct for sticky header
-        if (history.replaceState) {
-          history.replaceState(null, "", "#" + row.id);
-        } else {
-          location.hash = row.id;
+        // Show as much of the services table as possible (not a hard jump to one row)
+        let target = tableTop - offset - pad;
+        if (tableH < viewH - pad * 2) {
+          target = tableTop - offset - Math.max(pad, (viewH - tableH) * 0.25);
         }
-        alignRow();
-        requestAnimationFrame(alignRow);
-        setTimeout(alignRow, 80);
-        setTimeout(alignRow, 280);
-        setTimeout(() => { html.style.scrollBehavior = prevScroll || ""; }, 300);
+        target = Math.max(0, target);
+
+        window.scrollTo({ top: target, left: 0, behavior: "smooth" });
+        if (row?.id && history.replaceState) {
+          history.replaceState(null, "", "#" + row.id);
+        }
+
+        setTimeout(() => { html.style.scrollBehavior = prevScroll || ""; }, 900);
       }
 
       // ── Highlight rows + column, scroll table into view ───────────
