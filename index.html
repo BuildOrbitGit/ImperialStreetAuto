@@ -2166,10 +2166,13 @@
       stage.addEventListener("pointerup",     (e) => { if (e.pointerType !== "touch") endDrag(); });
       stage.addEventListener("pointercancel", (e) => { if (e.pointerType !== "touch") endDrag(); });
 
-      // Touch events — explicit fallback for iOS Safari & Android
+      // Touch events — iOS Safari & Android
+      // Only call preventDefault on non-tag touches so the browser still
+      // fires a synthetic click on sphere-tag buttons (needed for highlight).
+      // touch-action:none on the stage CSS prevents scroll in all cases.
       stage.addEventListener("touchstart", (e) => {
         if (e.touches.length !== 1) return;
-        e.preventDefault();
+        if (!e.target.closest(".sphere-tag")) e.preventDefault();
         beginDrag(e.touches[0].clientX, e.touches[0].clientY);
       }, { passive: false });
       stage.addEventListener("touchmove", (e) => {
@@ -2177,16 +2180,7 @@
         e.preventDefault();
         moveDrag(e.touches[0].clientX, e.touches[0].clientY);
       }, { passive: false });
-      stage.addEventListener("touchend", (e) => {
-        // If the finger lifted on a sphere tag and we didn't drag, treat as a tap
-        const tappedTag = !didDrag && e.target.closest(".sphere-tag");
-        endDrag();
-        if (tappedTag) {
-          document.querySelectorAll(".sphere-tag.active").forEach((n) => n.classList.remove("active"));
-          tappedTag.classList.add("active");
-          highlightByName(tappedTag.textContent.trim());
-        }
-      });
+      stage.addEventListener("touchend",    () => endDrag());
       stage.addEventListener("touchcancel", () => endDrag());
 
       requestAnimationFrame(renderSphere);
