@@ -1206,8 +1206,20 @@
     .call-fab svg { width: 16px; height: 16px; }
 
     /* ── Reveal-on-scroll ─────────────────── */
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; will-change: transform, opacity; }
     .reveal.in  { opacity: 1; transform: translateY(0); }
+
+    /* ── Scroll-reveal stagger ───────────── */
+    .pcat:nth-child(2) { transition-delay: 0.08s; }
+    .pcat:nth-child(3) { transition-delay: 0.16s; }
+    .review:nth-child(2) { transition-delay: 0.1s; }
+    .review:nth-child(3) { transition-delay: 0.2s; }
+
+    /* ── Reduced-motion overrides ────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
 
     /* ── Responsive ────────────────────────── */
     @media (max-width: 1080px) {
@@ -1238,6 +1250,16 @@
       .foot-grid { grid-template-columns: 1fr 1fr; }
       .section-head { grid-template-columns: 1fr; }
     }
+    @media (max-width: 480px) {
+      .hero-car { opacity: 0.2; right: -40px; }
+      .hero-content { padding-bottom: 60px; }
+    }
+    @media (max-width: 600px) {
+      .prow-desc { font-size: 0.78rem; }
+      .prow-price { font-size: 18px; }
+    }
+    summary:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+
     @media (max-width: 680px) {
       .trust-grid { grid-template-columns: 1fr; }
       .trust-cell { border-right: 0; border-top: 1px solid rgba(255,255,255,.08); }
@@ -1275,7 +1297,7 @@
           <span class="status-dot" id="statusDot" aria-hidden="true"></span>
           <span id="statusLabel">Open · Mon–Fri 9 to 5</span>
         </span>
-        <a class="util-address" href="https://www.google.com/maps/search/?api=1&query=5186+Imperial+St+Burnaby+BC" target="_blank" rel="noopener" aria-label="Get directions to 5186 Imperial Street, Burnaby BC">
+        <a class="util-address" href="https://www.google.com/maps/search/?api=1&query=5186+Imperial+St+Burnaby+BC" target="_blank" rel="noopener noreferrer" aria-label="Get directions to 5186 Imperial Street, Burnaby BC">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <span class="place">5186 Imperial St, Burnaby BC</span>
         </a>
@@ -1349,8 +1371,8 @@
       </div>
       <div class="trust-cell">
         <span class="trust-label">Reviews</span>
-        <a class="trust-num" href="https://www.google.com/maps/search/?api=1&query=Imperial+Street+Auto+Repair+Burnaby" target="_blank" rel="noopener" style="text-decoration: none; display: inline-flex; align-items: baseline; gap: 8px;">400+<span style="font-size:.42em; letter-spacing:.1em; color: rgba(255,255,255,.55); vertical-align: 4px;">↗</span></a>
-        <span class="trust-desc">Google reviews. Tap to read them all.</span>
+        <a class="trust-num" href="https://www.google.com/maps/search/?api=1&query=Imperial+Street+Auto+Repair+Burnaby" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: inline-flex; align-items: baseline; gap: 8px;">47+<span style="font-size:.42em; letter-spacing:.1em; color: rgba(255,255,255,.55); vertical-align: 4px;">↗</span></a>
+        <span class="trust-desc">Verified Google reviews. Tap to read every one of them.</span>
       </div>
       <div class="trust-cell">
         <span class="trust-label">Most jobs</span>
@@ -1587,7 +1609,7 @@
             <small>Real customers, Imperial Street, Burnaby BC</small>
           </div>
         </div>
-        <a class="linklike" href="https://www.google.com/maps/search/?api=1&query=Imperial+Street+Auto+Repair+Burnaby" target="_blank" rel="noopener">
+        <a class="linklike" href="https://www.google.com/maps/search/?api=1&query=Imperial+Street+Auto+Repair+Burnaby" target="_blank" rel="noopener noreferrer">
           Read every review on Google
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M7 17L17 7M9 7h8v8"/></svg>
         </a>
@@ -1745,7 +1767,7 @@
           </dl>
           <div class="visit-cta">
             <a class="btn on-dark" href="tel:+16044341120">Call the shop</a>
-            <a class="btn ghost on-dark" href="https://www.google.com/maps/search/?api=1&query=5186+Imperial+St+Burnaby+BC" target="_blank" rel="noopener">Get directions</a>
+            <a class="btn ghost on-dark" href="https://www.google.com/maps/search/?api=1&query=5186+Imperial+St+Burnaby+BC" target="_blank" rel="noopener noreferrer">Get directions</a>
           </div>
         </div>
         <div class="visit-map">
@@ -1794,7 +1816,7 @@
           <div class="foot-links">
             <a href="tel:+16044341120">(604) 434-1120</a>
             <a href="mailto:info@imperialst.ca">info@imperialst.ca</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=5186+Imperial+St+Burnaby+BC" target="_blank" rel="noopener">5186 Imperial St, Burnaby</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=5186+Imperial+St+Burnaby+BC" target="_blank" rel="noopener noreferrer">5186 Imperial St, Burnaby</a>
             <a href="#visit">Hours &amp; Directions</a>
           </div>
         </div>
@@ -1852,6 +1874,12 @@
     });
     navLinks.addEventListener("click", (e) => {
       if (e.target.tagName === "A") {
+        document.body.classList.remove("menu-open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+    document.addEventListener("click", (e) => {
+      if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
         document.body.classList.remove("menu-open");
         menuBtn.setAttribute("aria-expanded", "false");
       }
@@ -2114,22 +2142,16 @@
       }
 
       function renderSphere(now) {
-        const rect    = stage.getBoundingClientRect();
-        const narrow  = rect.width < 720;
-        const radiusX = rect.width  * (narrow ? 0.48 : 0.46);
-        const radiusY = rect.height * (narrow ? 0.38 : 0.40);
-        const tapDepth = narrow ? 0.72 : 0.78;
+        const rect   = stage.getBoundingClientRect();
+        const size   = Math.min(rect.width, rect.height);
+        const radius = size * (rect.width < 480 ? 0.30 : rect.width < 720 ? 0.36 : 0.40);
         if (!isDragging && now > autoAt) { rotX += velX; rotY += velY; }
         sphereItems.forEach((item) => {
           const p     = rotatePt(item);
           const depth = (p.z + 1) / 2;
           const scale = 0.52 + depth * 0.72;
-          const x     = p.x * radiusX, y = p.y * radiusY;
-          item.tag.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), 0) scale(${scale})`;
-          item.tag.style.opacity   = (0.18 + depth * 0.82).toFixed(3);
-          item.tag.style.filter    = `blur(${((1 - depth) * 1.6).toFixed(2)}px)`;
-          item.tag.style.zIndex    = Math.round(depth * 1000);
-          item.tag.style.pointerEvents = depth > tapDepth ? "auto" : "none";
+          const x     = p.x * radius, y = p.y * radius;
+          item.tag.style.cssText = `transform:translate3d(calc(-50% + ${x}px),calc(-50% + ${y}px),0) scale(${scale});opacity:${(0.18+depth*0.82).toFixed(3)};filter:blur(${((1-depth)*1.6).toFixed(2)}px);z-index:${Math.round(depth*1000)}`;
         });
         requestAnimationFrame(renderSphere);
       }
@@ -2182,6 +2204,11 @@
       }, { passive: false });
       stage.addEventListener("touchend",    () => endDrag());
       stage.addEventListener("touchcancel", () => endDrag());
+
+      stage.addEventListener("touchstart", () => {
+        const hint = stage.querySelector(".sphere-hint");
+        if (hint) hint.style.opacity = "0";
+      }, { once: true });
 
       requestAnimationFrame(renderSphere);
     })();
