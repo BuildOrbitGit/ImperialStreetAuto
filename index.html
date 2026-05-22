@@ -1917,16 +1917,6 @@
           tag.classList.add("active");
           highlightByName(it.name);
         });
-        // On touch devices, touchstart on the stage calls preventDefault() which
-        // suppresses the synthetic click — so we fire highlight directly on touchend.
-        tag.addEventListener("touchend", (e) => {
-          if (didDrag) return;
-          e.stopPropagation(); // prevent stage touchend from interfering
-          document.querySelectorAll(".sphere-tag.active").forEach((n) => n.classList.remove("active"));
-          tag.classList.add("active");
-          highlightByName(it.name);
-          endDrag(); // clean up drag state
-        });
         tagRoot.appendChild(tag);
         return { tag, ...pt };
       });
@@ -2002,7 +1992,16 @@
         e.preventDefault();
         moveDrag(e.touches[0].clientX, e.touches[0].clientY);
       }, { passive: false });
-      stage.addEventListener("touchend",    () => endDrag());
+      stage.addEventListener("touchend", (e) => {
+        // If the finger lifted on a sphere tag and we didn't drag, treat as a tap
+        const tappedTag = !didDrag && e.target.closest(".sphere-tag");
+        endDrag();
+        if (tappedTag) {
+          document.querySelectorAll(".sphere-tag.active").forEach((n) => n.classList.remove("active"));
+          tappedTag.classList.add("active");
+          highlightByName(tappedTag.textContent.trim());
+        }
+      });
       stage.addEventListener("touchcancel", () => endDrag());
 
       requestAnimationFrame(renderSphere);
