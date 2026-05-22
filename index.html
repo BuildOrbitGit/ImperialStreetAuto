@@ -296,15 +296,15 @@
     /* ── Header ────────────────────────────────── */
     .nav {
       position: sticky; top: 0; z-index: 60;
-      background: rgba(6, 16, 37, 0.97);
-      backdrop-filter: blur(12px) saturate(140%);
-      -webkit-backdrop-filter: blur(12px) saturate(140%);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      transition: box-shadow .25s ease;
+      background: rgba(245, 247, 252, 0.72);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border-bottom: 1px solid rgba(10,23,54,.08);
+      transition: box-shadow .25s ease, background .25s ease;
     }
     .nav.scrolled {
-      background: rgba(4, 11, 27, 1);
-      box-shadow: 0 1px 0 rgba(255,255,255,.06), 0 8px 28px rgba(0,0,0,.32);
+      background: rgba(240, 244, 252, 0.92);
+      box-shadow: 0 1px 0 rgba(10,23,54,.08), 0 8px 28px rgba(0,0,0,.10);
     }
     .nav-inner {
       display: grid;
@@ -316,13 +316,11 @@
     .brand {
       display: flex; align-items: center; gap: 12px;
     }
-    /* Brand logo — invert dark text → white, crown → gold, on dark nav */
+    /* Brand logo — natural colours on light nav */
     .brand-logo {
       height: 72px;
       width: auto;
       display: block;
-      filter: invert(1) brightness(1.05) contrast(1.1)
-              drop-shadow(0 1px 6px rgba(0,0,0,.5));
     }
     @media (max-width: 680px) {
       .brand-logo { height: 50px; }
@@ -331,17 +329,17 @@
       display: flex; justify-content: center; gap: 30px;
       font-size: 14px; font-weight: 600; letter-spacing: .02em;
     }
-    .nav-links a { color: rgba(255,255,255,.78); position: relative; padding: 6px 0;
+    .nav-links a { color: rgba(10,23,54,.78); position: relative; padding: 6px 0;
       transition: color .2s ease; }
     .nav-links a::after {
       content: ""; position: absolute; left: 0; right: 0; bottom: 0;
       height: 2px; background: var(--red); transform: scaleX(0); transform-origin: left;
       transition: transform .22s ease;
     }
-    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover { color: var(--ink); }
     .nav-links a:hover::after { transform: scaleX(1); }
     .nav-cta { display: flex; align-items: center; gap: 14px; }
-    .nav-phone { font-family: var(--mono); font-weight: 700; font-size: 13px; color: rgba(255,255,255,.82); }
+    .nav-phone { font-family: var(--mono); font-weight: 700; font-size: 13px; color: rgba(10,23,54,.75); }
 
     .menu-btn {
       display: none;
