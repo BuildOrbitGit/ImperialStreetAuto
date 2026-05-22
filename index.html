@@ -1917,6 +1917,16 @@
           tag.classList.add("active");
           highlightByName(it.name);
         });
+        // On touch devices, touchstart on the stage calls preventDefault() which
+        // suppresses the synthetic click — so we fire highlight directly on touchend.
+        tag.addEventListener("touchend", (e) => {
+          if (didDrag) return;
+          e.stopPropagation(); // prevent stage touchend from interfering
+          document.querySelectorAll(".sphere-tag.active").forEach((n) => n.classList.remove("active"));
+          tag.classList.add("active");
+          highlightByName(it.name);
+          endDrag(); // clean up drag state
+        });
         tagRoot.appendChild(tag);
         return { tag, ...pt };
       });
