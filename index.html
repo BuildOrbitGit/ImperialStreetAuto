@@ -316,18 +316,16 @@
     .brand {
       display: flex; align-items: center; gap: 12px;
     }
-    /* Brand logo — transparent PNG, glow makes dark text visible on dark nav */
+    /* Brand logo — invert dark text → white, crown → gold, on dark nav */
     .brand-logo {
-      height: 58px;
+      height: 72px;
       width: auto;
       display: block;
-      filter:
-        brightness(1.6) contrast(1.1)
-        drop-shadow(0 0 6px rgba(255,255,255,.45))
-        drop-shadow(0 0 14px rgba(255,255,255,.2));
+      filter: invert(1) brightness(1.05) contrast(1.1)
+              drop-shadow(0 1px 6px rgba(0,0,0,.5));
     }
     @media (max-width: 680px) {
-      .brand-logo { height: 42px; }
+      .brand-logo { height: 50px; }
     }
     .nav-links {
       display: flex; justify-content: center; gap: 30px;
@@ -1557,7 +1555,7 @@
               <span class="plus" aria-hidden="true"></span>
             </button>
             <div class="faq-a"><div class="faq-a-inner">
-              We're an 8-minute walk west of Royal Oak Station along Imperial Street, about 600 metres. Street parking is plentiful. If you're dropping a car for the day, transit back is easy.
+              We're a 2-minute walk west of Royal Oak Station along Imperial Street, about 600 metres. Street parking is plentiful. If you're dropping a car for the day, transit back is easy.
             </div></div>
           </div>
           <div class="faq-item">
@@ -1615,7 +1613,7 @@
             </div>
             <div class="visit-row">
               <dt>Transit</dt>
-              <dd>8-min walk from Royal Oak SkyTrain · Bus 110 stops one block east.</dd>
+              <dd>2-min walk from Royal Oak SkyTrain · Bus 110 stops one block east.</dd>
             </div>
           </dl>
           <div class="visit-cta">
@@ -1972,15 +1970,32 @@
         setTimeout(() => { didDrag = false; }, 0);
       }
 
+      // Pointer events (desktop + modern mobile)
       stage.addEventListener("pointerdown", (e) => {
+        if (e.pointerType === "touch") return; // let touch handlers below own touch
         beginDrag(e.clientX, e.clientY);
         try { stage.setPointerCapture(e.pointerId); } catch (_) {}
       });
       stage.addEventListener("pointermove", (e) => {
-        if (!isDragging) return; e.preventDefault(); moveDrag(e.clientX, e.clientY);
+        if (e.pointerType === "touch" || !isDragging) return;
+        e.preventDefault(); moveDrag(e.clientX, e.clientY);
       }, { passive: false });
-      stage.addEventListener("pointerup",     (e) => { endDrag(); try { stage.releasePointerCapture(e.pointerId); } catch (_) {} });
-      stage.addEventListener("pointercancel", (e) => { endDrag(); try { stage.releasePointerCapture(e.pointerId); } catch (_) {} });
+      stage.addEventListener("pointerup",     (e) => { if (e.pointerType !== "touch") endDrag(); });
+      stage.addEventListener("pointercancel", (e) => { if (e.pointerType !== "touch") endDrag(); });
+
+      // Touch events — explicit fallback for iOS Safari & Android
+      stage.addEventListener("touchstart", (e) => {
+        if (e.touches.length !== 1) return;
+        e.preventDefault();
+        beginDrag(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: false });
+      stage.addEventListener("touchmove", (e) => {
+        if (!isDragging || !e.touches.length) return;
+        e.preventDefault();
+        moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: false });
+      stage.addEventListener("touchend",    () => endDrag());
+      stage.addEventListener("touchcancel", () => endDrag());
 
       requestAnimationFrame(renderSphere);
     })();
