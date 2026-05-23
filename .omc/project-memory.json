@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1779143551758,
+  "lastScanned": 1779423153590,
   "projectRoot": "/Users/deepak/BuildOrbit/ImperialStreetAuto",
   "techStack": {
     "languages": [],
@@ -31,7 +31,20 @@
     }
   },
   "customNotes": [],
-  "directoryMap": {},
+  "directoryMap": {
+    "photos": {
+      "path": "photos",
+      "purpose": null,
+      "fileCount": 4,
+      "lastAccessed": 1779423153565,
+      "keyFiles": [
+        "garage-front.jpg",
+        "garage-working-2.jpg",
+        "garage-working.jpg",
+        "team.jpg"
+      ]
+    }
+  },
   "hotPaths": [],
   "userDirectives": []
 }
