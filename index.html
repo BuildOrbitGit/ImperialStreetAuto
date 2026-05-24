@@ -2143,15 +2143,18 @@
 
       function renderSphere(now) {
         const rect   = stage.getBoundingClientRect();
-        const size   = Math.min(rect.width, rect.height);
-        const radius = size * (rect.width < 480 ? 0.30 : rect.width < 720 ? 0.36 : 0.40);
+        // Use width so radius isn't constrained by stage height on wide screens
+        const size   = rect.width;
+        const radius = size * (rect.width < 480 ? 0.34 : rect.width < 720 ? 0.38 : 0.42);
         if (!isDragging && now > autoAt) { rotX += velX; rotY += velY; }
         sphereItems.forEach((item) => {
           const p     = rotatePt(item);
           const depth = (p.z + 1) / 2;
-          const scale = 0.52 + depth * 0.72;
+          // Tighter scale range: back items 70% size, front 110% — reduces pileup
+          const scale = 0.70 + depth * 0.40;
           const x     = p.x * radius, y = p.y * radius;
-          item.tag.style.cssText = `transform:translate3d(calc(-50% + ${x}px),calc(-50% + ${y}px),0) scale(${scale});opacity:${(0.18+depth*0.82).toFixed(3)};filter:blur(${((1-depth)*1.6).toFixed(2)}px);z-index:${Math.round(depth*1000)}`;
+          // Higher min opacity so back-hemisphere items remain visible
+          item.tag.style.cssText = `transform:translate3d(calc(-50% + ${x}px),calc(-50% + ${y}px),0) scale(${scale});opacity:${(0.35+depth*0.65).toFixed(3)};filter:blur(${((1-depth)*0.9).toFixed(2)}px);z-index:${Math.round(depth*1000)}`;
         });
         requestAnimationFrame(renderSphere);
       }
