@@ -2143,9 +2143,8 @@
 
       function renderSphere(now) {
         const rect   = stage.getBoundingClientRect();
-        // Use width so radius isn't constrained by stage height on wide screens
-        const size   = rect.width;
-        const radius = size * (rect.width < 480 ? 0.34 : rect.width < 720 ? 0.38 : 0.42);
+        const size   = Math.min(rect.width, rect.height);
+        const radius = size * (rect.width < 480 ? 0.33 : rect.width < 720 ? 0.40 : 0.44);
         if (!isDragging && now > autoAt) { rotX += velX; rotY += velY; }
         sphereItems.forEach((item) => {
           const p     = rotatePt(item);
