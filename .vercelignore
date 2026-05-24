@@ -1,0 +1,16 @@
+# Large source/working files not needed for deployment
+Garage_Front.png
+Garage_front.JPG
+Garage_front.htm
+Garage_working.JPG
+Garage_working2.JPG
+logo-clean-source.png
+logo-ref.png
+logo-source.png
+IST_logo.jpg
+
+# Dev tooling
+.claude/
+.omc/
+.DS_Store
+*.md
