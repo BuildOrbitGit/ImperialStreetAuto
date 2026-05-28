@@ -1,5 +1,14 @@
 {
   "version": 2,
+
+  "redirects": [
+    {
+      "source": "/auto-repair-promotions/:path*",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+
   "headers": [
     {
       "source": "/(.*)",
