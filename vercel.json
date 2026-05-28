@@ -3,8 +3,18 @@
 
   "redirects": [
     {
+      "source": "/auto-repair-promotions",
+      "destination": "https://burnabyautorepair.ca",
+      "permanent": true
+    },
+    {
+      "source": "/auto-repair-promotions/",
+      "destination": "https://burnabyautorepair.ca",
+      "permanent": true
+    },
+    {
       "source": "/auto-repair-promotions/:path*",
-      "destination": "/",
+      "destination": "https://burnabyautorepair.ca",
       "permanent": true
     }
   ],
@@ -13,33 +23,54 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     },
     {
       "source": "/IST_logo.png",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/IST_logo.webp",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*\\.(?:png|jpg|jpeg|webp|ico|svg|woff2?))",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, must-revalidate"
+        }
       ]
     },
     {
       "source": "/index.html",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     }
   ]
