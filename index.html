@@ -1208,7 +1208,11 @@
 
     /* ── Scroll-reveal stagger ───────────── */
     .pcat:nth-child(2) { transition-delay: 0.08s; }
-    .pcat:nth-child(3) { transition-delay: 0.16s; }
+    .pcat:nth-child(3) { transition-delay: 0.16s; background: rgba(220,30,30,.18); border-color: rgba(220,30,30,.5); }
+    .pcat:nth-child(3) .pcat-title { color: #ff6b6b; }
+    .pcat:nth-child(3) .pcat-badge { background: rgba(220,30,30,.35); color: #fff; }
+    .pcat:nth-child(3) .prow-price { color: #ff6b6b; }
+    .pcat:nth-child(3):hover { background: rgba(220,30,30,.26); border-color: rgba(220,30,30,.7); }
     .review:nth-child(2) { transition-delay: 0.1s; }
     .review:nth-child(3) { transition-delay: 0.2s; }
 
@@ -1360,7 +1364,7 @@
     <div class="trust-grid">
       <div class="trust-cell">
         <span class="trust-label">Established</span>
-        <span class="trust-num" style="color:#e02020">2010</span>
+        <span class="trust-num">2010</span>
         <span class="trust-desc">Same shop, same street, for over fifteen years.</span>
       </div>
       <div class="trust-cell">
@@ -1542,7 +1546,7 @@
       <div class="section-head reveal">
         <div>
           <div class="section-num">03 · The shop</div>
-          <h2>On Imperial Street<br>since <span style="color:#e02020">2010</span>.</h2>
+          <h2>On Imperial Street<br>since 2010.</h2>
         </div>
         <div class="right">
           Same address, same workshop. We want to be your mechanics, come by during hours and the people in the picture are the ones you'll meet at the desk.
