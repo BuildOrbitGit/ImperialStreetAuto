@@ -596,16 +596,23 @@
     }
     .pcat-badge.special { background: rgba(255,255,255,.12); color: rgba(255,255,255,.7); }
     .prow {
-      display: flex; align-items: baseline; justify-content: space-between;
-      gap: 8px; padding: 9px 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(5.75rem, auto);
+      align-items: center;
+      gap: 16px;
+      padding: 11px 0;
       border-bottom: 1px solid rgba(255,255,255,.05);
     }
     .prow:last-child { border-bottom: none; }
-    .prow-name { font-size: 14px; color: rgba(255,255,255,.78); line-height: 1.35; flex: 1; }
-    .prow-sub { font-size: 11.5px; color: rgba(255,255,255,.38); margin-top: 2px; }
+    .prow-left { min-width: 0; }
+    .prow-name { font-size: 14px; color: rgba(255,255,255,.78); line-height: 1.35; }
+    .prow-sub { font-size: 11.5px; color: rgba(255,255,255,.38); margin-top: 3px; line-height: 1.4; }
     .prow-price {
       font-family: var(--display); font-weight: 900;
-      font-size: 22px; color: #fff; white-space: nowrap; flex-shrink: 0;
+      font-size: 22px; color: #fff; white-space: nowrap;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      justify-self: end;
     }
     .prow-price .up { font-size: 0.72em; color: var(--red); font-weight: 900; vertical-align: baseline; margin-left: 2px; line-height: 1; }
     .prow-price.highlight { color: var(--red); font-size: 26px; }
@@ -625,90 +632,79 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
+    .pricing-pair {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+    }
+    .pricing-pair > .pcat {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 0;
+    }
+    .pricing-pair .pcat-list {
+      flex: 1;
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      align-content: stretch;
+    }
+    .pricing-pair .prow {
+      align-items: start;
+      padding: 12px 0;
+      min-height: 52px;
+    }
+    .pricing-pair .prow-price { align-self: center; }
+    .pricing-pair .prow-slot-fill {
+      border-bottom: none;
+      visibility: hidden;
+      pointer-events: none;
+      min-height: 0;
+      padding: 0;
+    }
     #current-specials { scroll-margin-top: 120px; }
     .pcat-specials {
       grid-column: 1 / -1;
-      padding: 22px 26px 20px;
       background: linear-gradient(135deg, #7a1818 0%, #8f1c1c 48%, #6e1414 100%);
       border: 1px solid #c02828;
       box-shadow: 0 12px 36px rgba(110, 20, 20, .35);
     }
-    .pcat-specials .pcat-header {
-      border-bottom-color: rgba(255,255,255,.18);
-      padding-bottom: 12px;
-      margin-bottom: 0;
-    }
-    .pcat-specials .pcat-title { color: #fff; font-size: 17px; letter-spacing: .04em; }
+    .pcat-specials .pcat-header { border-bottom-color: rgba(255,255,255,.18); }
+    .pcat-specials .pcat-title { color: #fff; font-size: 18px; }
     .pcat-specials .pcat-badge {
       background: rgba(0,0,0,.28);
       color: #fff;
       border: 1px solid rgba(255,255,255,.22);
       letter-spacing: .2em;
     }
-    .specials-offers {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      margin-top: 4px;
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 8px;
-      overflow: hidden;
-      background: rgba(0,0,0,.12);
+    .pcat-specials .prow {
+      grid-template-columns: minmax(0, 1fr) auto;
+      max-width: 42rem;
     }
-    .special-offer {
-      padding: 18px 22px 20px;
-      border-right: 1px solid rgba(255,255,255,.12);
+    .pcat-specials .prow-name { color: rgba(255,255,255,.92); }
+    .pcat-specials .prow-sub { color: rgba(255,255,255,.62); }
+    .pcat-specials .prow { border-bottom-color: rgba(255,255,255,.12); }
+    .pcat-specials .prow-price,
+    .pcat-specials .prow-price.highlight { color: #fff; font-size: 28px; }
+    .pcat-specials .prow-price .up { color: #fff; font-size: 0.7em; opacity: .95; }
+    .pcat-specials .prow-footnote .prow-name {
+      color: rgba(255,255,255,.5);
+      font-size: 12.5px;
     }
-    .special-offer:last-child { border-right: none; }
-    .special-offer-head {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 8px;
-    }
-    .special-offer .prow-name {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: 15px;
-      text-transform: uppercase;
-      letter-spacing: .03em;
-      color: #fff;
-      line-height: 1.2;
-    }
-    .special-offer .prow-price {
-      font-size: 24px;
-      line-height: 1;
-      color: #fff;
-      flex-shrink: 0;
-    }
-    .special-offer .prow-price .up { color: #fff; font-size: 0.68em; }
-    .special-offer .prow-sub {
-      font-size: 12px;
-      line-height: 1.5;
-      color: rgba(255,255,255,.58);
-      margin: 0;
-      max-width: 36ch;
-    }
-    .specials-footnote {
-      margin: 14px 0 0;
-      padding-top: 12px;
+    .pcat-specials .prow-footnote {
+      padding-top: 14px;
+      margin-top: 6px;
       border-top: 1px solid rgba(255,255,255,.12);
-      font-size: 12px;
-      line-height: 1.45;
-      color: rgba(255,255,255,.48);
+      border-bottom: none;
+      max-width: none;
+      grid-template-columns: 1fr;
     }
     .pcat-specials:hover {
       background: linear-gradient(135deg, #8f1c1c 0%, #a02424 50%, #7a1818 100%);
       border-color: #d83838;
       transform: translateY(-2px);
-    }
-    @media (max-width: 720px) {
-      .specials-offers { grid-template-columns: 1fr; }
-      .special-offer {
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,.12);
-      }
-      .special-offer:last-child { border-bottom: none; }
     }
     .pricing-disclaimer {
       margin-top: 28px;
@@ -723,10 +719,15 @@
       font-size: 13px; color: rgba(255,255,255,.62); line-height: 1.55;
     }
     @media (max-width: 1024px) {
-      .pricing-cats { grid-template-columns: 1fr 1fr; }
+      .pricing-cats { grid-template-columns: 1fr; }
       .pcat-specials { grid-column: 1 / -1; }
+      .pricing-pair { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 600px)  { .pricing-cats { grid-template-columns: 1fr; } .pricing-head .sub { text-align: left; } }
+    @media (max-width: 600px) {
+      .pricing-cats { grid-template-columns: 1fr; }
+      .pricing-pair { grid-template-columns: 1fr; }
+      .pricing-head .sub { text-align: left; }
+    }
 
     /* ── Services: word chart + master table ─────── */
     .services-section {
@@ -1506,42 +1507,40 @@
             <span class="pcat-title">Current Specials</span>
             <span class="pcat-badge">★ Special</span>
           </div>
-          <div class="specials-offers">
-            <article class="special-offer">
-              <div class="special-offer-head">
-                <div class="prow-name">Engine Flush</div>
-                <div class="prow-price">$14.95</div>
-              </div>
-              <p class="prow-sub">Cleans internally, removes sludge, gums &amp; varnishes. Use prior to oil change.</p>
-            </article>
-            <article class="special-offer">
-              <div class="special-offer-head">
-                <div class="prow-name">3D Wheel Alignment</div>
-                <div class="prow-price">$129.95<span class="up">+</span></div>
-              </div>
-              <p class="prow-sub">Computerized precision alignment</p>
-            </article>
+          <div class="prow">
+            <div class="prow-left"><div class="prow-name">Engine Flush</div><div class="prow-sub">Cleans internally, removes sludge, gums &amp; varnishes. Use prior to oil change.</div></div>
+            <div class="prow-price highlight">$14.95</div>
           </div>
-          <p class="specials-footnote">Minimum charges apply for diagnostics &amp; inspections (0.3 hr +)</p>
+          <div class="prow">
+            <div class="prow-left"><div class="prow-name">3D Wheel Alignment</div><div class="prow-sub">Computerized precision alignment</div></div>
+            <div class="prow-price highlight">$129.95<span class="up">+</span></div>
+          </div>
+          <div class="prow prow-footnote">
+            <div class="prow-left"><div class="prow-name">Minimum charges apply for diagnostics &amp; inspections (0.3 hr +)</div></div>
+          </div>
         </div>
 
+        <div class="pricing-pair">
         <!-- Oil & Filter Change -->
         <div class="pcat">
           <div class="pcat-header">
             <span class="pcat-title">Oil &amp; Filter Change</span>
             <span class="pcat-badge special">Non-Recycled Oil</span>
           </div>
+          <div class="pcat-list">
           <div class="prow">
-            <div><div class="prow-name">Standard Vehicles</div><div class="prow-sub">Cars, Crossovers · up to 5L · 5w20/5w30/10w30</div></div>
+            <div class="prow-left"><div class="prow-name">Standard Vehicles</div><div class="prow-sub">Cars, Crossovers · up to 5L · 5w20/5w30/10w30</div></div>
             <div class="prow-price">$49.95<span class="up">+</span></div>
           </div>
           <div class="prow">
-            <div><div class="prow-name">Full Sized Vehicles</div><div class="prow-sub">Vans, Trucks, SUVs · up to 5L</div></div>
+            <div class="prow-left"><div class="prow-name">Full Sized Vehicles</div><div class="prow-sub">Vans, Trucks, SUVs · up to 5L</div></div>
             <div class="prow-price">$59.95<span class="up">+</span></div>
           </div>
           <div class="prow">
-            <div><div class="prow-name">Synthetic Oil Change</div><div class="prow-sub">Up to 5L</div></div>
+            <div class="prow-left"><div class="prow-name">Synthetic Oil Change</div><div class="prow-sub">Up to 5L</div></div>
             <div class="prow-price">$74.95<span class="up">+</span></div>
+          </div>
+          <div class="prow prow-slot-fill" aria-hidden="true"></div>
           </div>
         </div>
 
@@ -1551,23 +1550,26 @@
             <span class="pcat-title">Inspection Fees</span>
             <span class="pcat-badge special">Per Inspection</span>
           </div>
+          <div class="pcat-list">
           <div class="prow">
-            <div class="prow-name">Brake Inspection</div>
+            <div class="prow-left"><div class="prow-name">Brake Inspection</div></div>
             <div class="prow-price">$39.00<span class="up">+</span></div>
           </div>
           <div class="prow">
-            <div class="prow-name">Front-End Inspection</div>
+            <div class="prow-left"><div class="prow-name">Front-End Inspection</div></div>
             <div class="prow-price">$39.00<span class="up">+</span></div>
           </div>
           <div class="prow">
-            <div class="prow-name">Charging System Inspection</div>
+            <div class="prow-left"><div class="prow-name">Charging System Inspection</div></div>
             <div class="prow-price">$39.00<span class="up">+</span></div>
           </div>
           <div class="prow">
-            <div><div class="prow-name">Multi-Point Safety Inspection</div><div class="prow-sub">Brakes, Steering, Battery, Alternator, Suspension, Lights &amp; more</div></div>
+            <div class="prow-left"><div class="prow-name">Multi-Point Safety Inspection</div><div class="prow-sub">Brakes, Steering, Battery, Alternator, Suspension, Lights &amp; more</div></div>
             <div class="prow-price">$60.00<span class="up">+</span></div>
           </div>
+          </div>
         </div>
+        </div><!-- /pricing-pair -->
 
       </div><!-- /pricing-cats -->
 
