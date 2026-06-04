@@ -628,38 +628,87 @@
     #current-specials { scroll-margin-top: 120px; }
     .pcat-specials {
       grid-column: 1 / -1;
+      padding: 22px 26px 20px;
       background: linear-gradient(135deg, #7a1818 0%, #8f1c1c 48%, #6e1414 100%);
       border: 1px solid #c02828;
       box-shadow: 0 12px 36px rgba(110, 20, 20, .35);
     }
-    .pcat-specials .pcat-header { border-bottom-color: rgba(255,255,255,.18); }
-    .pcat-specials .pcat-title { color: #fff; font-size: 18px; }
+    .pcat-specials .pcat-header {
+      border-bottom-color: rgba(255,255,255,.18);
+      padding-bottom: 12px;
+      margin-bottom: 0;
+    }
+    .pcat-specials .pcat-title { color: #fff; font-size: 17px; letter-spacing: .04em; }
     .pcat-specials .pcat-badge {
       background: rgba(0,0,0,.28);
       color: #fff;
       border: 1px solid rgba(255,255,255,.22);
       letter-spacing: .2em;
     }
-    .pcat-specials .prow-name { color: rgba(255,255,255,.92); }
-    .pcat-specials .prow-sub { color: rgba(255,255,255,.62); }
-    .pcat-specials .prow { border-bottom-color: rgba(255,255,255,.12); }
-    .pcat-specials .prow-price,
-    .pcat-specials .prow-price.highlight { color: #fff; font-size: 28px; }
-    .pcat-specials .prow-price .up { color: #fff; font-size: 0.7em; opacity: .95; }
-    .pcat-specials .prow-footnote .prow-name {
-      color: rgba(255,255,255,.5);
-      font-size: 12.5px;
+    .specials-offers {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 4px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(0,0,0,.12);
     }
-    .pcat-specials .prow-footnote {
-      padding-top: 14px;
-      margin-top: 6px;
+    .special-offer {
+      padding: 18px 22px 20px;
+      border-right: 1px solid rgba(255,255,255,.12);
+    }
+    .special-offer:last-child { border-right: none; }
+    .special-offer-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .special-offer .prow-name {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .special-offer .prow-price {
+      font-size: 24px;
+      line-height: 1;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .special-offer .prow-price .up { color: #fff; font-size: 0.68em; }
+    .special-offer .prow-sub {
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(255,255,255,.58);
+      margin: 0;
+      max-width: 36ch;
+    }
+    .specials-footnote {
+      margin: 14px 0 0;
+      padding-top: 12px;
       border-top: 1px solid rgba(255,255,255,.12);
-      border-bottom: none;
+      font-size: 12px;
+      line-height: 1.45;
+      color: rgba(255,255,255,.48);
     }
     .pcat-specials:hover {
       background: linear-gradient(135deg, #8f1c1c 0%, #a02424 50%, #7a1818 100%);
       border-color: #d83838;
       transform: translateY(-2px);
+    }
+    @media (max-width: 720px) {
+      .specials-offers { grid-template-columns: 1fr; }
+      .special-offer {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,.12);
+      }
+      .special-offer:last-child { border-bottom: none; }
     }
     .pricing-disclaimer {
       margin-top: 28px;
@@ -1457,17 +1506,23 @@
             <span class="pcat-title">Current Specials</span>
             <span class="pcat-badge">★ Special</span>
           </div>
-          <div class="prow">
-            <div><div class="prow-name">Engine Flush</div><div class="prow-sub">Cleans internally, removes sludge, gums &amp; varnishes. Use prior to oil change.</div></div>
-            <div class="prow-price highlight">$14.95</div>
+          <div class="specials-offers">
+            <article class="special-offer">
+              <div class="special-offer-head">
+                <div class="prow-name">Engine Flush</div>
+                <div class="prow-price">$14.95</div>
+              </div>
+              <p class="prow-sub">Cleans internally, removes sludge, gums &amp; varnishes. Use prior to oil change.</p>
+            </article>
+            <article class="special-offer">
+              <div class="special-offer-head">
+                <div class="prow-name">3D Wheel Alignment</div>
+                <div class="prow-price">$129.95<span class="up">+</span></div>
+              </div>
+              <p class="prow-sub">Computerized precision alignment</p>
+            </article>
           </div>
-          <div class="prow">
-            <div><div class="prow-name">3D Wheel Alignment</div><div class="prow-sub">Computerized precision alignment</div></div>
-            <div class="prow-price highlight">$129.95<span class="up">+</span></div>
-          </div>
-          <div class="prow prow-footnote">
-            <div><div class="prow-name">Minimum charges apply for diagnostics &amp; inspections (0.3 hr +)</div></div>
-          </div>
+          <p class="specials-footnote">Minimum charges apply for diagnostics &amp; inspections (0.3 hr +)</p>
         </div>
 
         <!-- Oil & Filter Change -->
