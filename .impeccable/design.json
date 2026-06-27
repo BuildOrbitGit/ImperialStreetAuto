@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-27T00:00:00Z",
+  "title": "Design System: Imperial Street Auto Repair",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Deep Navy",
+        "canonical": "#0a1736",
+        "tonalRamp": ["#050a1a", "#0a1736", "#142348", "#1e3060", "#2a4080", "#4a6aaa", "#7a9adc", "#b0c8f2"]
+      },
+      "ink-mid": {
+        "role": "primary",
+        "displayName": "Navy Mid",
+        "canonical": "#142348",
+        "tonalRamp": ["#050a1a", "#0a1736", "#142348", "#1e3060", "#2a4080", "#4a6aaa", "#7a9adc", "#b0c8f2"]
+      },
+      "ink-deep": {
+        "role": "primary",
+        "displayName": "Navy Deep",
+        "canonical": "#2a3768",
+        "tonalRamp": ["#050a1a", "#0a1736", "#142348", "#1e3060", "#2a3768", "#4a5a88", "#7a88b0", "#b8c0d8"]
+      },
+      "accent": {
+        "role": "accent",
+        "displayName": "Electric Blue",
+        "canonical": "#1f53d6",
+        "tonalRamp": ["#0d2668", "#143ea7", "#1f53d6", "#3a6fd9", "#5d8df7", "#8aaef8", "#b8ccfb", "#e6effe"]
+      },
+      "accent-deep": {
+        "role": "accent",
+        "displayName": "Electric Blue Deep",
+        "canonical": "#143ea7",
+        "tonalRamp": ["#0a1e58", "#0f2f80", "#143ea7", "#1f53d6", "#3a6fd9", "#6a9af0", "#a8c4fa", "#e0eafe"]
+      },
+      "accent-light": {
+        "role": "accent",
+        "displayName": "Electric Blue Light",
+        "canonical": "#5d8df7",
+        "tonalRamp": ["#143ea7", "#1f53d6", "#3a6fd9", "#5d8df7", "#8aaef8", "#adc8fb", "#ccdcfd", "#eaf2ff"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Steel Blue",
+        "canonical": "#c2d6f5",
+        "tonalRamp": ["#2a4080", "#4a6aaa", "#7a9adc", "#95b3e8", "#adc6f0", "#c2d6f5", "#d8e8fb", "#f0f5fd"]
+      },
+      "surface-2": {
+        "role": "neutral",
+        "displayName": "Steel Blue Mid",
+        "canonical": "#adc6f0",
+        "tonalRamp": ["#2a4080", "#4a6aaa", "#7a9adc", "#95b3e8", "#adc6f0", "#c2d6f5", "#d8e8fb", "#f0f5fd"]
+      },
+      "surface-3": {
+        "role": "neutral",
+        "displayName": "Steel Blue Deep",
+        "canonical": "#95b3e8",
+        "tonalRamp": ["#2a4080", "#4a6aaa", "#7a9adc", "#95b3e8", "#adc6f0", "#c2d6f5", "#d8e8fb", "#f0f5fd"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Navy",
+        "canonical": "#5a6385",
+        "tonalRamp": ["#1a1e30", "#2a3050", "#3a4268", "#4a5278", "#5a6385", "#7a849a", "#9aaab8", "#c8d0dc"]
+      },
+      "muted-light": {
+        "role": "neutral",
+        "displayName": "Muted Navy Light",
+        "canonical": "#8a93b3",
+        "tonalRamp": ["#2a3050", "#3a4268", "#5a6385", "#7a849a", "#8a93b3", "#a8b0c8", "#c8cedc", "#e8ecf4"]
+      },
+      "near-black": {
+        "role": "neutral",
+        "displayName": "Near Black",
+        "canonical": "#050608",
+        "tonalRamp": ["#050608", "#0a0c10", "#141620", "#1e2030", "#2a2e40", "#444860", "#686e88", "#9498b0"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Section headings (h2). Big Shoulders Display 800, uppercase, tight leading 0.92."
+      },
+      "headline": {
+        "displayName": "Hero Display",
+        "purpose": "Page title only (h1). Intentionally oversized at large viewports — industrial oversized-headline tradition. Uppercase always."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card headings, component titles, h3. Manrope 700 — readable hierarchy, not industrial signage."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All running copy. Manrope 400-500. Max 65-75ch line length."
+      },
+      "label": {
+        "displayName": "Label / Kicker",
+        "purpose": "Kicker lines, phone numbers, technical metadata, pricing footnotes, navigation timestamps. JetBrains Mono — the precision-data register."
+      }
+    },
+    "shadows": [
+      {
+        "name": "subtle-rule",
+        "value": "0 1px 0 rgba(13,14,16,.06), 0 1px 2px rgba(13,14,16,.04)",
+        "purpose": "Ambient separation. Elements that need to read above their background without announcing themselves."
+      },
+      {
+        "name": "card-lift",
+        "value": "0 18px 40px -20px rgba(13,14,16,.28)",
+        "purpose": "Hover or floating card state. Appears only on :hover — cards are flat at rest."
+      },
+      {
+        "name": "table-structural",
+        "value": "0 30px 80px -50px rgba(10,23,54,.25)",
+        "purpose": "Services table only. A structural shadow that roots the full-width grid."
+      },
+      {
+        "name": "nav-scrolled",
+        "value": "0 1px 0 rgba(10,23,54,.08), 0 8px 28px rgba(0,0,0,.10)",
+        "purpose": "Sticky nav after scroll begins. Before scroll: no shadow, only the glassmorphic blur."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-ui",
+        "value": "0.18s ease",
+        "purpose": "Default UI transitions: buttons, links, hover states."
+      },
+      {
+        "name": "ease-card",
+        "value": "0.2s ease",
+        "purpose": "Card hover, nav link underline, status dot transitions."
+      },
+      {
+        "name": "ease-nav",
+        "value": "0.25s ease",
+        "purpose": "Nav background shift on scroll."
+      },
+      {
+        "name": "ease-accordion",
+        "value": "0.35s ease",
+        "purpose": "FAQ accordion max-height expand/collapse."
+      },
+      {
+        "name": "ease-carousel",
+        "value": "0.55s cubic-bezier(.22,1,.36,1)",
+        "purpose": "Shop photo carousel slide transition. Decelerate-into-stop — no bounce."
+      },
+      {
+        "name": "ease-car-arrive",
+        "value": "1.1s cubic-bezier(.2,.8,.2,1)",
+        "purpose": "Hero car cut-out entrance. One-shot on page load."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile-xs", "value": "480px", "notes": "Hero car fades to 20% opacity" },
+      { "name": "mobile-sm", "value": "560px", "notes": "Services table collapses to 1 column" },
+      { "name": "mobile-md", "value": "600px", "notes": "Pricing grid, mobile pricing font sizes" },
+      { "name": "mobile-lg", "value": "680px", "notes": "Trust grid, process steps, reviews collapse to 1-col; FAB shows" },
+      { "name": "tablet-sm", "value": "720px", "notes": "Sphere tags sizing" },
+      { "name": "tablet-md", "value": "900px", "notes": "Services table collapses to 2 columns" },
+      { "name": "tablet-lg", "value": "1080px", "notes": "Nav collapses to hamburger, why-grid to 2-col" },
+      { "name": "desktop", "value": "1280px", "notes": "Services table collapses to 4 columns" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Button — Primary",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Default CTA on light steel-blue surfaces. Navy fill, near-square corners.",
+      "html": "<button class=\"ds-btn-primary\">Call (604) 434-1120 <svg class=\"ds-btn-arrow\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"square\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 22px; border: 1px solid #0a1736; border-radius: 2px; background: #0a1736; color: #c2d6f5; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; white-space: nowrap; transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease; } .ds-btn-primary:hover { background: #1f53d6; border-color: #1f53d6; color: #fff; transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: 2px solid #1f53d6; outline-offset: 3px; } .ds-btn-arrow { transition: transform .18s ease; flex-shrink: 0; } .ds-btn-primary:hover .ds-btn-arrow { transform: translateX(3px); }"
+    },
+    {
+      "name": "Button — Ghost",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action on light surfaces. Transparent fill, navy border.",
+      "html": "<button class=\"ds-btn-ghost\">See Services</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 22px; border: 1px solid #0a1736; border-radius: 2px; background: transparent; color: #0a1736; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; white-space: nowrap; transition: background .18s ease, color .18s ease; } .ds-btn-ghost:hover { background: #0a1736; color: #c2d6f5; } .ds-btn-ghost:focus-visible { outline: 2px solid #1f53d6; outline-offset: 3px; }"
+    },
+    {
+      "name": "Button — On Dark",
+      "kind": "button",
+      "refersTo": "button-on-dark",
+      "description": "Primary CTA on dark navy sections (hero, trust strip, visit). Electric blue fill.",
+      "html": "<button class=\"ds-btn-on-dark\">Call (604) 434-1120 <svg class=\"ds-btn-on-dark-arrow\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"square\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-btn-on-dark { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 22px; border: 1px solid #1f53d6; border-radius: 2px; background: #1f53d6; color: #fff; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; white-space: nowrap; transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease; } .ds-btn-on-dark:hover { background: #fff; border-color: #fff; color: #0a1736; transform: translateY(-1px); } .ds-btn-on-dark:focus-visible { outline: 2px solid #fff; outline-offset: 3px; } .ds-btn-on-dark-arrow { transition: transform .18s ease; flex-shrink: 0; } .ds-btn-on-dark:hover .ds-btn-on-dark-arrow { transform: translateX(3px); }"
+    },
+    {
+      "name": "Linklike",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Underline-style in-text CTA. JetBrains Mono, uppercase, border-bottom underline.",
+      "html": "<a class=\"ds-linklike\" href=\"#\">See current specials <svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"square\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-linklike { display: inline-flex; align-items: center; gap: 8px; padding-bottom: 3px; border-bottom: 1px solid currentColor; font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: #0a1736; text-decoration: none; transition: color .18s ease; } .ds-linklike:hover { color: #1f53d6; }"
+    },
+    {
+      "name": "Eyebrow / Kicker",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Section kicker label. JetBrains Mono, electric blue dot, uppercase tracked. Use sparingly — one per section max, not on every heading.",
+      "html": "<div class=\"ds-eyebrow\"><span class=\"ds-eyebrow-dot\" aria-hidden=\"true\"></span>Current Pricing</div>",
+      "css": ".ds-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: #5a6385; } .ds-eyebrow-dot { display: inline-block; width: 6px; height: 6px; background: #1f53d6; border-radius: 50%; flex-shrink: 0; }"
+    },
+    {
+      "name": "Pricing Card",
+      "kind": "card",
+      "refersTo": "pricing-card",
+      "description": "Service pricing panel on the dark navy pricing section. Semi-transparent against navy bg.",
+      "html": "<div class=\"ds-pcat\"><div class=\"ds-pcat-header\"><span class=\"ds-pcat-title\">Oil &amp; Filter Change</span><span class=\"ds-pcat-badge\">Non-Recycled Oil</span></div><div class=\"ds-prow\"><div><div class=\"ds-prow-name\">Compact · up to 4L</div><div class=\"ds-prow-sub\">5w20 / 5w30 / 10w30</div></div><div class=\"ds-prow-price\">$59.95</div></div><div class=\"ds-prow\"><div><div class=\"ds-prow-name\">Cars &amp; Crossovers · up to 5L</div></div><div class=\"ds-prow-price\">$74.95</div></div></div>",
+      "css": ".ds-pcat { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); border-radius: 10px; padding: 24px 20px; transition: background .2s, border-color .2s, transform .2s; } .ds-pcat:hover { background: rgba(255,255,255,.09); border-color: rgba(31,83,214,.45); transform: translateY(-2px); } .ds-pcat-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.08); padding-bottom: 14px; margin-bottom: 16px; } .ds-pcat-title { font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: 0.02em; color: #fff; } .ds-pcat-badge { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; background: rgba(255,255,255,.12); color: rgba(255,255,255,.7); border-radius: 3px; padding: 3px 7px; } .ds-prow { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,.05); } .ds-prow:last-child { border-bottom: none; } .ds-prow-name { font-size: 14px; color: rgba(255,255,255,.78); } .ds-prow-sub { font-size: 11.5px; color: rgba(255,255,255,.38); margin-top: 3px; } .ds-prow-price { font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 22px; color: #fff; white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Trust Cell",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Stats cell on the dark navy trust strip. Big Shoulders Display for the figure, mono for the label.",
+      "html": "<div class=\"ds-trust-cell\"><span class=\"ds-trust-label\">Established</span><span class=\"ds-trust-num\">2010</span><span class=\"ds-trust-desc\">Same shop, same street, for over fifteen years.</span></div>",
+      "css": ".ds-trust-cell { padding: 38px 28px; display: grid; gap: 6px; background: #0a1736; color: #c2d6f5; border-right: 1px solid rgba(255,255,255,.08); } .ds-trust-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,.6); } .ds-trust-num { font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: clamp(38px, 4vw, 56px); line-height: 0.95; letter-spacing: -0.01em; color: #c2d6f5; } .ds-trust-desc { color: rgba(255,255,255,.74); font-size: 14px; line-height: 1.45; max-width: 260px; font-family: 'Manrope', sans-serif; }"
+    },
+    {
+      "name": "Review Card",
+      "kind": "card",
+      "refersTo": null,
+      "description": "Google review card. White on the section's steel-blue background. No shadow at rest.",
+      "html": "<div class=\"ds-review\"><div class=\"ds-review-stars\">★★★★★</div><div class=\"ds-review-q\">&ldquo;</div><p class=\"ds-review-text\">Honest, thorough, and reasonable pricing. Have been coming here for years and they've never steered me wrong.</p><div class=\"ds-review-by\"><div class=\"ds-review-avatar\">JM</div><div><strong>Jamie M.</strong><div class=\"ds-review-source\">Google · 2025</div></div></div></div>",
+      "css": ".ds-review { background: #fff; border: 1px solid rgba(10,23,54,.14); padding: 26px; display: grid; gap: 14px; font-family: 'Manrope', sans-serif; } .ds-review-stars { color: #e6a521; letter-spacing: 2px; font-size: 14px; } .ds-review-q { font-family: 'Big Shoulders Display', sans-serif; font-size: 56px; line-height: 0.6; color: #1f53d6; height: 22px; } .ds-review-text { color: #142348; font-size: 15px; line-height: 1.6; margin: 0; } .ds-review-by { display: flex; align-items: center; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(10,23,54,.08); font-size: 13px; } .ds-review-avatar { width: 34px; height: 34px; border-radius: 50%; background: #0a1736; color: #c2d6f5; display: grid; place-items: center; font-weight: 700; font-size: 12px; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; } .ds-review-by strong { font-weight: 700; color: #0a1736; display: block; } .ds-review-source { color: #5a6385; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Mechanic's Reference",
+    "overview": "Imperial Street Auto Repair's visual language is drawn from the aesthetic of a professional service manual — the kind of Bosch or Haynes technical reference that mechanics actually use. Compressed industrial type, structured information hierarchies, and a palette that says 'we have been doing this for fifteen years and we know what we are doing.' The design is confident without showmanship, precise without coldness.\n\nThe palette is a committed range of steel-blue tones stepped across sections — not a neutral background colour but the brand's own atmospheric hue. Deep corporate navy anchors structural elements. Electric blue fires as the sole accent: call-to-action buttons, kicker lines, the glow on active states. Mono type appears on labels, phone numbers, and data — not as a developer aesthetic but as precision-instrument reading, like the markings on a diagnostic gauge.\n\nThis system explicitly rejects the franchise auto-chain aesthetic, the greasy-garage cliché, and the cold SaaS dark-dashboard look. It also rejects the cream/warm-neutral landing-page default: the background is blue, not beige.",
+    "keyCharacteristics": [
+      "Industrial compressed display type (Big Shoulders Display) — uppercase, tight leading, significant negative letter-spacing",
+      "Steel-blue tonal sections stepping through a single hue family to create section rhythm without changing the palette",
+      "Electric blue as the one accent colour: rare and purposeful, never decorative",
+      "Mono type for all data-adjacent labels: kickers, phone numbers, timestamps, pricing metadata",
+      "Near-square button corners (2px radius) matching the architectural, no-nonsense personality",
+      "Glassmorphic nav: the one justified use of blur in the system — separates structure from content without an opaque band"
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "Electric blue (#1f53d6) appears on ≤15% of any given section's surface. Its rarity creates the hierarchy. When everything is blue, nothing is.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tonal Rhythm Rule",
+        "body": "Section backgrounds step through the steel-blue ramp, not alternate between unrelated hues. Every background colour on the page is a tint of the same family. New sections must use a value from the ramp, never an outside hue.",
+        "section": "colors"
+      },
+      {
+        "name": "The On-Dark Swap Rule",
+        "body": "On navy backgrounds, accent becomes --brass (#5d8df7), not the full electric blue. Full electric blue on navy lacks sufficient contrast; the lighter value reads clearly and still feels active.",
+        "section": "colors"
+      },
+      {
+        "name": "The Uppercase Ceiling Rule",
+        "body": "Big Shoulders Display appears uppercase only. It is a display face, not a body face. Sentences in Big Shoulders at normal weight and mixed case lose their industrial character and read as a wrong font choice.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono Precision Rule",
+        "body": "JetBrains Mono earns its place by context, not decoration. Use it for: phone numbers, technical kicker labels, category counters, timestamp metadata. Do not use it for body copy, navigation links, or headings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Cards and pricing panels are flat at rest. The shadow appears only on :hover with a translateY(-2px) micro-lift. A resting shadow reads as the whole page floating; that is not the intent.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Tonal-First Rule",
+        "body": "Before reaching for a shadow to create separation, reach for a background colour step. The section rhythm exists so that borders and shadows are not needed between sections.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use Big Shoulders Display at 800+ weight, uppercase, with tight leading (0.88–0.92) for all h1 and h2 headings.",
+      "Do use electric blue (#1f53d6) sparingly — on CTAs, kicker accents, and active states only.",
+      "Do step through the steel-blue tonal ramp for section backgrounds. New sections must use a value from the #9bbae8–#c2d6f5 family.",
+      "Do use border-radius: 2px on buttons and sharp UI elements.",
+      "Do use JetBrains Mono for precision-data contexts: kicker labels, phone numbers, pricing metadata.",
+      "Do place the phone number (604) 434-1120 within reach on every section.",
+      "Do keep body copy at a maximum of 65–75ch line length.",
+      "Do ensure dark-section text (rgba(255,255,255,.78) or higher) maintains ≥4.5:1 contrast against the navy background."
+    ],
+    "donts": [
+      "Don't use warm-neutral backgrounds (cream, sand, beige, paper). The body background is steel blue.",
+      "Don't make the site look like a franchise chain (Jiffy Lube, Midas) — no red/white corporate palette, no template-feel card grids.",
+      "Don't use the greasy-garage aesthetic — clip-art wrenches, racing stripes, checkered flags.",
+      "Don't drift into SaaS/startup territory — gradient hero backgrounds with floating blobs, big-number metric strips, glassmorphism everywhere.",
+      "Don't use JetBrains Mono for navigation links, headings, or body paragraphs.",
+      "Don't add rounded corners larger than 10px to structural containers.",
+      "Don't add an eyebrow/kicker label above every new section heading by reflex.",
+      "Don't use side-stripe borders (border-left > 1px as a colour accent) on cards, alerts, or callouts.",
+      "Don't use gradient text (background-clip: text). All text is solid colour.",
+      "Don't add a second accent colour. One hue family, one accent."
+    ]
+  }
+}

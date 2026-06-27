@@ -3,16 +3,6 @@
 
   "redirects": [
     {
-      "source": "/auto-repair-promotions",
-      "destination": "https://burnabyautorepair.ca",
-      "permanent": true
-    },
-    {
-      "source": "/auto-repair-promotions/",
-      "destination": "https://burnabyautorepair.ca",
-      "permanent": true
-    },
-    {
       "source": "/auto-repair-promotions/:path*",
       "destination": "https://burnabyautorepair.ca",
       "permanent": true

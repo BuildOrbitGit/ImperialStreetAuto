@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1779423153590,
+  "lastScanned": 1782588297895,
   "projectRoot": "/Users/deepak/BuildOrbit/ImperialStreetAuto",
   "techStack": {
     "languages": [],
@@ -36,7 +36,7 @@
       "path": "photos",
       "purpose": null,
       "fileCount": 4,
-      "lastAccessed": 1779423153565,
+      "lastAccessed": 1782588297861,
       "keyFiles": [
         "garage-front.jpg",
         "garage-working-2.jpg",
@@ -45,6 +45,55 @@
       ]
     }
   },
-  "hotPaths": [],
+  "hotPaths": [
+    {
+      "path": "index.html",
+      "accessCount": 81,
+      "lastAccessed": 1782593138863,
+      "type": "file"
+    },
+    {
+      "path": "DESIGN.md",
+      "accessCount": 6,
+      "lastAccessed": 1782593170226,
+      "type": "file"
+    },
+    {
+      "path": "vercel.json",
+      "accessCount": 2,
+      "lastAccessed": 1782588822628,
+      "type": "file"
+    },
+    {
+      "path": "README.md",
+      "accessCount": 1,
+      "lastAccessed": 1782589451333,
+      "type": "file"
+    },
+    {
+      "path": "UI-UX-IMPROVEMENTS.md",
+      "accessCount": 1,
+      "lastAccessed": 1782589451370,
+      "type": "file"
+    },
+    {
+      "path": "PRODUCT.md",
+      "accessCount": 1,
+      "lastAccessed": 1782589708034,
+      "type": "file"
+    },
+    {
+      "path": ".impeccable/live/config.json",
+      "accessCount": 1,
+      "lastAccessed": 1782589718185,
+      "type": "file"
+    },
+    {
+      "path": ".impeccable/design.json",
+      "accessCount": 1,
+      "lastAccessed": 1782590082388,
+      "type": "file"
+    }
+  ],
   "userDirectives": []
 }
